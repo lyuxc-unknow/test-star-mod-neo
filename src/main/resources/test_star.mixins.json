@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.lyuxc.develop.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "MixinMinecraft",
+    "MixinTitleScreen",
+    "disableExperimentus.MixinPrimaryLevelData",
+    "disableExperimentus.MixinWorldListEntity",
+    "disableExperimentus.MixinWorldOpenFlows"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "test_star.refmap.json"
+}

@@ -1,0 +1,106 @@
+package me.lyuxc.develop.event;
+
+import me.lyuxc.develop.Star;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Calendar;
+
+@Mod.EventBusSubscriber
+public class onCommandRegistry {
+    @SubscribeEvent
+    public static void register(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("jrrp")
+                .executes(context -> {
+                    if (!context.getSource().isPlayer()) return 0;
+                    ServerPlayer player = context.getSource().getPlayer();
+                    int jrrpCount = 0;
+                    assert player != null;
+                    try (BufferedReader reader = new BufferedReader(new FileReader(Star.jrrpDir))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            Star.data.add(line);
+                        }
+                        reader.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if (Star.data.size() > 0) {
+                        String[] data1;
+                        for (String data : Star.data) {
+                            data1 = data.split("\\|");
+                            if (!String.valueOf(data1[0]).equals(context.getSource().getPlayer().getName())) {
+                                try {
+                                    jrrpCount = Star.Random_Day.nextInt(101);
+                                    Star.data.add("\n" + context.getSource().getPlayer().getName().getString() + "|" + Star.calendar.get(Calendar.DAY_OF_YEAR) + "|" + jrrpCount);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                try (BufferedWriter writer = new BufferedWriter(new FileWriter(Star.jrrpDir))) {
+                                    for (String line : Star.data) {
+                                        writer.write(line);
+                                    }
+                                    writer.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                                //玩家不是第一次使用，也不是同一时间
+                            } else if (String.valueOf(data1[0]).equals(context.getSource().getPlayer().getName().toString()) && Integer.parseInt(data1[1]) == Star.calendar.get(Calendar.DAY_OF_YEAR)) {
+                                jrrpCount = Integer.parseInt(data1[2]);
+                                break;
+                                //如果玩家是第一次使用
+                            } else {
+                                if (data1[1].equals(String.valueOf(Star.calendar.get(Calendar.DAY_OF_YEAR)))) {
+                                    jrrpCount = Integer.parseInt(data1[2]);
+                                    break;
+                                }
+                                System.out.println(data1[1].equals(String.valueOf(Star.calendar.get(Calendar.DAY_OF_YEAR))));
+                                System.out.println(data1[1]);
+                                jrrpCount = Star.Random_Day.nextInt(101);
+                                data1[1] = String.valueOf(Star.calendar.get(Calendar.DAY_OF_YEAR));
+                                Star.data.remove(data);
+                                Star.data.add("\n" + context.getSource().getPlayer().getName().getString() + "|" + data1[1] + "|" + jrrpCount);
+                                try (BufferedWriter writer = new BufferedWriter(new FileWriter(Star.jrrpDir))) {
+                                    for (String line : Star.data) {
+                                        writer.write(line);
+                                    }
+                                    writer.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            }
+                        }
+                    } else {
+                        jrrpCount = Star.Random_Day.nextInt(101);
+                        Star.data.add(context.getSource().getPlayer().getName().getString() + "|" + Star.calendar.get(Calendar.DAY_OF_YEAR) + "|" + jrrpCount);
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Star.jrrpDir))) {
+                            for (String line : Star.data) {
+                                writer.write(line);
+                            }
+                            writer.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    player.sendSystemMessage(Component.literal("今天的幸运值为：" + jrrpCount));
+                    Star.data.clear();
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    return 0;
+                })
+        );
+    }
+}

@@ -1,10 +1,15 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
+//    id 'eclipse'
     id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.5'
+//    id 'org.spongepowered.gradle.plugin' version '2.1.0'
+    id 'net.neoforged.gradle.mixin' version '[7.0.5,)'
 }
+
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
+//apply plugin: 'org.spongepowered.mixin'
 
 version = mod_version
 group = mod_group_id
@@ -46,11 +51,12 @@ runs {
     client {
         // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+//        programArgument '-mixin.config=test_star.mixins.json'
     }
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
+        programArgument '--nogui'//,'-mixin.config=test_star.mixins.json'
     }
 
     // This run config launches GameTestServer and runs all registered gametests, then exits.
@@ -139,4 +145,9 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+mixin {
+    config "test_star.mixins.json"
+//    add sourceSets.main, "test_star.refmap.json"
 }

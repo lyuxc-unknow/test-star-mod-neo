@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "test_star:block/example_block"
+    }
+  }
+}
