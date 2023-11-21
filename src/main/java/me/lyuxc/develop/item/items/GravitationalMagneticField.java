@@ -21,7 +21,7 @@ public class GravitationalMagneticField extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         //设置重力
-        Objects.requireNonNull(pPlayer.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.get())).setBaseValue(0.08);
+        Objects.requireNonNull(pPlayer.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.08);
         //播放动画
         if (pLevel.isClientSide())
             Minecraft.getInstance().gameRenderer.displayItemActivation(ItemRegistry.GravitationalMagneticField.get().getDefaultInstance());

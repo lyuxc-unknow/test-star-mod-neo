@@ -23,7 +23,7 @@ public class onPlayerRespawn {
         Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Star.MAX_HEALTH);
         //死亡时会清除tag，重生后重新添加
         player.getTags().add("join_tag");
-        Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.get())).setBaseValue(0.015);
+        Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
         //开发者标签添加
         if (player.getName().getString().equals(Star.DEVELOPER_NAME)) {
             player.addTag(Star.DEVELOPER_TAG);

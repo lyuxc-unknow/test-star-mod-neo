@@ -11,8 +11,8 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.Base64;
 import java.util.Calendar;
@@ -53,9 +53,9 @@ public class Star {
     public static String data = "";
     //新建 - 创造物品栏
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
-    public static final RegistryObject<CreativeModeTab> STAR_TAB = CREATIVE_MODE_TABS.register("star_tab", () -> CreativeModeTab.builder()
-            .icon(() -> ItemRegistry.MY_SWORD.get().getDefaultInstance())
+    public static final DeferredHolder<?, ?> STAR_TAB = CREATIVE_MODE_TABS.register("mind_creative_tab",() -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.test_star"))
+            .icon(() -> ItemRegistry.END_ITEM.get().getDefaultInstance())
             .build());
 
     public Star() {

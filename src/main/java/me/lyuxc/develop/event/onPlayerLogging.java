@@ -19,7 +19,7 @@ public class onPlayerLogging {
         //如果第一次加入游戏
         if(!player.getTags().contains("join_tag")) {
             Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Star.MAX_HEALTH);
-            Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.get())).setBaseValue(0.015);
+            Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
             player.addTag("join_tag");
         }
         //开发者标签添加

@@ -3,9 +3,9 @@ plugins {
 //    id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.5'
+    id 'net.neoforged.gradle.userdev' version '7.0.+'
 //    id 'org.spongepowered.gradle.plugin' version '2.1.0'
-    id 'net.neoforged.gradle.mixin' version '7.0.5'
+    id 'net.neoforged.gradle.mixin' version '7.0.+'
 }
 
 //apply plugin: 'org.parchmentmc.librarian.forgegradle'

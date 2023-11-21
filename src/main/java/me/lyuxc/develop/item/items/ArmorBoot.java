@@ -74,7 +74,7 @@ public class ArmorBoot extends ArmorItem {
 
         @Override
         public void onArmorTick(ItemStack stack, Level level, Player player) {
-            Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.get())).setBaseValue(0.08);
+            Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.08);
             super.onArmorTick(stack, level, player);
         }
     }

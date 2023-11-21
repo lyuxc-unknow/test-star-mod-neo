@@ -64,7 +64,7 @@ public class langEnUs extends LanguageProvider {
         add("chat.key", "Please provide the key");
         add("ts.attribute.damage", "Infinity");
         add("ts.top.block.hardness", "Block Hardness %s");
-        add("ts.attribute.damage_tetanus_blade", "§2 0 %s");
+        add("ts.attribute.damage_tetanus_blade", "?");
         add("ts.command.jrrp.multiplayer.tip", "This function is not available to multiple people. Reason: The problem of interoperability between the data server and the client has not yet been solved.");
         add("ts.command.jrrp", "Today’s lucky value is: %s");
         add("ts.sword.tip.two", "When attacking, the attacked person will take half the damage as compared to the attacker, and at the same time, a certain amount of HP will be restored to the attacker randomly.");
