@@ -3,6 +3,7 @@ package me.lyuxc.develop.mixins;
 import me.lyuxc.develop.Star;
 import net.minecraft.client.Minecraft;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,7 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinMinecraft {
     @Inject(method = "createTitle", at = @At("RETURN"), cancellable = true)
     public void createTitleMixin(CallbackInfoReturnable<String> cir) {
-        StringBuilder sb = new StringBuilder("MC版本: 1.20.2|整合包名称: Mind2-行星之下");
+        StringBuilder sb = new StringBuilder("MC版本: " + FMLLoader.versionInfo().mcVersion());
+        sb.append("|整合包名称: Mind2-Development");
         if (ModList.get() != null) {
             sb.append("|已加载模组数: ");
             sb.append(ModList.get().size());
