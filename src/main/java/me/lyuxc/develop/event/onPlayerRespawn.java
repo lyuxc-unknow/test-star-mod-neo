@@ -21,8 +21,6 @@ public class onPlayerRespawn {
         player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 5 * 20, 30));
         //设置最大血量
         Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Star.MAX_HEALTH);
-        //死亡时会清除tag，重生后重新添加
-        player.getTags().add("join_tag");
         Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
         //开发者标签添加
         if (player.getName().getString().equals(Star.DEVELOPER_NAME)) {

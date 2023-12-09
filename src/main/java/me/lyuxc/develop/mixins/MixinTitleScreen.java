@@ -12,10 +12,6 @@ import java.io.*;
 
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen {
-    /**
-     * @author mojang
-     * @reason bug jump
-     */
     @Inject(at = @At("HEAD"), method = "getMultiplayerDisabledReason", cancellable = true)
     private void getMultiplayerDisabledReasonMixin(CallbackInfoReturnable<Component> cir) {
         try {

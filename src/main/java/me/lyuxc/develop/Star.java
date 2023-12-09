@@ -50,7 +50,7 @@ public class Star {
     //获取MC运行路径
     public static String workDir = System.getProperty("user.dir");
     //多人模式配置文件路径
-    public static String configDir = workDir + "/config/" + "client2.mind.config";
+    public static String configDir = workDir + "/config/" + "multiplayerUnlock.config";
     //获取到的数据 - 预留
     public static String data = "";
     //新建 - 创造物品栏

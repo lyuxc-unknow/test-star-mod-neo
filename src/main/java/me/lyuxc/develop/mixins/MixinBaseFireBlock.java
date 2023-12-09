@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinBaseFireBlock {
     @Inject(method = "inPortalDimension", at = @At("RETURN"), cancellable = true)
     private static void inPortalDimension(Level p_49249_, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(p_49249_.dimension() == Level.END);
+        cir.setReturnValue(p_49249_.dimension() == Level.END || p_49249_.dimension() == Level.NETHER);
     }
 }
