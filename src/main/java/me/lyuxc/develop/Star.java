@@ -27,7 +27,7 @@ public class Star {
     //最大玩家血量
     public static double MAX_HEALTH = 80;
     //开发者设置 - 名字
-    public static final String DEVELOPER_NAME = "lyuxc_unknow";
+    public static final String DEVELOPER_NAME = "Dev";
     //开发者设置 - 标签
     public static final String DEVELOPER_TAG = "developer";
     //开发者密钥 - AES - developer
