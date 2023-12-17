@@ -12,7 +12,7 @@ import java.io.*;
 
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen {
-    @Inject(at = @At("HEAD"), method = "getMultiplayerDisabledReason", cancellable = true)
+    @Inject(at = @At("RETURN"), method = "getMultiplayerDisabledReason", cancellable = true)
     private void getMultiplayerDisabledReasonMixin(CallbackInfoReturnable<Component> cir) {
         try {
             File file = new File(Star.configDir);

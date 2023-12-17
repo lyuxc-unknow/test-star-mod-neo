@@ -4,6 +4,7 @@ import me.lyuxc.develop.Star;
 import me.lyuxc.develop.item.items.*;
 import me.lyuxc.develop.item.tools.*;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -59,7 +60,7 @@ public class ItemRegistry {
     ));
     //一次性引力磁场
     public static final DeferredItem<Item> GravitationalMagneticField = ITEMS.register("gravitational_magnetic_field", () -> new GravitationalMagneticField(new Item.Properties()
-            .stacksTo(1)
+            .stacksTo(32)
     ));
     //阿尔法·医疗箱
     public static final DeferredItem<Item> MedicalBox = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
@@ -105,18 +106,10 @@ public class ItemRegistry {
     public static final DeferredItem<Item> WoodShears = ITEMS.register("wood_shears", () -> new WoodShears(new Item.Properties()
             .durability(1024)
     ));
-
-    //    废案 -- 重力靴
-//    public static final DeferredItem<Item> boot_gr = ITEMS.register("boot_gr", () -> new ArmorBoot.Boots(new Item.Properties()));
-//    循环注册
-//    static String[] items_id = new String[] {
-//            "example_item"
-//    };
-//    static void addReg() {
-//        for(String id : items_id) {
-//            ITEMS.register(id,() -> new Item(new Item.Properties()));
-//        }
-//    }
+    //我的弓
+    public static final DeferredItem<BowItem> BowItem = ITEMS.register("my_bow",() -> new BowItem(new Item.Properties()
+            .stacksTo(1)
+    ));
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {
@@ -153,7 +146,7 @@ public class ItemRegistry {
             event.accept(LIGHT_AR);
             event.accept(MultiPlayerTool);
             event.accept(WoodShears);
-//            event.accept(boot_gr);
+            event.accept(BowItem);
         }
     }
 

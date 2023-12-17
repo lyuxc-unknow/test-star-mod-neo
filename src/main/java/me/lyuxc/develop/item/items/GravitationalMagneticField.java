@@ -26,7 +26,8 @@ public class GravitationalMagneticField extends Item {
         if (pLevel.isClientSide())
             Minecraft.getInstance().gameRenderer.displayItemActivation(ItemRegistry.GravitationalMagneticField.get().getDefaultInstance());
         //设置玩家当前手上的物品
-        pPlayer.setItemInHand(pUsedHand, ItemStack.EMPTY);
+//        pPlayer.setItemInHand(pUsedHand, ItemStack.EMPTY);
+        pPlayer.getItemInHand(pUsedHand).setCount(pPlayer.getItemInHand(pUsedHand).getCount() - 1);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 }

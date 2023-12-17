@@ -53,5 +53,6 @@ public class ItemModelDataGeneration extends ItemModelProvider {
         basicItem(ItemRegistry.LIGHT_AR.get());
         basicItem(ItemRegistry.MultiPlayerTool.get());
         basicItem(ItemRegistry.WoodShears.get());
+
     }
 }

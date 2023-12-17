@@ -3,6 +3,7 @@ package me.lyuxc.develop;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
+import me.lyuxc.develop.utils.ReadOrWriteFile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -50,12 +51,14 @@ public class Star {
     //获取MC运行路径
     public static String workDir = System.getProperty("user.dir");
     //多人模式配置文件路径
-    public static String configDir = workDir + "/config/" + "multiplayerUnlock.config";
+    public static String configDir = workDir + "/config/multiplayerUnlock.MCL";
     //获取到的数据 - 预留
     public static String data = "";
+    //禁用方块 - id
+    public static String[] IDs = null;
     //新建 - 创造物品栏
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
-    public static final DeferredHolder<?, ?> STAR_TAB = CREATIVE_MODE_TABS.register("mind_creative_tab",() -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> STAR_TAB = CREATIVE_MODE_TABS.register("mind_creative_tab",() -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.test_star"))
             .icon(() -> ItemRegistry.END_ITEM.get().getDefaultInstance())
             .build());
@@ -82,9 +85,10 @@ public class Star {
     }
 
     private void CommonSetupEvent(FMLCommonSetupEvent event) {
-        //TOP注册 - TODO
+        //TOP注册 - TODO TOP Unable update to 1.20.4
         //TOPRegister.topRegister();
         //模组加载数量将检测
+        IDs = ReadOrWriteFile.readFromFile(Star.workDir + "/config/mind/banBlock.txt").split(System.lineSeparator());
         try {
             LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             if (ModList.get().getMods().size() >= MAX_MOD_COUNT)
