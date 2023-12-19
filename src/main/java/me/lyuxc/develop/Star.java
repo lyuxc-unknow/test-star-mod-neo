@@ -11,7 +11,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.logging.log4j.LogManager;
@@ -65,23 +64,21 @@ public class Star {
     //日志
     public static final Logger LOGGER = LogManager.getLogger("ModLoader");
 
-    public Star() {
-        //事件总线
-        IEventBus iEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Star(IEventBus modEventBus) {
         //方块注册
-        BlockRegistry.init(iEventBus);
+        BlockRegistry.init(modEventBus);
         //物品注册
-        ItemRegistry.init(iEventBus);
+        ItemRegistry.init(modEventBus);
         //物品栏注册
-        CREATIVE_MODE_TABS.register(iEventBus);
+        CREATIVE_MODE_TABS.register(modEventBus);
         //方块 - 添加到创造物品栏
-        iEventBus.addListener(BlockRegistry::addCreativeTab);
+        modEventBus.addListener(BlockRegistry::addCreativeTab);
         //物品 - 添加到创造物品栏
-        iEventBus.addListener(ItemRegistry::addCreativeTab);
+        modEventBus.addListener(ItemRegistry::addCreativeTab);
         //数据生成器监听
-        iEventBus.addListener(DataGeneration::generate);
+        modEventBus.addListener(DataGeneration::generate);
         //事件注册
-        iEventBus.addListener(this::CommonSetupEvent);
+        modEventBus.addListener(this::CommonSetupEvent);
     }
 
     private void CommonSetupEvent(FMLCommonSetupEvent event) {

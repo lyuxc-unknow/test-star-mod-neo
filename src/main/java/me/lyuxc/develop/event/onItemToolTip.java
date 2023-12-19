@@ -41,7 +41,7 @@ public class onItemToolTip {
                                 .withStyle(ChatFormatting.DARK_GREEN));
                 }
             }
-            event.getToolTip().add(event.getToolTip().size() - 3, Component.translatable("ts.sword.tip.two"));
+            event.getToolTip().add(event.getToolTip().size() - 5, Component.translatable("ts.sword.tip.two"));
         }
     }
 }
