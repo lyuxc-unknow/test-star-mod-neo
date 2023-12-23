@@ -85,7 +85,7 @@ public class Star {
         //TOP注册 - TODO TOP Unable update to 1.20.4
         //TOPRegister.topRegister();
         //模组加载数量将检测
-        IDs = ReadOrWriteFile.readFromFile(Star.workDir + "/config/mind/banBlock.txt").split(System.lineSeparator());
+        IDs = ReadOrWriteFile.readFromFile(Star.workDir + "/config/mind/banBlock.txt",false).split(System.lineSeparator());
         try {
             LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             if (ModList.get().getMods().size() >= MAX_MOD_COUNT)
