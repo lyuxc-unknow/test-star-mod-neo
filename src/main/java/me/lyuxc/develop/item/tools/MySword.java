@@ -1,6 +1,6 @@
 package me.lyuxc.develop.item.tools;
 
-import me.lyuxc.develop.Tiers.Tiers;
+import me.lyuxc.develop.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

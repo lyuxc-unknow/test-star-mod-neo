@@ -1,7 +1,8 @@
-package me.lyuxc.develop.Tiers;
+package me.lyuxc.develop;
 
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 public enum Tiers implements Tier {
     LEVEL1(-1, 0, 2 - 1, 0, 22),
@@ -14,8 +15,8 @@ public enum Tiers implements Tier {
     LEVEL8(-1, 0, 50 - 1, 0, 100),
     LEVEL_INF(-1, 0, Long.MAX_VALUE - 1, 100, 1024);
 
-    int uses, level, EnchantmentValue;
-    float speed, damageBonus;
+    final int uses,level,EnchantmentValue;
+    final float speed,damageBonus;
 
     Tiers(int uses, float speed, float damageBonus, int level, int EnchantmentValue) {
         this.uses = uses;
@@ -51,7 +52,7 @@ public enum Tiers implements Tier {
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
-        return null;
+    public @NotNull Ingredient getRepairIngredient() {
+        return Ingredient.EMPTY;
     }
 }
