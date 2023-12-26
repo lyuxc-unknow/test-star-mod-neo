@@ -4,7 +4,8 @@
   "package": "me.lyuxc.develop.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinBaseFireBlock"
+    "MixinBaseFireBlock",
+    "MixinGameTab"
   ],
   "client": [
     "MixinMinecraft",

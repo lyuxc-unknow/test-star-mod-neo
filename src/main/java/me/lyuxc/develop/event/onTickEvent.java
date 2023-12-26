@@ -1,5 +1,6 @@
 package me.lyuxc.develop.event;
 
+import me.lyuxc.develop.utils.TimeToTickUtil;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
@@ -8,6 +9,8 @@ import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -30,8 +33,9 @@ public class onTickEvent {
             if(!player.level().isClientSide()) {
                 if(player instanceof ServerPlayer player1) {
                     player1.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 0));
-                    player1.teleportTo(Objects.requireNonNull(((ServerPlayer) player).server.getLevel(Level.END)), 0, 150, 0, player.getYRot(), player.getXRot());
+                    player1.teleportTo(Objects.requireNonNull(((ServerPlayer) player).server.getLevel(Level.END)), 0, 80, 0, player.getYRot(), player.getXRot());
                     player1.connection.send(new ClientboundPlayerAbilitiesPacket(player.getAbilities()));
+                    player1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, TimeToTickUtil.getTime(10),255,false,false));
                 }
             }
         }
