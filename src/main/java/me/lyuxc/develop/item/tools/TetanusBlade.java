@@ -18,6 +18,7 @@ public class TetanusBlade extends SwordItem {
     @Override
     public boolean hurtEnemy(@NotNull ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         double i = pAttacker.getHealth() * 0.5;
+        pAttacker.setHealth((float) i);
         pTarget.hurt(new DamageSource(pAttacker.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.PLAYER_ATTACK)), (float) Math.max(i,0.5));
         pAttacker.setHealth(pAttacker.getHealth() + Star.random.nextInt((int) (pTarget.getMaxHealth() * 0.5)));
         return true;
