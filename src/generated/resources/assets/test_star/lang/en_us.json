@@ -45,11 +45,11 @@
   "star.chat.disable.command": "§4Command disable",
   "tip.error.out_of_mod_number": "Number of Mods loaded exceeds limit",
   "ts.attribute.damage": "Infinity",
-  "ts.attribute.damage_tetanus_blade": "§2 0 %s",
+  "ts.attribute.damage_tetanus_blade": "?",
   "ts.command.jrrp": "Today’s lucky value is: %s",
   "ts.command.jrrp.multiplayer.tip": "This function is not available to multiple people. Reason: The problem of interoperability between the data server and the client has not yet been solved.",
   "ts.multiplayer.disable": "Multiplayer Disable",
-  "ts.multiplayer_tool.tip": "Multiplayer game has been unlocked, please restart the game",
+  "ts.multiplayer_tool.tip": "Multiplayer game has been unlocked",
   "ts.sword.tip.two": "When attacking, the attacked person will take half the damage as compared to the attacker, and at the same time, a certain amount of HP will be restored to the attacker randomly.",
   "ts.top.block.hardness": "Block Hardness %s"
 }

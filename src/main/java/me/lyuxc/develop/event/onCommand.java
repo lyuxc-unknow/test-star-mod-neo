@@ -21,10 +21,10 @@ public class onCommand {
             if (command[0].equals(disable_command)) {
                 //如果当前玩家为开发者，则不进行禁用指令，否则禁用，并提示
                 if (player != null) {
-                    if (!player.getTags().contains(Star.DEVELOPER_TAG)) {
+                    if (!Star.DEVELOPER) {
                         event.setCanceled(true);
                         event.getParseResults().getContext().getSource().sendSystemMessage(Component.translatable("star.chat.disable.command"));
-                    } else event.setCanceled(false);
+                    }
                 }
             }
         }

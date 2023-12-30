@@ -27,9 +27,7 @@ public class onPlayerLogging {
         }
         //开发者标签添加
         if(player.getName().getString().equals(Star.DEVELOPER_NAME)) {
-            player.addTag(Star.DEVELOPER_TAG);
-        } else {
-            player.getTags().remove(Star.DEVELOPER_TAG);
+            Star.DEVELOPER = true;
         }
     }
 }

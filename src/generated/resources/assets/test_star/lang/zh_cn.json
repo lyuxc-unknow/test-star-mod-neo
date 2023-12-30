@@ -47,9 +47,7 @@
   "ts.attribute.damage": "已达上限",
   "ts.attribute.damage_tetanus_blade": "不可估量",
   "ts.command.jrrp": "今天的幸运值为: %s",
-  "ts.command.jrrp.multiplayer.tip": "该功能多人不可用,原因：暂未解决数据服务端与客户端互通问题",
   "ts.multiplayer.disable": "多人游戏目前被禁用！",
-  "ts.multiplayer_tool.tip": "多人游戏已解锁，请重启游戏",
-  "ts.sword.tip.two": "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量",
-  "ts.top.block.hardness": "方块硬度 %s"
+  "ts.multiplayer_tool.tip": "多人游戏已解锁",
+  "ts.sword.tip.two": "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量"
 }

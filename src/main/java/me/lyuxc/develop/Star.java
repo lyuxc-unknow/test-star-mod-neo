@@ -29,7 +29,7 @@ public class Star {
     //开发者设置 - 名字
     public static final String DEVELOPER_NAME = "Dev";
     //开发者设置 - 标签
-    public static final String DEVELOPER_TAG = "developer";
+    public static boolean DEVELOPER = false;
     //开发者密钥 - AES - developer
     public static final String DEVELOPER_KEY = "U2FsdGVkX1+llhDgAi3Cj148i4V6l3nR4aEs0nrPmAKStn9NV9rYBN5TOA3LUCR7";
     //创造模式切换 - 密钥
@@ -49,8 +49,8 @@ public class Star {
     public static Random Random_Day = new Random(calendar.get(Calendar.DAY_OF_YEAR));
     //获取MC运行路径
     public static String workDir = System.getProperty("user.dir");
-    //多人模式配置文件路径
-    public static String configDir = workDir + "/config/multiplayerUnlock.MCL";
+    //多人模式配置名称
+    public static String configDir = "multiplayerUnlock.MCL";
     //获取到的数据 - 预留
     public static String data = "";
     //禁用方块 - id

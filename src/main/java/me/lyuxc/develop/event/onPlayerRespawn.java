@@ -23,11 +23,5 @@ public class onPlayerRespawn {
         //设置最大血量
         Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Star.MAX_HEALTH);
         Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
-        //开发者标签添加
-        if (player.getName().getString().equals(Star.DEVELOPER_NAME)) {
-            player.addTag(Star.DEVELOPER_TAG);
-        } else {
-            player.getTags().remove(Star.DEVELOPER_TAG);
-        }
     }
 }

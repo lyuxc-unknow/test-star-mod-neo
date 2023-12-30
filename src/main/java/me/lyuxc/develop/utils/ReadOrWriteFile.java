@@ -1,14 +1,17 @@
 package me.lyuxc.develop.utils;
 
+import me.lyuxc.develop.Star;
+
 import java.io.*;
 
 public class ReadOrWriteFile {
+    public static final String configFolder = Star.workDir + "/config/";
     public static void writeToNewFile(String fileName,String text,boolean newLine) {
-        writeToNewFile(new File(fileName),text,newLine);
+        writeToNewFile(new File(configFolder + fileName),text,newLine);
     }
 
     public static void writeToNewFile(String fileName,String[] text,boolean newLine) {
-        writeToNewFile(new File(fileName),text,newLine);
+        writeToNewFile(new File(configFolder + fileName),text,newLine);
     }
 
     public static void writeToNewFile(File file, String[] text, boolean newLine) {
