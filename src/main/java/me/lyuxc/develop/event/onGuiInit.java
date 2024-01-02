@@ -12,11 +12,9 @@ public class onGuiInit {
     @SubscribeEvent
     public static void GUIInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof ShareToLanScreen screen && !Star.DEVELOPER) {
-            AbstractButton commandsButton = (AbstractButton) screen.renderables.get(1);
+            AbstractButton cheatsButton = (AbstractButton) screen.renderables.get(1);
             AbstractButton modeButton = (AbstractButton) screen.renderables.get(0);
-
-            commandsButton.visible = false;
-            modeButton.setX(screen.width / 2 - modeButton.getWidth() / 2);
+            cheatsButton.active = false;
             modeButton.active = false;
         }
     }

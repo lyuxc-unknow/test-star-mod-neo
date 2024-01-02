@@ -20,5 +20,4 @@ public class WaterGetter extends Item {
         player.setItemInHand(UsedHand, Items.WATER_BUCKET.getDefaultInstance());
         return super.use(level, player, UsedHand);
     }
-
 }

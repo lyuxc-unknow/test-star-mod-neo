@@ -14,7 +14,10 @@ public class MixinMinecraft {
     @Inject(method = "createTitle", at = @At("RETURN"), cancellable = true)
     public void createTitleMixin(CallbackInfoReturnable<String> cir) {
         StringBuilder sb = new StringBuilder("MC版本: " + FMLLoader.versionInfo().mcVersion());
-        sb.append("|整合包名称: Mind2-Development");
+        sb.append("|整合包名称: ");
+        sb.append("模组开发环境");
+        sb.append("|加载器：");
+        sb.append("NeoForge");
         if (ModList.get() != null) {
             sb.append("|已加载模组数: ").append(ModList.get().size());
         }
