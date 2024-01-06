@@ -12,6 +12,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -43,30 +44,15 @@ public class BlockRegistry {
     public static final DeferredItem<Item> STAR_BLOCK_ITEM = ITEMS.register("star_block", () -> new BlockItem(STAR_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> FAN_BLOCK_ITEM = ITEMS.register("fan_block", () -> new BlockItem(FAN_BLOCK.get(), new Item.Properties()));
 
-    //        //注册方块类数组
-//    static String[] blocks_id = new String[]{
-//            "star_block"
-//    };
-//
-//    //添加循环注册
-//    static void addReg() {
-//        for(String id : blocks_id) {
-//            RegistryObject<Block> Block = BLOCK_DEFERRED_REGISTER.register(id,() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-//            ITEMS.register(id, () -> new BlockItem(Block.get(), new Item.Properties()));
-//        }
-//    }
     //添加到创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {
-            event.accept(EXAMPLE_BLOCK);
-            event.accept(STAR_BLOCK);
-            event.accept(FAN_BLOCK);
+            ITEMS.getEntries().stream().map(DeferredHolder::get).forEach(event::accept);
         }
     }
 
     //初始化调用
     public static void init(IEventBus iEventBus) {
-//        addReg();
         BLOCK_DEFERRED_REGISTER.register(iEventBus);
         ITEMS.register(iEventBus);
         ITEM_DEFERRED_REGISTER.register(iEventBus);

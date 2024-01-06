@@ -8,6 +8,7 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -113,46 +114,12 @@ public class ItemRegistry {
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {
-            event.accept(LEVEL1SWORD);
-            event.accept(LEVEL2SWORD);
-            event.accept(LEVEL3SWORD);
-            event.accept(LEVEL4SWORD);
-            event.accept(LEVEL5SWORD);
-            event.accept(LEVEL6SWORD);
-            event.accept(LEVEL7SWORD);
-            event.accept(LEVEL8SWORD);
-            event.accept(EXAMPLE_ITEM);
-            event.accept(MY_SWORD);
-            event.accept(WATER_GETTER);
-            event.accept(END_ITEM);
-            event.accept(LEVEL1ITEM);
-            event.accept(LEVEL2ITEM);
-            event.accept(LEVEL3ITEM);
-            event.accept(LEVEL4ITEM);
-            event.accept(LEVEL5ITEM);
-            event.accept(LEVEL6ITEM);
-            event.accept(LEVEL7ITEM);
-            event.accept(LEVEL8ITEM);
-            event.accept(MedicalBox);
-            event.accept(GazeOfCapital);
-            event.accept(SPIRITUAL_FOOD);
-            event.accept(GravitationalMagneticField);
-            event.accept(MOD_BLOCK_DATA);
-            event.accept(MOD_BLOCK_DREAM);
-            event.accept(MOD_BLOCK_LIQUID);
-            event.accept(MOD_BLOCK_MEDIUM);
-            event.accept(MOD_BLOCK_METAL);
-            event.accept(TETANUS_BLADE);
-            event.accept(LIGHT_AR);
-            event.accept(MultiPlayerTool);
-            event.accept(WoodShears);
-            event.accept(BowItem);
+            ITEMS.getEntries().stream().map(DeferredHolder::get).forEach(event::accept);
         }
     }
 
     //初始化调用
     public static void init(IEventBus iEventBus) {
-//        addReg();
         ITEMS.register(iEventBus);
     }
 }
