@@ -49,6 +49,7 @@ public class langEnUs extends LanguageProvider {
         add(ItemRegistry.LIGHT_AR.get(), "Thunder Scepter");
         add(ItemRegistry.MultiPlayerTool.get(), "MultiPlayer Tool");
         add(ItemRegistry.WoodShears.get(), "Wood Shears");
+        add(ItemRegistry.BowItem.get(), "Easy Bow");
         //方块
         add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "Example Block");
         add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
