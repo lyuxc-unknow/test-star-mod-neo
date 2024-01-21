@@ -2,14 +2,22 @@ package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Tiers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class MySword extends SwordItem {
     //品质,伤害,攻速,属性
@@ -25,7 +33,29 @@ public class MySword extends SwordItem {
 
     @Override
     public boolean hurtEnemy(@NotNull ItemStack pStack, @NotNull LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
-        pTarget.setHealth(-1);
+        pTarget.hurt(pAttacker.damageSources().source(DamageTypes.FELL_OUT_OF_WORLD), Integer.MAX_VALUE);
         return super.hurtEnemy(pStack, pTarget, pAttacker);
+    }
+
+    @Override
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
+        if (!pLevel.isClientSide) {
+            AABB aabb = pPlayer.getBoundingBox().deflate(48);
+            List<Entity> entityList = pLevel.getEntities(pPlayer, aabb);
+            DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.FELL_OUT_OF_WORLD);
+            if(entityList.size() != 0 && !pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
+            for(Entity entity :entityList) {
+                if(entity instanceof LivingEntity) {
+                    Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
+                    light.moveTo(entity.getX(), entity.getY() + 4, entity.getZ());
+                    pLevel.addFreshEntity(light);
+                    entity.hurt(damageSource, Integer.MAX_VALUE);
+                }
+                if ((pPlayer.getInventory().getFreeSlot() != -1 && entity instanceof ItemEntity)||entity instanceof ExperienceOrb) {
+                    entity.absMoveTo(pPlayer.getX(),pPlayer.getY(),pPlayer.getZ());
+                }
+            }
+        }
+        return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
     }
 }
