@@ -25,8 +25,6 @@ public abstract class MixinOptionScreen {
     @Shadow
     private LockIconButton lockButton;
 
-    @Shadow protected abstract void init();
-
     /**
      * @author lyuxc
      * @reason lock Difficulty
