@@ -18,5 +18,4 @@ public class onGuiInit {
             modeButton.active = false;
         }
     }
-
 }

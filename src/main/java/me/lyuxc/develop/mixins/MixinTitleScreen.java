@@ -22,7 +22,7 @@ public class MixinTitleScreen {
             }
             Star.data = ReadOrWriteFile.readFromFile(file,true).split(System.lineSeparator())[0];
         } catch (Exception e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         if (!Star.data.contains("0100 1101 0111 0101 0110 1100 0111 0100 0110 1001 0111 0000 0110 1100 0110 0001 0111 1001 0110 0101 0111 0010 1110 1111 1011 1100 1001 1010 0011 0001")) {
             cir.setReturnValue(Component.translatable("ts.multiplayer.disable"));

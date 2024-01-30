@@ -16,6 +16,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileNotFoundException;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.Random;
@@ -54,7 +55,7 @@ public class Star {
     //获取到的数据 - 预留
     public static String data = "";
     //禁用方块 - id
-    public static String[] IDs = null;
+    public static String[] IDs;
     //新建 - 创造物品栏
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> STAR_TAB = CREATIVE_MODE_TABS.register("mind_creative_tab",() -> CreativeModeTab.builder()
@@ -85,13 +86,17 @@ public class Star {
         //TOP注册 - TODO TOP Unable update to 1.20.4
         //TOPRegister.topRegister();
         //模组加载数量将检测
-        IDs = ReadOrWriteFile.readFromFile(workDir + "/config/mind/banBlock.txt",false).split(System.lineSeparator());
         try {
+            IDs = ReadOrWriteFile.readFromFile("banBlock.txt",false).split(System.lineSeparator());
+        } catch (FileNotFoundException e) {
+            ReadOrWriteFile.writeToNewFile("banBlock.txt","",false);
+            IDs = new String[]{""};
+            e.fillInStackTrace();
+        }
+
+        if (ModList.get().getMods().size() >= MAX_MOD_COUNT) {
             LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
-            if (ModList.get().getMods().size() >= MAX_MOD_COUNT)
-                System.exit(0);
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.exit(0);
         }
     }
 }

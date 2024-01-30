@@ -1,10 +1,7 @@
 package me.lyuxc.develop.event;
 
-import me.lyuxc.develop.utils.TimeToTickUtil;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
+import me.lyuxc.develop.utils.Utils;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -13,9 +10,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.TickEvent;
@@ -26,7 +20,6 @@ import java.util.Objects;
 public class onTickEvent {
     @SubscribeEvent
     public static void onTick(TickEvent.PlayerTickEvent event) {
-        LevelAccessor world = event.player.level();
         Player player = event.player;
         CompoundTag tags = player.getPersistentData();
         if(player.level().dimension() == Level.OVERWORLD) {
@@ -35,7 +28,7 @@ public class onTickEvent {
                     player1.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 0));
                     player1.teleportTo(Objects.requireNonNull(((ServerPlayer) player).server.getLevel(Level.END)), 0, 80, 0, player.getYRot(), player.getXRot());
                     player1.connection.send(new ClientboundPlayerAbilitiesPacket(player.getAbilities()));
-                    player1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, TimeToTickUtil.getTime(10),255,false,false));
+                    player1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, Utils.getTime(10),255,false,false));
                 }
             }
         }
@@ -45,12 +38,10 @@ public class onTickEvent {
             new Thread(() -> {
                 try {
                     Thread.sleep(3000);
-                } catch (InterruptedException e) {
+                    if (event.player.level() instanceof ServerLevel _level) Utils.executeCommand(_level,player,"kill @e[type=minecraft:ender_dragon]");
+                } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-                if (world instanceof ServerLevel _level)
-                    _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(player.getX(), player.getY(), player.getZ()), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                            "kill @e[type=minecraft:ender_dragon]");
             }).start();
             player.save(tags);
         }

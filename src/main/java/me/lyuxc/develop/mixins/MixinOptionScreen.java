@@ -19,11 +19,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
 
 @Mixin(OptionsScreen.class)
-public class MixinOptionScreen {
+public abstract class MixinOptionScreen {
     @Shadow
     private CycleButton<Difficulty> difficultyButton;
     @Shadow
     private LockIconButton lockButton;
+
+    @Shadow protected abstract void init();
+
     /**
      * @author lyuxc
      * @reason lock Difficulty
@@ -46,9 +49,11 @@ public class MixinOptionScreen {
     @Inject(method = "createOnlineButton",at = @At("RETURN"))
     private void mixinCreateOnlineButton(CallbackInfoReturnable<LayoutElement> cir) {
         if(!Star.DEVELOPER) {
-            this.difficultyButton.active = false;
-            this.lockButton.setLocked(true);
-            this.lockButton.active = false;
+            if(this.difficultyButton != null && this.lockButton != null) {
+                this.difficultyButton.active = false;
+                this.lockButton.setLocked(true);
+                this.lockButton.active = false;
+            }
         }
     }
 }

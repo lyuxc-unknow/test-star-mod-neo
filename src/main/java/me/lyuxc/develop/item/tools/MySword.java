@@ -7,6 +7,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -42,10 +43,13 @@ public class MySword extends SwordItem {
         if (!pLevel.isClientSide) {
             AABB aabb = pPlayer.getBoundingBox().deflate(48);
             List<Entity> entityList = pLevel.getEntities(pPlayer, aabb);
-            DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.FELL_OUT_OF_WORLD);
-            if(entityList.size() != 0 && !pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
+            DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.EXPLOSION);
+            if(entityList.isEmpty()) return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
+            if(!pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
             for(Entity entity :entityList) {
-                if(entity instanceof LivingEntity) {
+                if(entity instanceof EnderDragon enderDragon) {
+                    enderDragon.hurt(enderDragon.head,damageSource,Integer.MAX_VALUE);
+                } else if(entity instanceof LivingEntity) {
                     Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
                     light.moveTo(entity.getX(), entity.getY() + 4, entity.getZ());
                     pLevel.addFreshEntity(light);
