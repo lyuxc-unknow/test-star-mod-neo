@@ -4,7 +4,7 @@ import me.lyuxc.develop.Star;
 
 import java.io.*;
 
-public class ReadOrWriteFile {
+public class FileUtils {
     public static final String configFolder = Star.workDir + "/config/";
     public static void writeToNewFile(String fileName,String text,boolean newLine){
         writeToNewFile(new File(configFolder + fileName),text,newLine);

@@ -3,7 +3,7 @@ package me.lyuxc.develop;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.utils.ReadOrWriteFile;
+import me.lyuxc.develop.utils.FileUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -87,9 +87,9 @@ public class Star {
         //TOPRegister.topRegister();
         //模组加载数量将检测
         try {
-            IDs = ReadOrWriteFile.readFromFile("banBlock.txt",false).split(System.lineSeparator());
+            IDs = FileUtils.readFromFile("banBlock.txt",false).split(System.lineSeparator());
         } catch (FileNotFoundException e) {
-            ReadOrWriteFile.writeToNewFile("banBlock.txt","",false);
+            FileUtils.writeToNewFile("banBlock.txt","",false);
             IDs = new String[]{""};
             e.fillInStackTrace();
         }
