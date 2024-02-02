@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
 
 @Mixin(OptionsScreen.class)
-public abstract class MixinOptionScreen {
+public class MixinOptionScreen {
     @Shadow
     private CycleButton<Difficulty> difficultyButton;
     @Shadow
