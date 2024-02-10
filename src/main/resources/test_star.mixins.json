@@ -9,7 +9,7 @@
     "MixinOptionScreen"
   ],
   "client": [
-    "AdvancementToastMixin",
+    "MixinAdvancementToast",
     "MixinMinecraft",
     "MixinTitleScreen",
     "disableExperimentus.MixinPrimaryLevelData",
