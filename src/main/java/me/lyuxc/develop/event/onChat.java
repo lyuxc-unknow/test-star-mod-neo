@@ -1,7 +1,6 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Star;
-import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
@@ -15,15 +14,7 @@ public class onChat {
     public static void onServerChatEvent(ServerChatEvent event) {
         ServerPlayer player = event.getPlayer();
         String chatMessage = event.getMessage().getString();
-        if (chatMessage.equals("start")) {
-            event.setMessage(Component.empty());
-            //提示1
-            player.sendSystemMessage(Component.translatable("chat.gift"));
-            //给予 - 一级剑
-            player.addItem(ItemRegistry.LEVEL1SWORD.get().getDefaultInstance());
-            //提示2
-            player.sendSystemMessage(Component.translatable("chat.welcome"));
-        } else if (chatMessage.equals(Star.CREATIVE_KEY)) {//创造模式
+        if (chatMessage.equals(Star.CREATIVE_KEY)) {//创造模式
             //设置创造模式
             player.setGameMode(GameType.CREATIVE);
             //提示

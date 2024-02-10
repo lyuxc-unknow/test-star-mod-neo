@@ -4,12 +4,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.+'
-//    id 'org.spongepowered.gradle.plugin' version '2.1.0'
-    id 'net.neoforged.gradle.mixin' version '7.0.+'
 }
-//apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
-//apply plugin: 'org.parchmentmc.librarian.forgegradle'
-//apply plugin: 'org.spongepowered.mixin'
 
 version = mod_version
 group = mod_group_id
@@ -50,13 +45,13 @@ runs {
         // You can set various levels here.
         // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
         systemProperty 'forge.logging.console.level', 'debug'
-        programArgument '--mixin.config=test_star.mixins.json'
         modSource project.sourceSets.main
     }
 
     client {
         // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArguments('--username', 'lyuxc_')
     }
 
     server {
@@ -145,9 +140,7 @@ jar {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs"            : "test_star.mixins.json",
-                "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }

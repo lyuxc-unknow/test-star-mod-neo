@@ -9,18 +9,18 @@ import static net.minecraft.ChatFormatting.*;
 public class TextUtils {
     //Based Reforged-Avaritia Source
     //从无尽贪婪复制的代码，用于实现彩色字体
-    static ChatFormatting[] value = {RED, GOLD, YELLOW, GREEN, AQUA, BLUE, LIGHT_PURPLE};
-    static ChatFormatting[] value2 = {BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE};
+    private static final ChatFormatting[] value = {RED, GOLD, YELLOW, GREEN, AQUA, BLUE, LIGHT_PURPLE};
+    private static final ChatFormatting[] value2 = {BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE};
 
     public static Component apply(Component component) {
-        return Component.literal(RainbowMarquee(component.getString(), value, 100, 1));
+        return Component.literal(RainbowMarquee(component.getString(), value, 100));
     }
 
     public static Component applyAllColor(Component component) {
-        return Component.literal(RainbowMarquee(component.getString(), value2, 40, 1));
+        return Component.literal(RainbowMarquee(component.getString(), value2, 40));
     }
 
-    public static String RainbowMarquee(String input, ChatFormatting[] colours, double delay, int posstep) {
+    private static String RainbowMarquee(String input, ChatFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
         if (delay <= 0) {
             delay = 0.001;
@@ -31,7 +31,7 @@ public class TextUtils {
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
 
-            int col = ((i * posstep) + colours.length - offset) % colours.length;
+            int col = (i + colours.length - offset) % colours.length;
 
             sb.append(colours[col]);
             sb.append(c);
