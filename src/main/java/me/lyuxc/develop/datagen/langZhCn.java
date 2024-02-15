@@ -63,7 +63,7 @@ public class langZhCn extends LanguageProvider {
         add("chat.survival", "已回归正常模式");
         add("chat.spectator", "已入侵至旁观模式");
         add("chat.key", "请提供密钥");
-        add("ts.attribute.damage", "時間萬物の最高傷害");
+        add("ts.attribute.damage", "世間萬物の最高傷害");
         add("ts.attribute.damage_tetanus_blade", "不可估量");
         add("ts.command.jrrp", "今天的幸运值为: %s");
         add("ts.sword.tip.two", "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量");

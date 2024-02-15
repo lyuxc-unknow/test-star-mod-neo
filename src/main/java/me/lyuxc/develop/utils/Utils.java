@@ -16,16 +16,9 @@ public class Utils {
 
     public static void executeCommand(ServerLevel level, Player player, String command) {
         MinecraftServer server = level.getServer();
-        server.getCommands().performPrefixedCommand(
-                new CommandSourceStack(
-                        CommandSource.NULL,
-                        new Vec3(player.getX(),
-                            player.getY(),
-                            player.getZ()),
-                        Vec2.ZERO,
-                        level,
-                        4,
-                        "",
-                        Component.literal(""), server, null).withSuppressedOutput(), command);
+        Vec3 vec3 = new Vec3(player.getX(),player.getY(),player.getZ());
+        CommandSourceStack sourceStack = new CommandSourceStack(CommandSource.NULL, vec3, Vec2.ZERO, level, 4, "", Component.literal(""), server, null)
+                .withSuppressedOutput();
+        server.getCommands().performPrefixedCommand(sourceStack, command);
     }
 }
