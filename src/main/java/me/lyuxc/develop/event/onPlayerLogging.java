@@ -2,6 +2,7 @@ package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Star;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,5 +30,6 @@ public class onPlayerLogging {
         if(player.getName().getString().equals(Star.DEVELOPER_NAME)) {
             Star.DEVELOPER = true;
         }
+        player.sendSystemMessage(Component.literal("§4未经许可禁止分发本整合包及其子文件\n本整合包作者：xxxxx\n如不是从官方渠道下载，请直接拉黑分发者！！！"));
     }
 }

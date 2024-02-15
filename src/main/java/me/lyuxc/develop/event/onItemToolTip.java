@@ -19,20 +19,25 @@ public class onItemToolTip {
     public static void onToolTip(ItemTooltipEvent event) {
         if (event.getItemStack().getItem() instanceof MySword) {
             for (int x = 0; x < event.getToolTip().size(); x++) {
-                if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage")) || event.getToolTip().get(x).contains(Component.literal("Attack Damage"))) {
+                if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage"))) {
                     event.getToolTip().set(x,
                             Component.literal(" ").withStyle(ChatFormatting.BLUE)
                                     .append(TextUtils.apply(Component.translatable("ts.attribute.damage")))
                                     .append(" ")
-                                    .append(TextUtils.applyAllColor(Component.translatable("attribute.name.generic.attack_damage")))
                                     .withStyle(ChatFormatting.DARK_GREEN));
-                    return;
+                }
+                if (event.getToolTip().get(x).contains(Component.translatable("item.test_star.my_sword"))) {
+                    event.getToolTip().set(x,
+                            Component.literal(" ").withStyle(ChatFormatting.BLUE)
+                                    .append(TextUtils.applyAllColor(Component.translatable("item.test_star.my_sword")))
+                                    .append(" ")
+                                    .withStyle(ChatFormatting.DARK_GREEN));
                 }
             }
         }
         if (event.getItemStack().getItem() instanceof TetanusBlade) {
             for (int x = 0; x < event.getToolTip().size(); x++) {
-                if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage")) || event.getToolTip().get(x).contains(Component.literal("Attack Damage"))) {
+                if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage"))) {
                     event.getToolTip().set(x,
                             Component.literal(" ").withStyle(ChatFormatting.BLUE)
                                 .append(TextUtils.apply(Component.translatable("ts.attribute.damage_tetanus_blade")))

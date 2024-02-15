@@ -34,7 +34,7 @@ public class langZhCn extends LanguageProvider {
         add(ItemRegistry.LEVEL8ITEM.get(), "拟态·世界物质");
         add(ItemRegistry.MedicalBox.get(), "阿尔法·医疗箱");
         add(ItemRegistry.EXAMPLE_ITEM.get(), "测试物品");
-        add(ItemRegistry.MY_SWORD.get(), "无铭者的剑");
+        add(ItemRegistry.MY_SWORD.get(), "逆轉世間萬物輪回の劍");
         add(ItemRegistry.WATER_GETTER.get(), "水汽捕获装置");
         add(ItemRegistry.END_ITEM.get(), "相饰位面");
         add(ItemRegistry.GravitationalMagneticField.get(), "一次性重力磁场");
@@ -63,7 +63,7 @@ public class langZhCn extends LanguageProvider {
         add("chat.survival", "已回归正常模式");
         add("chat.spectator", "已入侵至旁观模式");
         add("chat.key", "请提供密钥");
-        add("ts.attribute.damage", "已达上限");
+        add("ts.attribute.damage", "時間萬物の最高傷害");
         add("ts.attribute.damage_tetanus_blade", "不可估量");
         add("ts.command.jrrp", "今天的幸运值为: %s");
         add("ts.sword.tip.two", "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量");
