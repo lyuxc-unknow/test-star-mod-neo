@@ -58,8 +58,6 @@ public class LanguageProviders extends LanguageProvider {
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
             add("itemGroup.test_star", "[Mind] Creative Tab");
             add("star.chat.disable.command", "§4Command disable");
-            add("chat.gift", "<%s>I need a starter pack");
-            add("chat.welcome", "Welcome to the World");
             add("chat.creative", "Creative");
             add("chat.survival", "Survival");
             add("chat.spectator", "Spectator");
@@ -113,8 +111,6 @@ public class LanguageProviders extends LanguageProvider {
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");
             add("itemGroup.test_star", "[Mind]物品栏");
             add("star.chat.disable.command", "§4该命令已被管理员禁用");
-            add("chat.gift", "<System>被侵蚀的剑已给与开发者");
-            add("chat.welcome", "世界或许依旧，但变化无处不在，开发者，欢迎你！");
             add("chat.creative", "已入侵至管理员权限");
             add("chat.survival", "已回归正常模式");
             add("chat.spectator", "已入侵至旁观模式");
