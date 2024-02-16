@@ -45,5 +45,7 @@ public class onTickEvent {
             }).start();
             player.save(tags);
         }
+        player.getAbilities().flying = false;
+        player.getAbilities().setFlyingSpeed(0);
     }
 }

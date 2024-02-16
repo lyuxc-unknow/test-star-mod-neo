@@ -45,7 +45,7 @@
   "itemGroup.test_star": "[Mind]物品栏",
   "star.chat.disable.command": "§4该命令已被管理员禁用",
   "tip.error.out_of_mod_number": "所加载到的模组数量超过上限",
-  "ts.attribute.damage": "時間萬物の最高傷害",
+  "ts.attribute.damage": "世間萬物の最高傷害",
   "ts.attribute.damage_tetanus_blade": "不可估量",
   "ts.command.jrrp": "今天的幸运值为: %s",
   "ts.multiplayer.disable": "多人游戏目前被禁用！",
