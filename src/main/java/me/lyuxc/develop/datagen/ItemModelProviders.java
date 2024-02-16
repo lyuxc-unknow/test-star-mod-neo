@@ -4,11 +4,12 @@ import me.lyuxc.develop.Star;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ItemModelProvider extends net.neoforged.neoforge.client.model.generators.ItemModelProvider {
+public class ItemModelProviders extends ItemModelProvider {
 
-    public ItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+    public ItemModelProviders(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, Star.MOD_ID, existingFileHelper);
     }
 

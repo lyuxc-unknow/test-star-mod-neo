@@ -12,14 +12,14 @@ public class DataGeneration {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = event.getGenerator().getPackOutput();
         //方块状态生成器
-        generator.addProvider(event.includeClient(), new BlockStateProvider(packOutput, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new BlockStateProviders(packOutput, event.getExistingFileHelper()));
         //物品模型生成器
-        generator.addProvider(event.includeClient(), new ItemModelProvider(packOutput, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new ItemModelProviders(packOutput, event.getExistingFileHelper()));
         //英文
-        generator.addProvider(event.includeClient(), new LanguageProvider(packOutput, "en_us"));
+        generator.addProvider(event.includeClient(), new LanguageProviders(packOutput, "en_us"));
         //中文
-        generator.addProvider(event.includeClient(), new LanguageProvider(packOutput, "zh_cn"));
+        generator.addProvider(event.includeClient(), new LanguageProviders(packOutput, "zh_cn"));
         //标签生成器
-        generator.addProvider(event.includeClient(), new BlockTagsProvider(packOutput, event.getLookupProvider(), Star.MOD_ID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new BlockTagsProviders(packOutput, event.getLookupProvider(), Star.MOD_ID, event.getExistingFileHelper()));
     }
 }

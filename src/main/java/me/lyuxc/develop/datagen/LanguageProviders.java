@@ -4,13 +4,14 @@ import me.lyuxc.develop.Star;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import java.util.Objects;
 
 
-public class LanguageProvider extends net.neoforged.neoforge.common.data.LanguageProvider {
-    private String locale1;
-    public LanguageProvider(PackOutput output, String locale) {
+public class LanguageProviders extends LanguageProvider {
+    String locale1;
+    public LanguageProviders(PackOutput output, String locale) {
         super(output, Star.MOD_ID, locale);
         locale1 = locale;
     }
