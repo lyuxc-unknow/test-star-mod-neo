@@ -9,7 +9,7 @@ import java.util.Objects;
 
 
 public class LanguageProvider extends net.neoforged.neoforge.common.data.LanguageProvider {
-    private static String locale1 = "en_us";
+    private String locale1;
     public LanguageProvider(PackOutput output, String locale) {
         super(output, Star.MOD_ID, locale);
         locale1 = locale;
