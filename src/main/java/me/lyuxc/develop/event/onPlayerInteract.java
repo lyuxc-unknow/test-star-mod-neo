@@ -1,6 +1,6 @@
 package me.lyuxc.develop.event;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +17,7 @@ public class onPlayerInteract {
         Player player = event.getEntity();
         Level level = event.getLevel();
         BlockState blockState = level.getBlockState(event.getPos());
-        for(String s : Star.IDs) {
+        for(String s : Variables.IDs) {
             if(BuiltInRegistries.BLOCK.getKey(blockState.getBlock()).toString().equals(s)) {
                 player.displayClientMessage(Component.literal("你无法使用"+s+"方块"),true);
                 event.setCanceled(true);

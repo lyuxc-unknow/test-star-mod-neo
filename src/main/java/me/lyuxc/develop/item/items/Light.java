@@ -1,6 +1,6 @@
 package me.lyuxc.develop.item.items;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -24,7 +24,7 @@ public class Light extends Item {
         if (pLevel instanceof ServerLevel _level) {
             Vec3 playerPos = pPlayer.getEyePosition();
             Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, _level);
-            light.moveTo(Star.random.nextInt(5) > 2 ? playerPos.x + Star.random.nextInt(5) : playerPos.x - Star.random.nextInt(5), playerPos.y - 1, Star.random.nextInt(5) > 2 ? playerPos.z + Star.random.nextInt(5) : playerPos.z - Star.random.nextInt(5), _level.getRandom().nextFloat() * 360F, 0);
+            light.moveTo(Variables.random.nextInt(5) > 2 ? playerPos.x + Variables.random.nextInt(5) : playerPos.x - Variables.random.nextInt(5), playerPos.y - 1, Variables.random.nextInt(5) > 2 ? playerPos.z + Variables.random.nextInt(5) : playerPos.z - Variables.random.nextInt(5), _level.getRandom().nextFloat() * 360F, 0);
             pLevel.addFreshEntity(light);
         }
         return super.use(pLevel, pPlayer, pUsedHand);

@@ -1,6 +1,6 @@
 package me.lyuxc.develop.item.items;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.utils.FileUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +20,7 @@ public class MultiPlayerTool extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if (pPlayer instanceof ServerPlayer player) {
-            FileUtils.writeToNewFile(Star.configDir,"0100 1101 0111 0101 0110 1100 0111 0100 0110 1001 0111 0000 0110 1100 0110 0001 0111 1001 0110 0101 0111 0010 1110 1111 1011 1100 1001 1010 0011 0001",false);
+            FileUtils.writeToNewFile(Variables.configDir,"0100 1101 0111 0101 0110 1100 0111 0100 0110 1001 0111 0000 0110 1100 0110 0001 0111 1001 0110 0101 0111 0010 1110 1111 1011 1100 1001 1010 0011 0001",false);
             player.sendSystemMessage(Component.translatable("ts.multiplayer_tool.tip"));
         }
         return super.use(pLevel, pPlayer, pUsedHand);

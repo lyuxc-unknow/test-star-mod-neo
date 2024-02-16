@@ -1,6 +1,7 @@
 package me.lyuxc.develop.item;
 
 import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.item.items.*;
 import me.lyuxc.develop.item.tools.*;
 import net.minecraft.world.food.FoodProperties;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ItemRegistry {
     //物品
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Star.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Variables.MOD_ID);
     //一级剑
     public static final DeferredItem<Item> LEVEL1SWORD = ITEMS.register("level_one_sword", () -> new Level1Sword(new Item.Properties()));
     //二级剑

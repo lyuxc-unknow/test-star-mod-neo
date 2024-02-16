@@ -1,11 +1,11 @@
 package me.lyuxc.develop.utils;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 
 import java.io.*;
 
 public class FileUtils {
-    public static final String configFolder = Star.workDir + "/config/";
+    public static final String configFolder = Variables.workDir + "/config/";
     public static void writeToNewFile(String fileName,String text,boolean newLine){
         writeToNewFile(new File(configFolder + fileName),text,newLine);
     }

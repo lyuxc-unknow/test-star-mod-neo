@@ -1,6 +1,6 @@
 package me.lyuxc.develop.event;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -22,13 +22,14 @@ public class onPlayerLogging {
         if(tags.get("first_join") == null || !Objects.requireNonNull(tags.get("first_join")).getAsString().equals("1")) {
             player.getPersistentData().putString("first_join", "1");
             tags.putString("first_join", "1");
-            Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Star.MAX_HEALTH);
+            Objects.requireNonNull(player.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(Variables.MAX_HEALTH);
             Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
             player.save(tags);
         }
         //开发者标签添加
-        if(player.getName().getString().equals(Star.DEVELOPER_NAME)) {
-            Star.DEVELOPER = true;
+        if(player.getName().getString().equals(Variables.DEVELOPER_NAME)) {
+            Variables.DEVELOPER = true;
+            Variables.title = "Mind2开发端";
         }
         player.sendSystemMessage(Component.literal("§4未经许可禁止分发本整合包及其子文件\n本整合包作者：xxxxx\n如不是从官方渠道下载，请直接拉黑分发者！！！"));
     }

@@ -1,6 +1,6 @@
 package me.lyuxc.develop.block.blocks;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,7 +22,7 @@ public class FanBlock extends Block {
         if (pEntity instanceof Player player) {
             player.addEffect(new MobEffectInstance(MobEffects.JUMP, Utils.getTime(3), 10, false, false));
         } else {
-            pEntity.moveTo(pEntity.getX(), pEntity.getY() + Star.random.nextInt(50), pEntity.getZ());
+            pEntity.moveTo(pEntity.getX(), pEntity.getY() + Variables.random.nextInt(50), pEntity.getZ());
         }
         super.stepOn(pLevel, pPos, pState, pEntity);
     }

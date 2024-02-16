@@ -1,6 +1,6 @@
 package me.lyuxc.develop.mixins;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.LockIconButton;
@@ -31,7 +31,7 @@ public class MixinOptionScreen {
      */
     @Overwrite
     public static CycleButton<Difficulty> createDifficultyButton(int x, int y, String message, Minecraft minecraft) {
-        Difficulty[] difficulty = Star.DEVELOPER?Difficulty.values(): new Difficulty[]{Difficulty.HARD};
+        Difficulty[] difficulty = Variables.DEVELOPER?Difficulty.values(): new Difficulty[]{Difficulty.HARD};
         return CycleButton.builder(Difficulty::getDisplayName)
                 .withValues(difficulty)
                 .withInitialValue(Difficulty.HARD)
@@ -46,7 +46,7 @@ public class MixinOptionScreen {
     }
     @Inject(method = "createOnlineButton",at = @At("RETURN"))
     private void mixinCreateOnlineButton(CallbackInfoReturnable<LayoutElement> cir) {
-        if(!Star.DEVELOPER) {
+        if(!Variables.DEVELOPER) {
             if(this.difficultyButton != null && this.lockButton != null) {
                 this.difficultyButton.active = false;
                 this.lockButton.setLocked(true);

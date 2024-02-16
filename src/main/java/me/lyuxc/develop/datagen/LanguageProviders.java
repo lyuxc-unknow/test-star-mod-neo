@@ -1,6 +1,6 @@
 package me.lyuxc.develop.datagen;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.data.PackOutput;
@@ -12,7 +12,7 @@ import java.util.Objects;
 public class LanguageProviders extends LanguageProvider {
     String locale1;
     public LanguageProviders(PackOutput output, String locale) {
-        super(output, Star.MOD_ID, locale);
+        super(output, Variables.MOD_ID, locale);
         locale1 = locale;
     }
 

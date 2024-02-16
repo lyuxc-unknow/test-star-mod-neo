@@ -1,6 +1,6 @@
 package me.lyuxc.develop.datagen;
 
-import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Variables;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -20,6 +20,6 @@ public class DataGeneration {
         //中文
         generator.addProvider(event.includeClient(), new LanguageProviders(packOutput, "zh_cn"));
         //标签生成器
-        generator.addProvider(event.includeClient(), new BlockTagsProviders(packOutput, event.getLookupProvider(), Star.MOD_ID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new BlockTagsProviders(packOutput, event.getLookupProvider(), Variables.MOD_ID, event.getExistingFileHelper()));
     }
 }
