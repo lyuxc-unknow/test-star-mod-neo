@@ -71,6 +71,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.multiplayer_tool.tip", "Multiplayer game has been unlocked");
             add("ts.multiplayer.disable", "Multiplayer Disable");
             add("tip.error.out_of_mod_number", "Number of Mods loaded exceeds limit");
+            add("ts.server.kick","too more Click");
         } else if(Objects.equals(locale1, "zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
@@ -122,6 +123,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.multiplayer_tool.tip", "多人游戏已解锁");
             add("ts.multiplayer.disable", "多人游戏目前被禁用！");
             add("tip.error.out_of_mod_number", "所加载到的模组数量超过上限");
+            add("ts.server.kick","你点太多次了");
         }
     }
 }

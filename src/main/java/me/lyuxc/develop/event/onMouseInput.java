@@ -39,7 +39,7 @@ public class onMouseInput {
             persistentData.putBoolean("throttled",true);
             persistentData.putInt("throttledTimer",0);
             if(player instanceof ServerPlayer _player) {
-                _player.connection.disconnect(Component.empty());
+                _player.connection.disconnect(Component.translatable("ts.server.kick"));
             }
         }
     }

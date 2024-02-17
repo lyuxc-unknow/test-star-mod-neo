@@ -48,5 +48,6 @@
   "ts.command.jrrp": "今天的幸运值为: %s",
   "ts.multiplayer.disable": "多人游戏目前被禁用！",
   "ts.multiplayer_tool.tip": "多人游戏已解锁",
+  "ts.server.kick": "你点太多次了",
   "ts.sword.tip.two": "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量"
 }
