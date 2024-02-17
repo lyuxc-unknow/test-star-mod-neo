@@ -13,7 +13,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 @Mod.EventBusSubscriber
 public class onPlayerInteract {
     @SubscribeEvent
-    public static void onPlayerInteractEvent(PlayerInteractEvent.RightClickBlock event) {
+    public static void onPlayerRightBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
         Level level = event.getLevel();
         BlockState blockState = level.getBlockState(event.getPos());
