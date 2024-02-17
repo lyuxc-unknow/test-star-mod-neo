@@ -1,10 +1,11 @@
 package me.lyuxc.develop;
 
-import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.Random;
 
 public class Variables {
     //模组名
@@ -44,8 +45,4 @@ public class Variables {
     public static String title = "Mind2用户端";
     //日志
     public static final Logger LOGGER = LogManager.getLogger("ModLoader");
-    //MC
-    public static Minecraft mc = null;
-    public static Map<UUID, Integer> playerLeftClicksMap = new HashMap<>();
-    public static Map<UUID, Integer> playerRightClicksMap = new HashMap<>();
 }

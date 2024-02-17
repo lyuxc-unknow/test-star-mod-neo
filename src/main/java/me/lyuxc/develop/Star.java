@@ -4,14 +4,12 @@ import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import me.lyuxc.develop.utils.FileUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -42,11 +40,6 @@ public class Star {
         modEventBus.addListener(DataGeneration::generate);
         //事件注册
         modEventBus.addListener(this::CommonSetupEvent);
-        modEventBus.addListener(this::ClientSetupEvent);
-    }
-
-    private void ClientSetupEvent(FMLClientSetupEvent event) {
-        Variables.mc = Minecraft.getInstance();
     }
 
     private void CommonSetupEvent(FMLCommonSetupEvent event) {

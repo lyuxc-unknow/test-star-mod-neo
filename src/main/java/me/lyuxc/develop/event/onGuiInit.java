@@ -3,11 +3,12 @@ package me.lyuxc.develop.event;
 import me.lyuxc.develop.Variables;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.screens.ShareToLanScreen;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = Variables.MOD_ID,value = Dist.CLIENT)
 public class onGuiInit {
     @SubscribeEvent
     public static void GUIInit(ScreenEvent.Init.Post event) {

@@ -1,5 +1,6 @@
 package me.lyuxc.develop.event;
 
+import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.item.tools.MySword;
 import me.lyuxc.develop.item.tools.TetanusBlade;
 import me.lyuxc.develop.utils.TextUtils;
@@ -12,7 +13,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = Variables.MOD_ID,value = Dist.CLIENT)
 public class onItemToolTip {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent

@@ -4,13 +4,13 @@
   "package": "me.lyuxc.develop.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinBaseFireBlock",
-    "MixinGameTab",
-    "MixinOptionScreen"
+    "MixinBaseFireBlock"
   ],
   "client": [
     "MixinAdvancementToast",
+    "MixinGameTab",
     "MixinMinecraft",
+    "MixinOptionScreen",
     "MixinTitleScreen",
     "disableExperimentus.MixinPrimaryLevelData",
     "disableExperimentus.MixinWorldListEntity",
