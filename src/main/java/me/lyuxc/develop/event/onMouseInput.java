@@ -26,12 +26,10 @@ public class onMouseInput {
     @SubscribeEvent
     public static void onPlayerRightBlock(PlayerInteractEvent.RightClickBlock event) {
         clickE(event);
-        System.out.println(event.getEntity().getPersistentData().getInt("digging"));
     }
     @SubscribeEvent
     public static void onPlayerLeftBlock(PlayerInteractEvent.LeftClickBlock event) {
         clickE(event);
-        System.out.println(event.getEntity().getPersistentData().getInt("digging"));
     }
     private static void clickE(PlayerInteractEvent event) {
         Player player = event.getEntity();
