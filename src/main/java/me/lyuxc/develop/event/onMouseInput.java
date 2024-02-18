@@ -35,12 +35,14 @@ public class onMouseInput {
         Player player = event.getEntity();
         CompoundTag persistentData = player.getPersistentData();
         persistentData.putInt("digging",persistentData.getInt("digging") + 1);
-        if(persistentData.getInt("digging") > 22) {
-            persistentData.putBoolean("throttled",true);
-            persistentData.putInt("throttledTimer",0);
+        if(persistentData.getInt("digging") > 24) {
             if(player instanceof ServerPlayer _player) {
                 _player.connection.disconnect(Component.translatable("ts.server.kick"));
             }
+        } else if(persistentData.getInt("digging") > 18) {
+            persistentData.putBoolean("throttled",true);
+            persistentData.putInt("throttledTimer",0);
+            player.displayClientMessage(Component.literal("连续点击过快会被一脚踢出去哦，这只是一句提示，请休息一会~~"),true);
         }
     }
     @SubscribeEvent
@@ -54,6 +56,7 @@ public class onMouseInput {
             compoundTag.putInt("throttledTimer", compoundTag.getInt("throttledTimer") + 1);
         }
         if(compoundTag.getInt("throttledTimer") > 40) {
+            event.player.displayClientMessage(Component.literal("你现在可以开始点击了"),true);
             compoundTag.putString("digging","0");
             compoundTag.putBoolean("throttled",false);
             compoundTag.putInt("throttledTimer", 0);
