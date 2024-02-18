@@ -10,6 +10,7 @@ import net.neoforged.neoforge.client.event.ScreenEvent;
 
 @Mod.EventBusSubscriber(modid = Variables.MOD_ID,value = Dist.CLIENT)
 public class onGuiInit {
+    //Todo mcwifipnp兼容（复制No Cheat LAN模组代码然后修改）
     @SubscribeEvent
     public static void GUIInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof ShareToLanScreen screen && !Variables.DEVELOPER) {
