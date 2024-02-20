@@ -27,13 +27,6 @@ public class onItemToolTip {
                                     .append(" ")
                                     .withStyle(ChatFormatting.DARK_GREEN));
                 }
-                if (event.getToolTip().get(x).contains(Component.translatable("item.test_star.my_sword"))) {
-                    event.getToolTip().set(x,
-                            Component.literal(" ").withStyle(ChatFormatting.BLUE)
-                                    .append(TextUtils.applyAllColor(Component.translatable("item.test_star.my_sword")))
-                                    .append(" ")
-                                    .withStyle(ChatFormatting.DARK_GREEN));
-                }
             }
         }
         if (event.getItemStack().getItem() instanceof TetanusBlade) {
@@ -46,8 +39,8 @@ public class onItemToolTip {
                                 .append(Component.translatable("attribute.name.generic.attack_damage"))
                                 .withStyle(ChatFormatting.DARK_GREEN));
                 }
+//                event.getToolTip().add(event.getToolTip().size() + 1, Component.translatable("ts.sword.tip.two"));
             }
-            event.getToolTip().add(event.getToolTip().size() - 5, Component.translatable("ts.sword.tip.two"));
         }
     }
 }

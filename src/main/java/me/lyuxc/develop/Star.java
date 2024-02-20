@@ -47,9 +47,9 @@ public class Star {
         //TOPRegister.topRegister();
         //模组加载数量将检测
         try {
-            Variables.IDs = FileUtils.readFromFile("banBlock.txt",false).split(System.lineSeparator());
+            Variables.IDs = FileUtils.readFromFile("banBlock.txt", false).split(System.lineSeparator());
         } catch (FileNotFoundException e) {
-            FileUtils.writeToNewFile("banBlock.txt","",false);
+            FileUtils.writeToNewFile("banBlock.txt", "", false);
             Variables.IDs = new String[]{""};
             e.fillInStackTrace();
         }

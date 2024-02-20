@@ -16,7 +16,7 @@ public abstract class MixinMinecraft {
     @Overwrite
     private String createTitle() {
         StringBuilder sb = new StringBuilder();
-        sb.append("|整合包名称: ");
+        sb.append("整合包名称: ");
         sb.append(Variables.title);
         if (ModList.get() != null) {
             sb.append("|已加载模组数: ").append(ModList.get().size());
