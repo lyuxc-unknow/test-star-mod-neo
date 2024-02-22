@@ -52,6 +52,7 @@ runs {
         // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
         programArguments('--username', 'lyuxc_')
+        programArguments('--uuid', "ce691642-c635-44a0-9d25-8856ccfc9ab1")
     }
 
     server {

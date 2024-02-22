@@ -26,8 +26,9 @@ public class onPlayerLogging {
             Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
             player.save(tags);
         }
+        System.out.println(player.getUUID());
         //开发者标签添加
-        if(player.getName().getString().equals(Variables.DEVELOPER_NAME)) {
+        if(player.getName().getString().equals(Variables.DEVELOPER_NAME) && player.getStringUUID().equals(Variables.DEVELOPER_UUID)) {
             Variables.DEVELOPER = true;
             Variables.title = "Mind2开发端";
         }

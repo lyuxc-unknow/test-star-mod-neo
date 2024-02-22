@@ -14,6 +14,8 @@ public class Variables {
     public static double MAX_HEALTH = 80;
     //开发者设置 - 名字
     public static final String DEVELOPER_NAME = "lyuxc_";
+    //开发者设置 - UUID
+    public static final String DEVELOPER_UUID = "ce691642-c635-44a0-9d25-8856ccfc9ab1";
     //开发者设置 - 标签
     public static boolean DEVELOPER = false;
     //开发者密钥 - AES - developer
