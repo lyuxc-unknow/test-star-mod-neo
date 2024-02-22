@@ -1,7 +1,6 @@
 package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.utils.TextUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -34,7 +33,6 @@ public class TetanusBlade extends SwordItem {
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("ts.sword.tip.two"));
-        pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(Component.literal("?"))));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }

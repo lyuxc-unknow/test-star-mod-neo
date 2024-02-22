@@ -44,7 +44,7 @@ public class Variables {
     //禁用方块 - id
     public static String[] IDs;
     //标题
-    public static String title = "Mind2用户端";
+    public static String title = null;
     //日志
     public static final Logger LOGGER = LogManager.getLogger("ModLoader");
 }

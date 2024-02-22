@@ -50,8 +50,15 @@
   "ts.command.jrrp": "Today’s lucky value is: %s",
   "ts.command.jrrp.multiplayer.tip": "This function is not available to multiple people. Reason: The problem of interoperability between the data server and the client has not yet been solved.",
   "ts.multiplayer.disable": "Multiplayer Disable",
+  "ts.multiplayer.disable_title": "Multilayer Disable",
   "ts.multiplayer_tool.tip": "Multiplayer game has been unlocked",
   "ts.server.kick": "too more Click",
   "ts.sword.tip.two": "When attacking, the attacked person will take half the damage as compared to the attacker, and at the same time, a certain amount of HP will be restored to the attacker randomly.",
+  "ts.tips.dev_title": "Mind2Dev",
+  "ts.tips.modpack": "§4 It is prohibited to distribute this integration package and its sub-files without permission\nThe author of this integration package: lyuxc_\nIf you did not download it from official channels, please block the distributor directly! ! !",
+  "ts.tips.modpack_name": "Modpack:",
+  "ts.tips.mods": "Mods:",
+  "ts.tips.right.disable": "You cannot use %s",
+  "ts.tips.user_title": "Mind2",
   "ts.top.block.hardness": "Block Hardness %s"
 }

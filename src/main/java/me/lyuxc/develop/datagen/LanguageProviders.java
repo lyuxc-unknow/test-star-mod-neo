@@ -74,6 +74,13 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.server.kick","too more Click");
             add("ts.click.much","If you click too fast in succession, you will be kicked out. This is just a reminder, please take a rest~~");
             add("ts.click.enable","You can now start clicking");
+            add("ts.tips.right.disable","You cannot use %s");
+            add("ts.tips.modpack","§4 It is prohibited to distribute this integration package and its sub-files without permission\nThe author of this integration package: lyuxc_\nIf you did not download it from official channels, please block the distributor directly! ! !");
+            add("ts.tips.dev_title","Mind2Dev");
+            add("ts.tips.user_title","Mind2");
+            add("ts.tips.modpack_name","Modpack:");
+            add("ts.tips.mods","Mods:");
+            add("ts.multiplayer.disable_title","Multilayer Disable");
         } else if(Objects.equals(locale1, "zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
@@ -128,6 +135,13 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.server.kick","你点太多次了");
             add("ts.click.much","连续点击过快会被一脚踢出去哦，这只是一句提示，请休息一会~~");
             add("ts.click.enable","你现在可以开始点击了");
+            add("ts.tips.right.disable","你不能使用%s");
+            add("ts.tips.modpack","§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！");
+            add("ts.tips.dev_title","Mind2-开发");
+            add("ts.tips.user_title","Mind2");
+            add("ts.tips.modpack_name","整合包:");
+            add("ts.tips.mods","模组数:");
+            add("ts.multiplayer.disable_title","多人模式未解锁");
         }
     }
 }

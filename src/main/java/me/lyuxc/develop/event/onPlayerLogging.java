@@ -1,6 +1,7 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -26,12 +27,11 @@ public class onPlayerLogging {
             Objects.requireNonNull(player.getAttributes().getInstance(NeoForgeMod.ENTITY_GRAVITY.value())).setBaseValue(0.015);
             player.save(tags);
         }
-        System.out.println(player.getUUID());
         //开发者标签添加
         if(player.getName().getString().equals(Variables.DEVELOPER_NAME) && player.getStringUUID().equals(Variables.DEVELOPER_UUID)) {
             Variables.DEVELOPER = true;
-            Variables.title = "Mind2开发端";
+            Variables.title = I18n.get("ts.tips.dev_title");
         }
-        player.sendSystemMessage(Component.literal("§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！"));
+        player.sendSystemMessage(Component.translatable("ts.tips.modpack"));
     }
 }

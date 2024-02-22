@@ -19,7 +19,7 @@ public class onPlayerInteract {
         BlockState blockState = level.getBlockState(event.getPos());
         for(String s : Variables.IDs) {
             if(BuiltInRegistries.BLOCK.getKey(blockState.getBlock()).toString().equals(s)) {
-                player.displayClientMessage(Component.literal("你无法使用"+s+"方块"),true);
+                player.displayClientMessage(Component.translatable("ts.tips.right.disable",s),true);
                 event.setCanceled(true);
             }
         }
