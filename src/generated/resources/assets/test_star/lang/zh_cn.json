@@ -45,6 +45,8 @@
   "tip.error.out_of_mod_number": "所加载到的模组数量超过上限",
   "ts.attribute.damage": "世間萬物の最高傷害",
   "ts.attribute.damage_tetanus_blade": "不可估量",
+  "ts.click.enable": "你现在可以开始点击了",
+  "ts.click.much": "连续点击过快会被一脚踢出去哦，这只是一句提示，请休息一会~~",
   "ts.command.jrrp": "今天的幸运值为: %s",
   "ts.multiplayer.disable": "多人游戏目前被禁用！",
   "ts.multiplayer_tool.tip": "多人游戏已解锁",

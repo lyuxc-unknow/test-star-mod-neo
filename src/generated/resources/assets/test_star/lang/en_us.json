@@ -45,6 +45,8 @@
   "tip.error.out_of_mod_number": "Number of Mods loaded exceeds limit",
   "ts.attribute.damage": "Infinity",
   "ts.attribute.damage_tetanus_blade": "?",
+  "ts.click.enable": "You can now start clicking",
+  "ts.click.much": "If you click too fast in succession, you will be kicked out. This is just a reminder, please take a rest~~",
   "ts.command.jrrp": "Today’s lucky value is: %s",
   "ts.command.jrrp.multiplayer.tip": "This function is not available to multiple people. Reason: The problem of interoperability between the data server and the client has not yet been solved.",
   "ts.multiplayer.disable": "Multiplayer Disable",

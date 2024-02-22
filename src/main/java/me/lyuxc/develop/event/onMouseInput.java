@@ -42,7 +42,7 @@ public class onMouseInput {
         } else if(persistentData.getInt("digging") > 18) {
             persistentData.putBoolean("throttled",true);
             persistentData.putInt("throttledTimer",0);
-            player.displayClientMessage(Component.literal("连续点击过快会被一脚踢出去哦，这只是一句提示，请休息一会~~"),true);
+            player.displayClientMessage(Component.translatable("ts.click.much"),true);
         }
     }
     @SubscribeEvent
@@ -56,7 +56,7 @@ public class onMouseInput {
             compoundTag.putInt("throttledTimer", compoundTag.getInt("throttledTimer") + 1);
         }
         if(compoundTag.getInt("throttledTimer") > 40) {
-            event.player.displayClientMessage(Component.literal("你现在可以开始点击了"),true);
+            event.player.displayClientMessage(Component.translatable("ts.click.enable"),true);
             compoundTag.putString("digging","0");
             compoundTag.putBoolean("throttled",false);
             compoundTag.putInt("throttledTimer", 0);
