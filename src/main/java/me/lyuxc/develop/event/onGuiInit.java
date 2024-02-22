@@ -1,5 +1,6 @@
 package me.lyuxc.develop.event;
 
+import io.github.satxm.mcwifipnp.ShareToLanScreenNew;
 import me.lyuxc.develop.Variables;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.screens.ShareToLanScreen;
@@ -10,7 +11,6 @@ import net.neoforged.neoforge.client.event.ScreenEvent;
 
 @Mod.EventBusSubscriber(modid = Variables.MOD_ID,value = Dist.CLIENT)
 public class onGuiInit {
-    //Todo mcwifipnp兼容（复制No Cheat LAN模组代码然后修改）
     @SubscribeEvent
     public static void GUIInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof ShareToLanScreen screen && !Variables.DEVELOPER) {
@@ -18,6 +18,13 @@ public class onGuiInit {
             AbstractButton modeButton = (AbstractButton) screen.renderables.get(0);
             cheatsButton.active = false;
             modeButton.active = false;
+        } else if(event.getScreen() instanceof ShareToLanScreenNew screenNew && !Variables.DEVELOPER) {
+            AbstractButton gamemodeButton = (AbstractButton) screenNew.renderables.get(2);
+            AbstractButton allowCheatsButton = (AbstractButton) screenNew.renderables.get(3);
+            AbstractButton otherPlayersCheatButton = (AbstractButton) screenNew.renderables.get(7);
+            gamemodeButton.active = false;
+            allowCheatsButton.active = false;
+            otherPlayersCheatButton.active = false;
         }
     }
 }

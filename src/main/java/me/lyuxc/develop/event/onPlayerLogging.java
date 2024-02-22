@@ -31,6 +31,6 @@ public class onPlayerLogging {
             Variables.DEVELOPER = true;
             Variables.title = "Mind2开发端";
         }
-        player.sendSystemMessage(Component.literal("§4未经许可禁止分发本整合包及其子文件\n本整合包作者：xxxxx\n如不是从官方渠道下载，请直接拉黑分发者！！！"));
+        player.sendSystemMessage(Component.literal("§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！"));
     }
 }
