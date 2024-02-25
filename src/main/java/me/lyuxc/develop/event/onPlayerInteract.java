@@ -1,6 +1,7 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -19,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 @Mod.EventBusSubscriber
@@ -50,5 +53,26 @@ public class onPlayerInteract {
                 }
             }
         }
+    }
+    @SubscribeEvent
+    public static void onPlayerLeftItemEntity(PlayerEvent.ItemPickupEvent event) {
+        Player player = event.getEntity();
+        Variables.recipes.forEach(s -> {
+            String[] rec = s.split("@");
+            if(event.getStack().is(Utils.getItem(rec[0])) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(Utils.getItem(rec[1]))) {
+                for(int i=0;i<player.getInventory().getContainerSize();i++) {
+                    if(player.getInventory().getItem(i).is(Utils.getItem(rec[0]))) {
+                        ItemStack oak = Utils.getItemStack(rec[0]);
+                        oak.setCount(player.getInventory().getItem(i).getCount() - event.getStack().getCount());
+                        player.getInventory().setItem(i,oak);
+                        break;
+                    }
+                }
+                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - Integer.parseInt(rec[4]));
+                ItemStack oak1 = Utils.getItemStack(rec[2]);
+                oak1.setCount(Integer.parseInt(rec[3]) * event.getStack().getCount());
+                player.drop(oak1,false);
+            }
+        });
     }
 }

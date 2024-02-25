@@ -1,20 +1,26 @@
 package me.lyuxc.develop.utils;
 
+import me.lyuxc.develop.Variables;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -62,5 +68,21 @@ public class Utils {
     public static void disableFly(Player player) {
         player.getAbilities().flying = false;
         player.getAbilities().setFlyingSpeed(0);
+    }
+
+    public static Item getItem(String itemId) {
+        return BuiltInRegistries.ITEM.get(new ResourceLocation(itemId));
+    }
+    public static ItemStack getItemStack(String itemId) {
+        return getItem(itemId).getDefaultInstance();
+    }
+    public static void addPlayerPickupRecipes(String recipe) {
+        Variables.recipes.add(recipe);
+    }
+    public static void addPlayerPickupRecipes(@NotNull String input,@NotNull String offHandItem,@NotNull String output,int count,int quantityConsumed) {
+        addPlayerPickupRecipes(input + "@" + offHandItem + "@" + output + "@" + count + "@" + quantityConsumed);
+    }
+    public static void addPlayerPickupRecipes(Item input,Item tool,Item output,int count,int quantityConsumed) {
+        addPlayerPickupRecipes(input.toString(),tool.toString(),output.toString(),count,quantityConsumed);
     }
 }
