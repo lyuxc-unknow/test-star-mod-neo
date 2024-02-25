@@ -36,11 +36,11 @@ public class Variables {
     //获取MC运行路径
     public static String workDir = System.getProperty("user.dir");
     //多人模式配置名称
-    public static String configDir = "multiplayerUnlock.MCL";
+    public static String configDir = "multiplayerUnlock.player";
     //获取到的数据 - 预留
     public static String data = "";
     //禁用方块 - id
-    public static String[] IDs;
+    public static String[] IDs = new String[]{""};
     //标题
     public static String title = null;
     //日志

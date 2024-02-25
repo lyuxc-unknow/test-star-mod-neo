@@ -4,11 +4,9 @@ import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import me.lyuxc.develop.utils.FileUtils;
-import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
@@ -17,6 +15,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 @Mod(Variables.MOD_ID)
 public class Star {
@@ -49,15 +48,13 @@ public class Star {
         //TOPRegister.topRegister();
         //模组加载数量将检测
         try {
-            Variables.IDs = FileUtils.readFromFile("banBlock.txt", false).split(System.lineSeparator());
+            Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
+            Variables.recipes.addAll(List.of(FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())));
         } catch (FileNotFoundException e) {
-            FileUtils.writeToNewFile("banBlock.txt", "", false);
-            Variables.IDs = new String[]{""};
-            e.fillInStackTrace();
+            FileUtils.writeToNewFile("banBlock.recipes", "", false);
+            FileUtils.writeToNewFile("dropCrafting.recipes","",false);
+//            e.fillInStackTrace();
         }
-        Utils.addPlayerPickupRecipes(Items.WOODEN_PICKAXE,Items.COBBLESTONE,Items.STONE_PICKAXE,1,0);
-        Utils.addPlayerPickupRecipes(Items.OAK_LOG,Items.WOODEN_AXE,Items.OAK_PLANKS,2,0);
-        Utils.addPlayerPickupRecipes(Items.IRON_PICKAXE,Items.IRON_INGOT,Items.IRON_PICKAXE,1,1);
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             System.exit(0);

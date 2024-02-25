@@ -29,7 +29,9 @@ public class onMouseInput {
     }
     @SubscribeEvent
     public static void onPlayerLeftBlock(PlayerInteractEvent.LeftClickBlock event) {
-        clickE(event);
+        if(event.getAction() == PlayerInteractEvent.LeftClickBlock.Action.ABORT) {
+            clickE(event);
+        }
     }
     private static void clickE(PlayerInteractEvent event) {
         Player player = event.getEntity();
