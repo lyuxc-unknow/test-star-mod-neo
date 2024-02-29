@@ -37,7 +37,7 @@ public class Utils {
         server.getCommands().performPrefixedCommand(sourceStack, command);
     }
     @Deprecated
-    public static void atEnt(Player player) {
+    public static void toTheEnd(Player player) {
         if(player.level().dimension() == Level.OVERWORLD) {
             if(!player.level().isClientSide()) {
                 if(player instanceof ServerPlayer player1) {
@@ -65,6 +65,7 @@ public class Utils {
             player.save(compoundTag);
         }
     }
+    @SuppressWarnings("unused")
     public static void disableFly(Player player) {
         player.getAbilities().flying = false;
         player.getAbilities().setFlyingSpeed(0);
@@ -79,10 +80,10 @@ public class Utils {
     public static void addPlayerPickupRecipes(String recipe) {
         Variables.recipes.add(recipe);
     }
-    public static void addPlayerPickupRecipes(@NotNull String input,@NotNull String offHandItem,@NotNull String output,int count,int quantityConsumed) {
-        addPlayerPickupRecipes(input + "@" + offHandItem + "@" + output + "@" + count + "@" + quantityConsumed);
+    public static void addPlayerPickupRecipes(@NotNull String input,@NotNull String offHandItem,int quantityConsumed,@NotNull String output,int outputCount) {
+        addPlayerPickupRecipes(input + "@" + offHandItem + "@" + quantityConsumed + "@" + output + "@" + outputCount);
     }
-    public static void addPlayerPickupRecipes(Item input,Item tool,Item output,int count,int quantityConsumed) {
-        addPlayerPickupRecipes(input.toString(),tool.toString(),output.toString(),count,quantityConsumed);
+    public static void addPlayerPickupRecipes(@NotNull Item input,@NotNull Item offHandItem,int quantityConsumed,@NotNull Item output,int outputCount) {
+        addPlayerPickupRecipes(input.toString(),offHandItem.toString(),quantityConsumed,output.toString(),outputCount);
     }
 }
