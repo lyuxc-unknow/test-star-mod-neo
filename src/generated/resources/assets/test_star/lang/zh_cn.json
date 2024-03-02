@@ -54,6 +54,8 @@
   "ts.server.kick": "你点太多次了",
   "ts.sword.tip.two": "攻击时，被攻击者会受到相对于攻击者当前血量一半的伤害，同时随机回复攻击者一定的血量",
   "ts.tips.dev_title": "Mind2-开发",
+  "ts.tips.jei.drop_category": "拾起拼装",
+  "ts.tips.jei.offhandTip": "放在副手上",
   "ts.tips.modpack": "§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！",
   "ts.tips.modpack_name": "整合包:",
   "ts.tips.mods": "模组数:",

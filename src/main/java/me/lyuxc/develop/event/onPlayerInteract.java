@@ -68,9 +68,9 @@ public class onPlayerInteract {
                         break;
                     }
                 }
-                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - Integer.parseInt(rec[4]));
-                ItemStack outputItem = Utils.getItemStack(rec[2]);
-                outputItem.setCount(Integer.parseInt(rec[3]) * event.getStack().getCount());
+                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - Integer.parseInt(rec[2]));
+                ItemStack outputItem = Utils.getItemStack(rec[3]);
+                outputItem.setCount(Integer.parseInt(rec[4]) * event.getStack().getCount());
                 player.drop(outputItem,false);
             }
         });
