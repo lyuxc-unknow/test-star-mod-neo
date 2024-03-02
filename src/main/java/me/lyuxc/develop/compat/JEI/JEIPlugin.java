@@ -13,9 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
     public static final RecipeType<DropRecipes> CATEGORY_DROP = RecipeType.create(Variables.MOD_ID,"drop",DropRecipes.class);
@@ -26,7 +23,6 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
-//        registration.addRecipeCatalyst(VanillaTypes.ITEM_STACK,ItemStack.EMPTY, CATEGORY_DROP);
     }
 
     @Override
@@ -36,8 +32,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        List<DropRecipes> dropRecipes = new ArrayList<>();
-        for(String s : Variables.recipes) {
+        registration.addRecipes(CATEGORY_DROP,Variables.recipes.stream().map(s -> {
             String[] v = s.split("@");
             ItemStack inputItem = Utils.getItemStack(v[0]);
             ItemStack offhandItem = Utils.getItemStack(v[1]);
@@ -45,8 +40,7 @@ public class JEIPlugin implements IModPlugin {
             offhandItem.setCount(Integer.parseInt(v[2])==0?1:Integer.parseInt(v[2]));
             ItemStack outputItem = Utils.getItemStack(v[3]);
             outputItem.setCount(Integer.parseInt(v[4]));
-            dropRecipes.add(new DropRecipes(inputItem,offhandItem,outputItem));
-        }
-        registration.addRecipes(CATEGORY_DROP,dropRecipes);
+            return new DropRecipes(inputItem,offhandItem,outputItem);
+        }).toList());
     }
 }

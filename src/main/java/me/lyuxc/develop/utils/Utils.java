@@ -22,6 +22,8 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Objects;
 
 public class Utils {
@@ -89,5 +91,15 @@ public class Utils {
     }
     public static void addPlayerPickupRecipes(@NotNull Item input,@NotNull Item offHandItem,int quantityConsumed,@NotNull Item output,int outputCount) {
         addPlayerPickupRecipes(input.toString(),offHandItem.toString(),quantityConsumed,output.toString(),outputCount);
+    }
+    public static void loadModResource() {
+        try {
+            Variables.recipes.clear();
+            Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
+            Variables.recipes.addAll(List.of(FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())));
+        } catch (FileNotFoundException e) {
+            FileUtils.writeToNewFile("banBlock.recipes", "", false);
+            FileUtils.writeToNewFile("dropCrafting.recipes","",false);
+        }
     }
 }

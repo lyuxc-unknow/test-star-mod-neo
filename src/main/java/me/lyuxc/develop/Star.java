@@ -3,7 +3,6 @@ package me.lyuxc.develop;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.utils.FileUtils;
 import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -15,9 +14,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.io.FileNotFoundException;
-import java.util.List;
 
 @Mod(Variables.MOD_ID)
 public class Star {
@@ -49,14 +45,7 @@ public class Star {
         //TOP注册 - TODO TOP Unable update to 1.20.4
         //TOPRegister.topRegister();
         //模组加载数量将检测
-        try {
-            Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
-            Variables.recipes.addAll(List.of(FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())));
-        } catch (FileNotFoundException e) {
-            FileUtils.writeToNewFile("banBlock.recipes", "", false);
-            FileUtils.writeToNewFile("dropCrafting.recipes","",false);
-//            e.fillInStackTrace();
-        }
+        Utils.loadModResource();
         Utils.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
