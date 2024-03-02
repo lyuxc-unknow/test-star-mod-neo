@@ -34,7 +34,7 @@ public class onPlayerInteract {
         BlockState blockState = level.getBlockState(pos);
         for(String s : Variables.IDs) {
             if(BuiltInRegistries.BLOCK.getKey(blockState.getBlock()).toString().equals(s)) {
-                player.displayClientMessage(Component.translatable("ts.tips.right.disable",s),true);
+                player.displayClientMessage(Component.translatable("ts.tips.right.disable",Utils.getItemStack(s).getHoverName()),true);
                 event.setCanceled(true);
             }
         }
@@ -62,16 +62,16 @@ public class onPlayerInteract {
             if(event.getStack().is(Utils.getItem(rec[0])) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(Utils.getItem(rec[1]))) {
                 for(int i=0;i<player.getInventory().getContainerSize();i++) {
                     if(player.getInventory().getItem(i).is(Utils.getItem(rec[0]))) {
-                        ItemStack oak = Utils.getItemStack(rec[0]);
-                        oak.setCount(player.getInventory().getItem(i).getCount() - event.getStack().getCount());
-                        player.getInventory().setItem(i,oak);
+                        ItemStack inputItem = Utils.getItemStack(rec[0]);
+                        inputItem.setCount(player.getInventory().getItem(i).getCount() - event.getStack().getCount());
+                        player.getInventory().setItem(i,inputItem);
                         break;
                     }
                 }
                 player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - Integer.parseInt(rec[4]));
-                ItemStack oak1 = Utils.getItemStack(rec[2]);
-                oak1.setCount(Integer.parseInt(rec[3]) * event.getStack().getCount());
-                player.drop(oak1,false);
+                ItemStack outputItem = Utils.getItemStack(rec[2]);
+                outputItem.setCount(Integer.parseInt(rec[3]) * event.getStack().getCount());
+                player.drop(outputItem,false);
             }
         });
     }

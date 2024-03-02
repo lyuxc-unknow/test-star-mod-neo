@@ -104,11 +104,11 @@ public class ItemRegistry {
     public static final DeferredItem<Item> LIGHT_AR = ITEMS.register("light_ar", () -> new Light(new Item.Properties()));
     //多人模式解锁工具
     public static final DeferredItem<Item> MultiPlayerTool = ITEMS.register("multiplayer_tool", () -> new MultiPlayerTool(new Item.Properties()));
-    //木剑刀
+    //木剪刀
     public static final DeferredItem<Item> WoodShears = ITEMS.register("wood_shears", () -> new WoodShears(new Item.Properties()
             .durability(1024)
     ));
-    //我的弓
+    //简易的弓
     public static final DeferredItem<BowItem> BowItem = ITEMS.register("my_bow",() -> new BowItem(new Item.Properties()
             .stacksTo(1)
     ));

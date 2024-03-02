@@ -70,7 +70,11 @@ public class Utils {
         player.getAbilities().flying = false;
         player.getAbilities().setFlyingSpeed(0);
     }
-
+    @SuppressWarnings("unused")
+    public static void enableFly(Player player) {
+        player.getAbilities().flying = true;
+        player.getAbilities().setFlyingSpeed(0.015F);
+    }
     public static Item getItem(String itemId) {
         return BuiltInRegistries.ITEM.get(new ResourceLocation(itemId));
     }

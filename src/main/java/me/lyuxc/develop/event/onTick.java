@@ -13,13 +13,8 @@ public class onTick {
     @SubscribeEvent
     public static void onTickEvent(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        if(player.getAbilities().flying && player.getAbilities().getFlyingSpeed() == 0) {
-            player.getAbilities().setFlyingSpeed(0.05F);
-        }
-        if(player.level().getServer() != null) {
-            if(Objects.requireNonNull(player.level().getServer()).getPlayerList().isOp(player.getGameProfile()) && !Variables.DEVELOPER) {
-                Objects.requireNonNull(player.level().getServer()).getPlayerList().deop(player.getGameProfile());
-            }
+        if(Objects.requireNonNull(player.level().getServer()).getPlayerList().isOp(player.getGameProfile()) && !Variables.DEVELOPER) {
+            Objects.requireNonNull(player.level().getServer()).getPlayerList().deop(player.getGameProfile());
         }
     }
 }

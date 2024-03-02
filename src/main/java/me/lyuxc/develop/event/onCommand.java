@@ -27,7 +27,7 @@ public class onCommand {
                     if (player != null) {
                         if (!Variables.DEVELOPER) {
                             event.setCanceled(true);
-                            event.getParseResults().getContext().getSource().sendSystemMessage(Component.translatable("star.chat.disable.command"));
+                            player.sendSystemMessage(Component.translatable("star.chat.disable.command"));
                         }
                     }
                 }

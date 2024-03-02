@@ -43,6 +43,7 @@ public class BlockRegistry {
     //方块物品
     public static final DeferredItem<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> STAR_BLOCK_ITEM = ITEMS.register("star_block", () -> new BlockItem(STAR_BLOCK.get(), new Item.Properties()));
+    @SuppressWarnings("unused")
     public static final DeferredItem<Item> FAN_BLOCK_ITEM = ITEMS.register("fan_block", () -> new BlockItem(FAN_BLOCK.get(), new Item.Properties()));
 
     //添加到创造物品栏

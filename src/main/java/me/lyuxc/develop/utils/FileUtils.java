@@ -9,11 +9,11 @@ public class FileUtils {
     public static void writeToNewFile(String fileName,String text,boolean newLine){
         writeToNewFile(new File(configFolder + fileName),text,newLine);
     }
-
+    @SuppressWarnings("unused")
     public static void writeToNewFile(String fileName,String[] text,boolean newLine) {
         writeToNewFile(new File(configFolder + fileName),text,newLine);
     }
-
+    @SuppressWarnings("unused")
     public static void writeToNewFile(File file, String[] text, boolean newLine) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -59,8 +59,10 @@ public class FileUtils {
         String s;
         try {
             while((s = reader.readLine()) != null) {
-                sb.append(s);
-                sb.append(System.lineSeparator());
+                if(!s.startsWith("//")) {
+                    sb.append(s);
+                    sb.append(System.lineSeparator());
+                }
             }
         } catch (Exception e) {
             e.fillInStackTrace();

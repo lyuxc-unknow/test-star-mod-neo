@@ -51,16 +51,15 @@ public class MySword extends SwordItem {
             if(entityList.isEmpty()) return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
             if(!pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
             for(Entity entity :entityList) {
-                if(entity instanceof EnderDragon enderDragon) {
+                if ((pPlayer.getInventory().getFreeSlot() != -1 && entity instanceof ItemEntity)||entity instanceof ExperienceOrb) {
+                    entity.absMoveTo(pPlayer.getX(),pPlayer.getY(),pPlayer.getZ());
+                }else if(entity instanceof EnderDragon enderDragon) {
                     enderDragon.hurt(enderDragon.head,damageSource,Integer.MAX_VALUE);
-                } else if(entity instanceof LivingEntity) {
+                } else /*if(entity instanceof LivingEntity)*/ {
                     Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
                     light.moveTo(entity.getX(), entity.getY() + 4, entity.getZ());
                     pLevel.addFreshEntity(light);
                     entity.hurt(damageSource, Integer.MAX_VALUE);
-                }
-                if ((pPlayer.getInventory().getFreeSlot() != -1 && entity instanceof ItemEntity)||entity instanceof ExperienceOrb) {
-                    entity.absMoveTo(pPlayer.getX(),pPlayer.getY(),pPlayer.getZ());
                 }
             }
         }

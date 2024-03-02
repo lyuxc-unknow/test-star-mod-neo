@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 @Mod.EventBusSubscriber(modid = Variables.MOD_ID)
 public class onMouseInput {
     /*
-    *  FTB方案，自研看Github 历史记录，由于用到客户端专有的东西而导致服务器无法使用而替换
+    * FTB方案，自研看Github 历史记录，由于用到客户端专有的东西而导致服务器无法使用而替换
     * */
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
