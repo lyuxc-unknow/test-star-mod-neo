@@ -2,6 +2,8 @@ package me.lyuxc.develop.utils;
 
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.recipes.DropRecipes;
+import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
+import me.lyuxc.develop.recipes.ExplosionRecipes;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,11 +20,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Objects;
 
 public class Utils {
@@ -85,13 +89,32 @@ public class Utils {
     public static void loadModResource() {
         try {
             DropRecipes.recipes.clear();
+            ExplosionRecipes.recipes.clear();
+            ExplosionMultiItemRecipes.recipes.clear();
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
             for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
-                DropRecipes.addPlayerPickupRecipes(recipe);
+                if(!recipe.isEmpty())
+                    if(!recipe.startsWith("//"))
+                        DropRecipes.addPlayerPickupRecipes(recipe);
             }
+            for(String recipe : FileUtils.readFromFile("multiExplosion.recipes", false).split(System.lineSeparator())) {
+                if(!recipe.isEmpty())
+                    if(!recipe.startsWith("//"))
+                        ExplosionMultiItemRecipes.addExplosionMultiRecipes(recipe);
+            }
+            for(String recipe : FileUtils.readFromFile("Explosion.recipes", false).split(System.lineSeparator())) {
+                if(!recipe.isEmpty())
+                    if(!recipe.startsWith("//"))
+                        ExplosionRecipes.addExplosionRecipes(recipe);
+            }
+            ExplosionRecipes.addExplosionRecipes(Items.DIRT.getDefaultInstance(),4,Items.DIAMOND.getDefaultInstance(),100);
+            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE.getDefaultInstance(),100);
+            DropRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
         } catch (FileNotFoundException e) {
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
             FileUtils.writeToNewFile("dropCrafting.recipes","",false);
+            FileUtils.writeToNewFile("multiExplosion.recipes","",false);
+            FileUtils.writeToNewFile("Explosion.recipes","",false);
         }
     }
 }

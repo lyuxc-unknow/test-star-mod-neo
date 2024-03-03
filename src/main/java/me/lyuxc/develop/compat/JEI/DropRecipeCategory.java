@@ -32,7 +32,7 @@ public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/drop_crafting.png"),0,0,100,20);
+        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,0,100,20);
     }
 
     @Override
@@ -42,8 +42,8 @@ public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
 
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder iRecipeLayoutBuilder, @NotNull DropRecipes dropRecipes, @NotNull IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,3,2).addItemStack(dropRecipes.input());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,22,2).addItemStack(dropRecipes.offhandItems());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,81,2).addItemStack(dropRecipes.output());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(dropRecipes.input());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,21,2).addItemStack(dropRecipes.offhandItems());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,80,2).addItemStack(dropRecipes.output());
     }
 }

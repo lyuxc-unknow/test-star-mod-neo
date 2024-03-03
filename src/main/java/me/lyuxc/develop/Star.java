@@ -3,12 +3,10 @@ package me.lyuxc.develop;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.recipes.DropRecipes;
 import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
@@ -47,7 +45,6 @@ public class Star {
         //TOPRegister.topRegister();
         //模组加载数量将检测
         Utils.loadModResource();
-        DropRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             System.exit(0);
