@@ -1,6 +1,7 @@
 package me.lyuxc.develop.compat.JEI;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.recipes.DropRecipes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -41,8 +42,8 @@ public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
 
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder iRecipeLayoutBuilder, @NotNull DropRecipes dropRecipes, @NotNull IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,3,2).addItemStack(dropRecipes.getInput());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,22,2).addItemStack(dropRecipes.getOffhandItems());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,81,2).addItemStack(dropRecipes.getOutput());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,3,2).addItemStack(dropRecipes.input());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,22,2).addItemStack(dropRecipes.offhandItems());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,81,2).addItemStack(dropRecipes.output());
     }
 }

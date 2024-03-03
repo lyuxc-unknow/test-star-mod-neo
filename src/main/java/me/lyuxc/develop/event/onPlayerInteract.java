@@ -1,6 +1,7 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.recipes.DropRecipes;
 import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -57,20 +58,19 @@ public class onPlayerInteract {
     @SubscribeEvent
     public static void onPlayerLeftItemEntity(PlayerEvent.ItemPickupEvent event) {
         Player player = event.getEntity();
-        Variables.recipes.forEach(s -> {
-            String[] rec = s.split("@");
-            if(event.getStack().is(Utils.getItem(rec[0])) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(Utils.getItem(rec[1]))) {
+        DropRecipes.recipes.forEach(s -> {
+            if(event.getStack().is(s.input().getItem()) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(s.offhandItems().getItem())) {
                 for(int i=0;i<player.getInventory().getContainerSize();i++) {
-                    if(player.getInventory().getItem(i).is(Utils.getItem(rec[0]))) {
-                        ItemStack inputItem = Utils.getItemStack(rec[0]);
+                    if(player.getInventory().getItem(i).is(s.input().getItem())) {
+                        ItemStack inputItem = s.input().copy();
                         inputItem.setCount(player.getInventory().getItem(i).getCount() - event.getStack().getCount());
                         player.getInventory().setItem(i,inputItem);
                         break;
                     }
                 }
-                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - Integer.parseInt(rec[2]));
-                ItemStack outputItem = Utils.getItemStack(rec[3]);
-                outputItem.setCount(Integer.parseInt(rec[4]) * event.getStack().getCount());
+                player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - s.quantityConsumed());
+                ItemStack outputItem = s.output().copy();
+                outputItem.setCount(s.outputCount() * event.getStack().getCount());
                 player.drop(outputItem,false);
             }
         });

@@ -3,7 +3,9 @@ package me.lyuxc.develop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.Random;
 
 public class Variables {
     //模组名
@@ -45,6 +47,4 @@ public class Variables {
     public static String title = null;
     //日志
     public static final Logger LOGGER = LogManager.getLogger("ModLoader");
-    //丢东西合成
-    public static Set<String> recipes = new HashSet<>();
 }

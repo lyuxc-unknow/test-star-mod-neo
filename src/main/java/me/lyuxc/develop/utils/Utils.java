@@ -1,6 +1,7 @@
 package me.lyuxc.develop.utils;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.recipes.DropRecipes;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,10 +21,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Objects;
 
 public class Utils {
@@ -83,20 +82,13 @@ public class Utils {
     public static ItemStack getItemStack(String itemId) {
         return getItem(itemId).getDefaultInstance();
     }
-    public static void addPlayerPickupRecipes(String recipe) {
-        Variables.recipes.add(recipe);
-    }
-    public static void addPlayerPickupRecipes(@NotNull String input,@NotNull String offHandItem,int quantityConsumed,@NotNull String output,int outputCount) {
-        addPlayerPickupRecipes(input + "@" + offHandItem + "@" + quantityConsumed + "@" + output + "@" + outputCount);
-    }
-    public static void addPlayerPickupRecipes(@NotNull Item input,@NotNull Item offHandItem,int quantityConsumed,@NotNull Item output,int outputCount) {
-        addPlayerPickupRecipes(input.toString(),offHandItem.toString(),quantityConsumed,output.toString(),outputCount);
-    }
     public static void loadModResource() {
         try {
-            Variables.recipes.clear();
+            DropRecipes.recipes.clear();
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
-            Variables.recipes.addAll(List.of(FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())));
+            for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
+                DropRecipes.addPlayerPickupRecipes(recipe);
+            }
         } catch (FileNotFoundException e) {
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
             FileUtils.writeToNewFile("dropCrafting.recipes","",false);
