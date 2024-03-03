@@ -32,7 +32,7 @@ public class MultiExplosionRecipeCategory implements IRecipeCategory<ExplosionMu
 
     @Override
     public @NotNull Component getTitle() {
-        return Component.translatable("ts.tips.jei.explosion_category");
+        return Component.translatable("ts.tips.jei.multi_explosion_category");
     }
 
     @Override

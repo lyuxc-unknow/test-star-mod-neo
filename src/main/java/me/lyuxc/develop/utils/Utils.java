@@ -109,6 +109,7 @@ public class Utils {
             }
             ExplosionRecipes.addExplosionRecipes(Items.DIRT.getDefaultInstance(),4,Items.DIAMOND.getDefaultInstance(),100);
             ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE.getDefaultInstance(),100);
+            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT.getDefaultInstance(),100);
             DropRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
         } catch (FileNotFoundException e) {
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
