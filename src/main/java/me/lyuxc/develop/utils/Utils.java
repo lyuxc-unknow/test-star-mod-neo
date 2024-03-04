@@ -96,18 +96,19 @@ public class Utils {
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
             for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
-                    if(!recipe.startsWith("//"))
-                        DropRecipes.addPlayerPickupRecipes(recipe);
+                    DropRecipes.addPlayerPickupRecipes(recipe);
             }
             for(String recipe : FileUtils.readFromFile("multiExplosion.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
-                    if(!recipe.startsWith("//"))
-                        ExplosionMultiItemRecipes.addExplosionMultiRecipes(recipe);
+                    ExplosionMultiItemRecipes.addExplosionMultiRecipes(recipe);
             }
             for(String recipe : FileUtils.readFromFile("Explosion.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
-                    if(!recipe.startsWith("//"))
-                        ExplosionRecipes.addExplosionRecipes(recipe);
+                    ExplosionRecipes.addExplosionRecipes(recipe);
+            }
+            for(String recipe : FileUtils.readFromFile("deputy.recipes", false).split(System.lineSeparator())) {
+                if(!recipe.isEmpty())
+                    DeputyCraftingRecipes.addDeputyCraftingRecipes(recipe);
             }
             ExplosionRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,100);
             ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,100);
@@ -119,7 +120,8 @@ public class Utils {
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
             FileUtils.writeToNewFile("dropCrafting.recipes","",false);
             FileUtils.writeToNewFile("multiExplosion.recipes","",false);
-            FileUtils.writeToNewFile("Explosion.recipes","",false);
+            FileUtils.writeToNewFile("explosion.recipes","",false);
+            FileUtils.writeToNewFile("deputy.recipes","",false);
         }
     }
 }
