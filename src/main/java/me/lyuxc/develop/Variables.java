@@ -46,5 +46,5 @@ public class Variables {
     //标题
     public static String title = null;
     //日志
-    public static final Logger LOGGER = LogManager.getLogger("ModLoader");
+    public static final Logger LOGGER = LogManager.getLogger("Mind2");
 }

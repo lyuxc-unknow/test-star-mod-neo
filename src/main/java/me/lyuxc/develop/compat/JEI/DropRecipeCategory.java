@@ -32,7 +32,7 @@ public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,0,100,20);
+        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,0,98,20);
     }
 
     @Override

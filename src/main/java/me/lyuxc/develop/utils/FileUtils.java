@@ -5,13 +5,19 @@ import me.lyuxc.develop.Variables;
 import java.io.*;
 
 public class FileUtils {
-    public static final String configFolder = Variables.workDir + "/mind/";
+    public static final String configFolder = Variables.workDir + "/mind";
+    public static void createFiles() {
+        File file = new File(configFolder);
+        if(file.mkdir()) {
+            Variables.LOGGER.info("folder is be created");
+        }
+    }
     public static void writeToNewFile(String fileName,String text,boolean newLine){
-        writeToNewFile(new File(configFolder + fileName),text,newLine);
+        writeToNewFile(new File(configFolder , fileName),text,newLine);
     }
     @SuppressWarnings("unused")
     public static void writeToNewFile(String fileName,String[] text,boolean newLine) {
-        writeToNewFile(new File(configFolder + fileName),text,newLine);
+        writeToNewFile(new File(configFolder , fileName),text,newLine);
     }
     @SuppressWarnings("unused")
     public static void writeToNewFile(File file, String[] text, boolean newLine) {
@@ -43,7 +49,7 @@ public class FileUtils {
     }
 
     public static String readFromFile(String fileName,boolean isForce) throws FileNotFoundException {
-        return readFromFile(new File(configFolder + fileName),isForce);
+        return readFromFile(new File(configFolder , fileName),isForce);
     }
 
     public static String readFromFile(File file,boolean isForce) throws FileNotFoundException {

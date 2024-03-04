@@ -37,7 +37,7 @@ public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionRecipes
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,21,80,20);
+        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,20,80,20);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionRecipes
 
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull ExplosionRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
-        builder.addSlot(RecipeIngredientRole.INPUT,2,1).addItemStack(recipes.input());
-        builder.addSlot(RecipeIngredientRole.OUTPUT,62,1).addItemStack(recipes.output());
+        builder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(recipes.input());
+        builder.addSlot(RecipeIngredientRole.OUTPUT,62,2).addItemStack(recipes.output());
     }
 
     @Override

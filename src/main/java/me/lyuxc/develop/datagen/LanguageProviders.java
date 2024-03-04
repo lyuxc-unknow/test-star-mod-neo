@@ -81,11 +81,13 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.modpack_name","Modpack:");
             add("ts.tips.mods","Mods:");
             add("ts.multiplayer.disable_title","Multilayer Disable");
-            add("ts.tips.jei.offhandTip","Put it in your off-hand");
-            add("ts.tips.jei.drop_category","Drop Craft");
-            add("ts.tips.jei.explosion_category","Explosion Craft");
-            add("ts.tips.jei.multi_explosion_category","Items Explosion Craft");
+            add("ts.tips.jei.offhandTip","Put %s in your off-hand");
+            add("ts.tips.jei.drop_category","Drop Crafting");
+            add("ts.tips.jei.explosion_category","Explosion Crafting");
+            add("ts.tips.jei.multi_explosion_category","Items Explosion Crafting");
             add("ts.tips.jei.explosion_probability","Output Probability: %s%%");
+            add("ts.tips.jei.deputy_category","Deputy Crafting");
+            add("ts.tips.jei.craftItem","When Crafting %s");
         } else if(Objects.equals(locale1, "zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
@@ -147,11 +149,13 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.modpack_name","整合包:");
             add("ts.tips.mods","模组数:");
             add("ts.multiplayer.disable_title","多人模式未解锁");
-            add("ts.tips.jei.offhandTip","放在副手上");
+            add("ts.tips.jei.offhandTip","%s放在副手上");
             add("ts.tips.jei.drop_category","拾起拼装");
             add("ts.tips.jei.multi_explosion_category","多物品爆炸合成");
             add("ts.tips.jei.explosion_category","爆炸合成");
             add("ts.tips.jei.explosion_probability","产出概率: %s%%");
+            add("ts.tips.jei.deputy_category","二次合成");
+            add("ts.tips.jei.craftItem","当合成%s时");
         }
     }
 }

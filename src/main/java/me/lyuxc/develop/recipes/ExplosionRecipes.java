@@ -1,6 +1,7 @@
 package me.lyuxc.develop.recipes;
 
 import me.lyuxc.develop.utils.Utils;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +18,8 @@ public record ExplosionRecipes(ItemStack input,int inputCount,ItemStack output,d
     public static void addExplosionRecipes(@NotNull String input, int inputCount, @NotNull String output, double change) {
         addExplosionRecipes(input + "@" + inputCount + "@" + output + "@" + change);
     }
-    public static void addExplosionRecipes(ItemStack input,int inputCount,ItemStack output,double change) {
-        recipes.add(new ExplosionRecipes(input,inputCount,output,change));
+    @SuppressWarnings("unused")
+    public static void addExplosionRecipes(Item input, int inputCount, Item output, double change) {
+        recipes.add(new ExplosionRecipes(input.getDefaultInstance(),inputCount,output.getDefaultInstance(),change));
     }
 }

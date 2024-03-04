@@ -1,6 +1,7 @@
 package me.lyuxc.develop.utils;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.recipes.DeputyCraftingRecipes;
 import me.lyuxc.develop.recipes.DropRecipes;
 import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
 import me.lyuxc.develop.recipes.ExplosionRecipes;
@@ -91,6 +92,7 @@ public class Utils {
             DropRecipes.recipes.clear();
             ExplosionRecipes.recipes.clear();
             ExplosionMultiItemRecipes.recipes.clear();
+            DeputyCraftingRecipes.recipes.clear();
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
             for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
@@ -107,11 +109,13 @@ public class Utils {
                     if(!recipe.startsWith("//"))
                         ExplosionRecipes.addExplosionRecipes(recipe);
             }
-            ExplosionRecipes.addExplosionRecipes(Items.DIRT.getDefaultInstance(),4,Items.DIAMOND.getDefaultInstance(),100);
-            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE.getDefaultInstance(),100);
-            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT.getDefaultInstance(),100);
+            ExplosionRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,100);
+            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,100);
+            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT,100);
+            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1, Items.DIAMOND,1,Items.DIAMOND_BLOCK);
             DropRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
         } catch (FileNotFoundException e) {
+            FileUtils.createFiles();
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
             FileUtils.writeToNewFile("dropCrafting.recipes","",false);
             FileUtils.writeToNewFile("multiExplosion.recipes","",false);
