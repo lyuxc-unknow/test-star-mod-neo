@@ -88,6 +88,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","Output Probability: %s%%");
             add("ts.tips.jei.deputy_category","Deputy Crafting");
             add("ts.tips.jei.craftItem","When Crafting %s");
+            add("ts.tips.jei.lightning_category","Lightning Crafting");
         } else if(Objects.equals(locale1, "zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
@@ -156,6 +157,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","产出概率: %s%%");
             add("ts.tips.jei.deputy_category","二次合成");
             add("ts.tips.jei.craftItem","当合成%s时");
+            add("ts.tips.jei.lightning_category","雷电合成");
         }
     }
 }

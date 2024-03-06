@@ -27,7 +27,7 @@ public class LightningCraftingCategory implements IRecipeCategory<LightningCraft
 
     @Override
     public @NotNull Component getTitle() {
-        return Component.literal("雷电合成");
+        return Component.translatable("ts.tips.jei.lightning_category");
     }
 
     @Override

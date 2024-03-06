@@ -60,6 +60,7 @@
   "ts.tips.jei.drop_category": "Drop Crafting",
   "ts.tips.jei.explosion_category": "Explosion Crafting",
   "ts.tips.jei.explosion_probability": "Output Probability: %s%%",
+  "ts.tips.jei.lightning_category": "Lightning Crafting",
   "ts.tips.jei.multi_explosion_category": "Items Explosion Crafting",
   "ts.tips.jei.offhandTip": "Put %s in your off-hand",
   "ts.tips.modpack": "§4 It is prohibited to distribute this integration package and its sub-files without permission\nThe author of this integration package: lyuxc_\nIf you did not download it from official channels, please block the distributor directly! ! !",
