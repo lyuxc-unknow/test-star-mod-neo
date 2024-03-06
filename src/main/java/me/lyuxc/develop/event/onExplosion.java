@@ -1,7 +1,7 @@
 package me.lyuxc.develop.event;
 
+import me.lyuxc.develop.recipes.ExplosionCraftingRecipes;
 import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
-import me.lyuxc.develop.recipes.ExplosionRecipes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +38,7 @@ public class onExplosion {
                 }
             })
             );
-            ExplosionRecipes.recipes.forEach(recipes -> AffectedEntities.forEach(entity -> {
+            ExplosionCraftingRecipes.recipes.forEach(recipes -> AffectedEntities.forEach(entity -> {
                 if(entity instanceof ItemEntity itemEntity) {
                     ItemStack spawnItems = itemEntity.getItem();
                     if(recipes.input().is(spawnItems.getItem())) {
@@ -48,7 +48,7 @@ public class onExplosion {
             }));
         }
     }
-    private static void ExplosionItemCraft(ExplosionEvent.Detonate event,ExplosionRecipes recipes,ItemEntity entity) {
+    private static void ExplosionItemCraft(ExplosionEvent.Detonate event, ExplosionCraftingRecipes recipes, ItemEntity entity) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         if(entity.getItem().getCount() == 0) {
             return;

@@ -1,7 +1,7 @@
 package me.lyuxc.develop.compat.JEI;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.recipes.DropRecipes;
+import me.lyuxc.develop.recipes.DropCraftingRecipes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -15,13 +15,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
+public class DropRecipeCategory implements IRecipeCategory<DropCraftingRecipes> {
     private final IGuiHelper helper;
     public DropRecipeCategory(IGuiHelper helper) {
         this.helper = helper;
     }
     @Override
-    public @NotNull RecipeType<DropRecipes> getRecipeType() {
+    public @NotNull RecipeType<DropCraftingRecipes> getRecipeType() {
         return JEIPlugin.CATEGORY_DROP;
     }
 
@@ -41,9 +41,9 @@ public class DropRecipeCategory implements IRecipeCategory<DropRecipes> {
     }
 
     @Override
-    public void setRecipe(@NotNull IRecipeLayoutBuilder iRecipeLayoutBuilder, @NotNull DropRecipes dropRecipes, @NotNull IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(dropRecipes.input());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,21,2).addItemStack(dropRecipes.offhandItems());
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,80,2).addItemStack(dropRecipes.output());
+    public void setRecipe(@NotNull IRecipeLayoutBuilder iRecipeLayoutBuilder, @NotNull DropCraftingRecipes dropCraftingRecipes, @NotNull IFocusGroup iFocusGroup) {
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(dropCraftingRecipes.input());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT,21,2).addItemStack(dropCraftingRecipes.offhandItems());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT,80,2).addItemStack(dropCraftingRecipes.output());
     }
 }

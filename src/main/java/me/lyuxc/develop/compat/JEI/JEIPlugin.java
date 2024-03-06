@@ -1,10 +1,7 @@
 package me.lyuxc.develop.compat.JEI;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.recipes.DeputyCraftingRecipes;
-import me.lyuxc.develop.recipes.DropRecipes;
-import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
-import me.lyuxc.develop.recipes.ExplosionRecipes;
+import me.lyuxc.develop.recipes.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
@@ -19,10 +16,11 @@ import org.jetbrains.annotations.NotNull;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-    public static final RecipeType<DropRecipes> CATEGORY_DROP = RecipeType.create(Variables.MOD_ID,"drop_crafting",DropRecipes.class);
-    public static final RecipeType<ExplosionRecipes> CATEGORY_EXPLOSION = RecipeType.create(Variables.MOD_ID,"explosion_crafting",ExplosionRecipes.class);
+    public static final RecipeType<DropCraftingRecipes> CATEGORY_DROP = RecipeType.create(Variables.MOD_ID,"drop_crafting", DropCraftingRecipes.class);
+    public static final RecipeType<ExplosionCraftingRecipes> CATEGORY_EXPLOSION = RecipeType.create(Variables.MOD_ID,"explosion_crafting", ExplosionCraftingRecipes.class);
     public static final RecipeType<ExplosionMultiItemRecipes> CATEGORY_MULTI_EXPLOSION = RecipeType.create(Variables.MOD_ID,"multi_explosion_crafting", ExplosionMultiItemRecipes.class);
     public static final RecipeType<DeputyCraftingRecipes> CATEGORY_DEPUTY = RecipeType.create(Variables.MOD_ID,"deputy_crafting", DeputyCraftingRecipes.class);
+    public static final RecipeType<LightningCraftingRecipes> CATEGORY_LIGHTNING = RecipeType.create(Variables.MOD_ID,"lightning_crafting", LightningCraftingRecipes.class);
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return new ResourceLocation(Variables.MOD_ID,"test_star_jei");
@@ -41,24 +39,25 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new ExplosionRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new MultiExplosionRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DeputyCraftingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new LightningCraftingCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        registration.addRecipes(CATEGORY_DROP,DropRecipes.recipes.stream().map(dropRecipes -> {
+        registration.addRecipes(CATEGORY_DROP, DropCraftingRecipes.recipes.stream().map(dropRecipes -> {
             ItemStack input = dropRecipes.input();
             ItemStack offhand = dropRecipes.offhandItems();
             ItemStack output = dropRecipes.output();
             offhand.setCount(dropRecipes.quantityConsumed()==0?1: dropRecipes.quantityConsumed());
             offhand.setHoverName(Component.translatable("ts.tips.jei.offhandTip",offhand.getHoverName()));
             output.setCount(dropRecipes.outputCount());
-            return new DropRecipes(input,offhand, dropRecipes.quantityConsumed(), output, dropRecipes.outputCount());
+            return new DropCraftingRecipes(input,offhand, dropRecipes.quantityConsumed(), output, dropRecipes.outputCount());
         }).toList());
-        registration.addRecipes(CATEGORY_EXPLOSION, ExplosionRecipes.recipes.stream().map(explosionRecipes -> {
+        registration.addRecipes(CATEGORY_EXPLOSION, ExplosionCraftingRecipes.recipes.stream().map(explosionRecipes -> {
             ItemStack input = explosionRecipes.input();
             ItemStack output = explosionRecipes.output();
             input.setCount(explosionRecipes.inputCount());
-            return new ExplosionRecipes(input,explosionRecipes.inputCount(),output,explosionRecipes.change());
+            return new ExplosionCraftingRecipes(input,explosionRecipes.inputCount(),output,explosionRecipes.change());
         }).toList());
         registration.addRecipes(CATEGORY_MULTI_EXPLOSION,ExplosionMultiItemRecipes.recipes.stream().toList());
         registration.addRecipes(CATEGORY_DEPUTY, DeputyCraftingRecipes.recipes.stream().map(recipes -> {
@@ -71,5 +70,6 @@ public class JEIPlugin implements IModPlugin {
             outputItem.setCount(recipes.outputCount());
             return new DeputyCraftingRecipes(inputItem,recipes.inputCount(),outputItem, recipes.outputCount(), craftingItem);
         }).toList());
+        registration.addRecipes(CATEGORY_LIGHTNING,LightningCraftingRecipes.recipes.stream().toList());
     }
 }

@@ -1,10 +1,7 @@
 package me.lyuxc.develop.utils;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.recipes.DeputyCraftingRecipes;
-import me.lyuxc.develop.recipes.DropRecipes;
-import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
-import me.lyuxc.develop.recipes.ExplosionRecipes;
+import me.lyuxc.develop.recipes.*;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -89,14 +86,15 @@ public class Utils {
     }
     public static void loadModResource() {
         try {
-            DropRecipes.recipes.clear();
-            ExplosionRecipes.recipes.clear();
+            DropCraftingRecipes.recipes.clear();
+            ExplosionCraftingRecipes.recipes.clear();
             ExplosionMultiItemRecipes.recipes.clear();
             DeputyCraftingRecipes.recipes.clear();
+            LightningCraftingRecipes.recipes.clear();
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
             for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
-                    DropRecipes.addPlayerPickupRecipes(recipe);
+                    DropCraftingRecipes.addPlayerPickupRecipes(recipe);
             }
             for(String recipe : FileUtils.readFromFile("multiExplosion.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
@@ -104,17 +102,18 @@ public class Utils {
             }
             for(String recipe : FileUtils.readFromFile("Explosion.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
-                    ExplosionRecipes.addExplosionRecipes(recipe);
+                    ExplosionCraftingRecipes.addExplosionRecipes(recipe);
             }
             for(String recipe : FileUtils.readFromFile("deputy.recipes", false).split(System.lineSeparator())) {
                 if(!recipe.isEmpty())
                     DeputyCraftingRecipes.addDeputyCraftingRecipes(recipe);
             }
-            ExplosionRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,100);
+            ExplosionCraftingRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,100);
             ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,100);
             ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT,100);
             DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1, Items.DIAMOND,1,Items.DIAMOND_BLOCK);
-            DropRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
+            DropCraftingRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
+            LightningCraftingRecipes.addLightningCraftingRecipes(Items.DIRT,Items.DIAMOND);
         } catch (FileNotFoundException e) {
             FileUtils.createFiles();
             FileUtils.writeToNewFile("banBlock.recipes", "", false);

@@ -1,7 +1,7 @@
 package me.lyuxc.develop.compat.JEI;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.recipes.ExplosionRecipes;
+import me.lyuxc.develop.recipes.ExplosionCraftingRecipes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionRecipes> {
+public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionCraftingRecipes> {
     private final IGuiHelper helper;
 
     public ExplosionRecipeCategory(IGuiHelper helper) {
@@ -26,7 +26,7 @@ public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionRecipes
     }
 
     @Override
-    public @NotNull RecipeType<ExplosionRecipes> getRecipeType() {
+    public @NotNull RecipeType<ExplosionCraftingRecipes> getRecipeType() {
         return JEIPlugin.CATEGORY_EXPLOSION;
     }
 
@@ -46,13 +46,13 @@ public class ExplosionRecipeCategory implements IRecipeCategory<ExplosionRecipes
     }
 
     @Override
-    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull ExplosionRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
+    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull ExplosionCraftingRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(recipes.input());
         builder.addSlot(RecipeIngredientRole.OUTPUT,62,2).addItemStack(recipes.output());
     }
 
     @Override
-    public @NotNull List<Component> getTooltipStrings(@NotNull ExplosionRecipes recipe, @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public @NotNull List<Component> getTooltipStrings(@NotNull ExplosionCraftingRecipes recipe, @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         return List.of(Component.translatable("ts.tips.jei.explosion_probability",recipe.change()));
     }
 }

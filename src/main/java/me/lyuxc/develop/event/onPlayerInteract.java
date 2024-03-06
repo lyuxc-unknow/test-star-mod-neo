@@ -1,7 +1,7 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.recipes.DropRecipes;
+import me.lyuxc.develop.recipes.DropCraftingRecipes;
 import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -58,7 +58,7 @@ public class onPlayerInteract {
     @SubscribeEvent
     public static void onPlayerPickupItem(PlayerEvent.ItemPickupEvent event) {
         Player player = event.getEntity();
-        DropRecipes.recipes.forEach(s -> {
+        DropCraftingRecipes.recipes.forEach(s -> {
             if(event.getStack().is(s.input().getItem()) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(s.offhandItems().getItem())) {
                 for(int i=0;i<player.getInventory().getContainerSize();i++) {
                     if(player.getInventory().getItem(i).is(s.input().getItem())) {

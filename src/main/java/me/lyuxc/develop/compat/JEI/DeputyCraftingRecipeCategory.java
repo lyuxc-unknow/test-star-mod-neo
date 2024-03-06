@@ -44,7 +44,7 @@ public class DeputyCraftingRecipeCategory implements IRecipeCategory<DeputyCraft
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull DeputyCraftingRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(recipes.inputItem());
-        builder.addSlot(RecipeIngredientRole.INPUT,30,2).addItemStack(recipes.craftingOutputItem());
+        builder.addSlot(RecipeIngredientRole.CATALYST,30,2).addItemStack(recipes.craftingOutputItem());
         builder.addSlot(RecipeIngredientRole.OUTPUT,62,2).addItemStack(recipes.outputItem());
     }
 }
