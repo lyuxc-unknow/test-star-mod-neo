@@ -18,13 +18,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Objects;
 
 public class Utils {
@@ -108,12 +106,16 @@ public class Utils {
                 if(!recipe.isEmpty())
                     DeputyCraftingRecipes.addDeputyCraftingRecipes(recipe);
             }
-            ExplosionCraftingRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,100);
-            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,100);
-            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT,100);
-            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1, Items.DIAMOND,1,Items.DIAMOND_BLOCK);
-            DropCraftingRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
-            LightningCraftingRecipes.addLightningCraftingRecipes(Items.DIRT,Items.DIAMOND);
+            for(String recipe : FileUtils.readFromFile("lightning.recipes", false).split(System.lineSeparator())) {
+                if(!recipe.isEmpty())
+                    LightningCraftingRecipes.addLightningCraftingRecipes(recipe);
+            }
+//            ExplosionCraftingRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,50);
+//            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,50);
+//            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT,100);
+//            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1, Items.DIAMOND,1,Items.DIAMOND_BLOCK);
+//            DropCraftingRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
+//            LightningCraftingRecipes.addLightningCraftingRecipes(Items.DIRT,Items.DIAMOND);
         } catch (FileNotFoundException e) {
             FileUtils.createFiles();
             FileUtils.writeToNewFile("banBlock.recipes", "", false);
@@ -121,6 +123,7 @@ public class Utils {
             FileUtils.writeToNewFile("multiExplosion.recipes","",false);
             FileUtils.writeToNewFile("explosion.recipes","",false);
             FileUtils.writeToNewFile("deputy.recipes","",false);
+            FileUtils.writeToNewFile("lightning.recipes","",false);
         }
     }
 }

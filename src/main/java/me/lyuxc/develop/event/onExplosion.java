@@ -79,7 +79,7 @@ public class onExplosion {
             item.yo = 0;
             item.zo = 0;
             item.setPickUpDelay(10);
-            if(recipes.change() >= random.nextInt(1, 100)) {
+            if(recipes.change() >= random.nextInt(1, 200)) {
                 event.getLevel().addFreshEntity(item);
                 entity.getItem().shrink(recipes.inputCount());
             }
