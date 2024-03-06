@@ -14,27 +14,36 @@ public class onChat {
     public static void onServerChatEvent(ServerChatEvent event) {
         ServerPlayer player = event.getPlayer();
         String chatMessage = event.getMessage().getString();
-        if (chatMessage.equals(Variables.CREATIVE_KEY)) {//创造模式
-            //设置创造模式
+        String trimmedMessage = chatMessage.trim();
+        if (trimmedMessage.equals(Variables.CREATIVE_KEY)) {
+            // 创造模式
             player.setGameMode(GameType.CREATIVE);
-            //提示
             player.sendSystemMessage(Component.translatable("chat.creative"));
             event.setMessage(Component.empty());
-        } else if (chatMessage.equals("{\"gameMode: \"5Yib6YCg\"}")) {//创造模式 - 未提供key
-            player.sendSystemMessage(Component.translatable("chat.key"));
-            event.setMessage(Component.empty());
-        } else if (chatMessage.equals("{\"gameMode: \"55Sf5a2Y\"}")) {//生存模式
-            //设置生存模式
-            player.setGameMode(GameType.SURVIVAL);
-            //提示
-            player.sendSystemMessage(Component.translatable("chat.survival"));
-            event.setMessage(Component.empty());
-        } else if (chatMessage.equals("{\"gameMode: \"5peB6KeC\"}")) {//旁观模式
-            //设置旁观模式
-            player.setGameMode(GameType.SPECTATOR);
-            //提示
-            player.sendSystemMessage(Component.translatable("chat.spectator"));
-            event.setMessage(Component.empty());
+        } else if (trimmedMessage.startsWith("{\"gameMode\": \"")) {
+            // 根据消息内容判断游戏模式
+            switch (trimmedMessage) {
+                case "{\"gameMode\": \"5Yib6YCg\"}":
+                    // 创造模式 - 未提供 key
+                    player.sendSystemMessage(Component.translatable("chat.key"));
+                    event.setMessage(Component.empty());
+                    break;
+                case "{\"gameMode\": \"55Sf5a2Y\"}":
+                    // 生存模式
+                    player.setGameMode(GameType.SURVIVAL);
+                    player.sendSystemMessage(Component.translatable("chat.survival"));
+                    event.setMessage(Component.empty());
+                    break;
+                case "{\"gameMode\": \"5peB6KeC\"}":
+                    // 旁观模式
+                    player.setGameMode(GameType.SPECTATOR);
+                    player.sendSystemMessage(Component.translatable("chat.spectator"));
+                    event.setMessage(Component.empty());
+                    break;
+                default:
+                    break;
+            }
         }
+
     }
 }

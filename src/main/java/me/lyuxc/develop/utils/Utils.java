@@ -24,6 +24,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.io.FileNotFoundException;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class Utils {
     public static int getTime(int time) {
@@ -84,46 +85,43 @@ public class Utils {
     }
     public static void loadModResource() {
         try {
+            //读取前清空
             DropCraftingRecipes.recipes.clear();
             ExplosionCraftingRecipes.recipes.clear();
             ExplosionMultiItemRecipes.recipes.clear();
             DeputyCraftingRecipes.recipes.clear();
             LightningCraftingRecipes.recipes.clear();
+
+            //读取文件存入合成表列表
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
-            for(String recipe : FileUtils.readFromFile("dropCrafting.recipes", false).split(System.lineSeparator())) {
-                if(!recipe.isEmpty())
-                    DropCraftingRecipes.addPlayerPickupRecipes(recipe);
-            }
-            for(String recipe : FileUtils.readFromFile("multiExplosion.recipes", false).split(System.lineSeparator())) {
-                if(!recipe.isEmpty())
-                    ExplosionMultiItemRecipes.addExplosionMultiRecipes(recipe);
-            }
-            for(String recipe : FileUtils.readFromFile("Explosion.recipes", false).split(System.lineSeparator())) {
-                if(!recipe.isEmpty())
-                    ExplosionCraftingRecipes.addExplosionRecipes(recipe);
-            }
-            for(String recipe : FileUtils.readFromFile("deputy.recipes", false).split(System.lineSeparator())) {
-                if(!recipe.isEmpty())
-                    DeputyCraftingRecipes.addDeputyCraftingRecipes(recipe);
-            }
-            for(String recipe : FileUtils.readFromFile("lightning.recipes", false).split(System.lineSeparator())) {
-                if(!recipe.isEmpty())
-                    LightningCraftingRecipes.addLightningCraftingRecipes(recipe);
-            }
-//            ExplosionCraftingRecipes.addExplosionRecipes(Items.DIRT,4,Items.DIAMOND,50);
-//            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.APPLE.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.STONE,50);
-//            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.DIRT.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.IRON_INGOT,100);
-//            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1, Items.DIAMOND,1,Items.DIAMOND_BLOCK);
-//            DropCraftingRecipes.addPlayerPickupRecipes(Items.OAK_LOG,Items.AIR,0 ,Items.OAK_PLANKS,3);
-//            LightningCraftingRecipes.addLightningCraftingRecipes(Items.DIRT,Items.DIAMOND);
+            addRecipesFromFile("dropCrafting.recipes", DropCraftingRecipes::addPlayerPickupRecipes);
+            addRecipesFromFile("multiExplosion.recipes", ExplosionMultiItemRecipes::addExplosionMultiRecipes);
+            addRecipesFromFile("explosion.recipes", ExplosionCraftingRecipes::addExplosionRecipes);
+            addRecipesFromFile("deputy.recipes", DeputyCraftingRecipes::addDeputyCraftingRecipes);
+            addRecipesFromFile("lightning.recipes", LightningCraftingRecipes::addLightningCraftingRecipes);
         } catch (FileNotFoundException e) {
-            FileUtils.createFiles();
-            FileUtils.writeToNewFile("banBlock.recipes", "", false);
-            FileUtils.writeToNewFile("dropCrafting.recipes","",false);
-            FileUtils.writeToNewFile("multiExplosion.recipes","",false);
-            FileUtils.writeToNewFile("explosion.recipes","",false);
-            FileUtils.writeToNewFile("deputy.recipes","",false);
-            FileUtils.writeToNewFile("lightning.recipes","",false);
+            // 如果没找到就创建
+            createRecipeFiles();
         }
+    }
+    //添加到合成表
+    private static void addRecipesFromFile(String fileName, Consumer<String> recipeConsumer) throws FileNotFoundException {
+        String[] recipes = FileUtils.readFromFile(fileName, false).split(System.lineSeparator());
+        for (String recipe : recipes) {
+            if (!recipe.isEmpty()) {
+                recipeConsumer.accept(recipe);
+            }
+        }
+    }
+
+    //如果没找到文件就创建
+    private static void createRecipeFiles() {
+        FileUtils.createFiles();
+        FileUtils.writeToNewFile("banBlock.recipes", "", false);
+        FileUtils.writeToNewFile("dropCrafting.recipes", "", false);
+        FileUtils.writeToNewFile("multiExplosion.recipes", "", false);
+        FileUtils.writeToNewFile("explosion.recipes", "", false);
+        FileUtils.writeToNewFile("deputy.recipes", "", false);
+        FileUtils.writeToNewFile("lightning.recipes", "", false);
     }
 }
