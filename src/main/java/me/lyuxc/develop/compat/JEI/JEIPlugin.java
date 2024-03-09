@@ -65,10 +65,9 @@ public class JEIPlugin implements IModPlugin {
             ItemStack outputItem = recipes.outputItem();
             ItemStack craftingItem = recipes.craftingOutputItem();
             inputItem.setCount(recipes.inputCount());
-            inputItem.setHoverName(Component.translatable("ts.tips.jei.offhandTip",inputItem.getHoverName()));
-            craftingItem.setHoverName(Component.translatable("ts.tips.jei.craftItem",craftingItem.getHoverName()));
+            inputItem.setHoverName(Component.translatable("ts.tips.jei.offhandTip",inputItem.getDisplayName()));
             outputItem.setCount(recipes.outputCount());
-            return new DeputyCraftingRecipes(inputItem,recipes.inputCount(),outputItem, recipes.outputCount(), craftingItem);
+            return new DeputyCraftingRecipes(inputItem,recipes.inputCount(),outputItem, recipes.outputCount(), craftingItem,recipes.recipe());
         }).toList());
         registration.addRecipes(CATEGORY_LIGHTNING,LightningCraftingRecipes.recipes.stream().toList());
     }

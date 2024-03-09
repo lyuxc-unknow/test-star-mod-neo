@@ -33,7 +33,7 @@ public class DeputyCraftingRecipeCategory implements IRecipeCategory<DeputyCraft
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,60,80,20);
+        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,60,100,80);
     }
 
     @Override
@@ -44,7 +44,14 @@ public class DeputyCraftingRecipeCategory implements IRecipeCategory<DeputyCraft
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull DeputyCraftingRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(recipes.inputItem());
-        builder.addSlot(RecipeIngredientRole.CATALYST,30,2).addItemStack(recipes.craftingOutputItem());
-        builder.addSlot(RecipeIngredientRole.OUTPUT,62,2).addItemStack(recipes.outputItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT,80,2).addItemStack(recipes.outputItem());
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,41,2).addItemStack(recipes.craftingOutputItem());
+        recipes.recipe().forEach(ingredients -> ingredients.forEach(ingredient -> {
+            for(var i=0;i<3;i++) {
+                for(var j=0;j<3;j++) {
+                    builder.addSlot(RecipeIngredientRole.RENDER_ONLY,23 + 18 * i,24 + 18 * j).addIngredients(ingredient);
+                }
+            }
+        }));
     }
 }

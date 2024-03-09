@@ -32,7 +32,7 @@ public class LightningCraftingCategory implements IRecipeCategory<LightningCraft
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,80,80,20);
+        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),98,0,80,20);
     }
 
     @Override

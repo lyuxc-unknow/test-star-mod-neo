@@ -4,6 +4,8 @@ import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.recipes.*;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -18,11 +20,19 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -83,7 +93,14 @@ public class Utils {
     public static ItemStack getItemStack(String itemId) {
         return getItem(itemId).getDefaultInstance();
     }
-    public static void loadModResource() {
+    public static Item getRandomItemStack() {
+        List<Item> item = new ArrayList<>();
+        for(ResourceLocation rl : BuiltInRegistries.ITEM.keySet()) {
+            item.add(BuiltInRegistries.ITEM.get(rl));
+        }
+        return item.get(Variables.random.nextInt(item.size()));
+    }
+    public static void loadModResource(RegistryAccess access,RecipeManager manager) {
         try {
             //读取前清空
             DropCraftingRecipes.recipes.clear();
@@ -97,8 +114,20 @@ public class Utils {
             addRecipesFromFile("dropCrafting.recipes", DropCraftingRecipes::addPlayerPickupRecipes);
             addRecipesFromFile("multiExplosion.recipes", ExplosionMultiItemRecipes::addExplosionMultiRecipes);
             addRecipesFromFile("explosion.recipes", ExplosionCraftingRecipes::addExplosionRecipes);
-            addRecipesFromFile("deputy.recipes", DeputyCraftingRecipes::addDeputyCraftingRecipes);
+            for (String recipe : FileUtils.readFromFile("deputy.recipes", false).split(System.lineSeparator())) {
+                if (!recipe.isEmpty()) {
+                    DeputyCraftingRecipes.addDeputyCraftingRecipes(recipe,access,manager);
+                }
+            }
             addRecipesFromFile("lightning.recipes", LightningCraftingRecipes::addLightningCraftingRecipes);
+            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1,Items.DIAMOND,1,Items.DIAMOND_BLOCK,access,manager);
+            for(int i=0;i<20;i++) {
+                if(i<19) {
+                    RandomDropCraftingRecipes.addRandomDropCraftingRecipe(Utils.getItemStack("test_star:package_" + i),Utils.getItemStack("test_star:package_" + (i + 1)));
+                } else {
+                    RandomDropCraftingRecipes.addRandomDropCraftingRecipe(Utils.getItemStack("test_star:package_" + i), Items.DIAMOND_BLOCK.getDefaultInstance());
+                }
+            }
         } catch (FileNotFoundException e) {
             // 如果没找到就创建
             createRecipeFiles();
@@ -123,5 +152,17 @@ public class Utils {
         FileUtils.writeToNewFile("explosion.recipes", "", false);
         FileUtils.writeToNewFile("deputy.recipes", "", false);
         FileUtils.writeToNewFile("lightning.recipes", "", false);
+    }
+
+    public static List<NonNullList<Ingredient>> getRecipe(@NotNull ItemStack itemStack, RegistryAccess access, RecipeManager recipeManager) {
+        List<NonNullList<Ingredient>> recipes = new ArrayList<>();
+        for(RecipeHolder<?> recipeHolder : recipeManager.getRecipes()) {
+            if(recipeHolder.value().getType() == RecipeType.CRAFTING) {
+                if (itemStack.is(recipeHolder.value().getResultItem(access).getItem())) {
+                    recipes.add(recipeHolder.value().getIngredients());
+                }
+            }
+        }
+        return recipes;
     }
 }

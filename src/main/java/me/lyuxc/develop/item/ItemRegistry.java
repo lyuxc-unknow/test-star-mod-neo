@@ -121,6 +121,9 @@ public class ItemRegistry {
 
     //初始化调用
     public static void init(IEventBus iEventBus) {
+        for (int i=0;i<20;i++) {
+            ITEMS.register("package_"+i,() -> new Item(new Item.Properties()));
+        }
         ITEMS.register(iEventBus);
     }
 }

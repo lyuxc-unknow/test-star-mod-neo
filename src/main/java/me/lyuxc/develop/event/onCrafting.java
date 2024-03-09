@@ -13,10 +13,10 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 public class onCrafting {
     @SubscribeEvent
     public static void onCraftEvent(PlayerEvent.ItemCraftedEvent event) {
-       if(!event.getEntity().level().isClientSide()) {
-           ItemStack craftOutputItem = event.getCrafting();
-           Player player = event.getEntity();
-           ItemStack offhandItem = player.getItemInHand(InteractionHand.OFF_HAND);
+        ItemStack craftOutputItem = event.getCrafting();
+        Player player = event.getEntity();
+        ItemStack offhandItem = player.getItemInHand(InteractionHand.OFF_HAND);
+       if(!player.level().isClientSide()) {
            for(DeputyCraftingRecipes recipes : DeputyCraftingRecipes.recipes) {
                if(craftOutputItem.is(recipes.craftingOutputItem().getItem())) {
                    if(offhandItem.is(recipes.inputItem().getItem()) && offhandItem.getCount() >= recipes.inputCount()) {

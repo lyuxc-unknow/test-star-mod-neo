@@ -3,7 +3,6 @@ package me.lyuxc.develop;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -41,10 +40,7 @@ public class Star {
     }
 
     private void CommonSetupEvent(FMLCommonSetupEvent event) {
-        //TOP注册 - TODO TOP Unable update to 1.20.4
-        //TOPRegister.topRegister();
         //模组加载数量将检测
-        Utils.loadModResource();
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             System.exit(0);

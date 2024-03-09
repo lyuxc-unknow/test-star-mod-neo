@@ -10,6 +10,6 @@ import net.neoforged.neoforge.event.AddReloadListenerEvent;
 public class onReload {
     @SubscribeEvent
     public static void onReloadEvent(AddReloadListenerEvent event) {
-        event.addListener((ResourceManagerReloadListener) resourceManager -> Utils.loadModResource());
+        event.addListener((ResourceManagerReloadListener) resourceManager -> Utils.loadModResource(event.getRegistryAccess(),event.getServerResources().getRecipeManager()));
     }
 }
