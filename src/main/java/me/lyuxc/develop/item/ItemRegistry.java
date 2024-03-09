@@ -112,6 +112,7 @@ public class ItemRegistry {
     public static final DeferredItem<BowItem> BowItem = ITEMS.register("my_bow",() -> new BowItem(new Item.Properties()
             .stacksTo(1)
     ));
+    public static final DeferredItem<WoodSawBlade> WoodSawBladeItem = ITEMS.register("wood_sawblade", WoodSawBlade::new);
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {

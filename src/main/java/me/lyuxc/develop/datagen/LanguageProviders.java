@@ -53,6 +53,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MultiPlayerTool.get(), "MultiPlayer Tool");
             add(ItemRegistry.WoodShears.get(), "Wood Shears");
             add(ItemRegistry.BowItem.get(), "Easy Bow");
+            add(ItemRegistry.WoodSawBladeItem.get(),"Wood SawBlade");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "Example Block");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
@@ -88,6 +89,9 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","Output Probability: %s%%");
             add("ts.tips.jei.deputy_category","Deputy Crafting");
             add("ts.tips.jei.lightning_category","Lightning Crafting");
+            for(var i=0;i<20;i++) {
+                add("item.test_star.package_" + i,"No."+(i+1)+"Package");
+            }
         } else if(Objects.equals(locale1, "zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
@@ -123,6 +127,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MultiPlayerTool.get(), "多人模式解锁工具");
             add(ItemRegistry.WoodShears.get(), "纯木剪刀");
             add(ItemRegistry.BowItem.get(), "简易的弓");
+            add(ItemRegistry.WoodSawBladeItem.get(),"木锯条");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "测试方块");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "行星方块");
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");
@@ -156,6 +161,9 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","产出概率: %s%%");
             add("ts.tips.jei.deputy_category","二次合成");
             add("ts.tips.jei.lightning_category","雷电合成");
+            for(var i=0;i<20;i++) {
+                add("item.test_star.package_" + i,"第"+(i+1)+"次投掷");
+            }
         }
     }
 }

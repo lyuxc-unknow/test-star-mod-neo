@@ -6,10 +6,13 @@ import net.minecraft.network.chat.Component;
 
 import static net.minecraft.ChatFormatting.*;
 
+/**
+ * @author cnlimiter,Nova Committee
+ */
 public class TextUtils {
     //Based Reforged-Avaritia Source
     //从无尽贪婪复制的代码，用于实现彩色字体
-    private static final ChatFormatting[] value = {RED, GOLD, YELLOW, GREEN, AQUA, BLUE, LIGHT_PURPLE};
+     private static final ChatFormatting[] value = {RED, GOLD, YELLOW, GREEN, AQUA, BLUE, LIGHT_PURPLE};
     private static final ChatFormatting[] value2 = {BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE};
 
     public static Component apply(Component component) {

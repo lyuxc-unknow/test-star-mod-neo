@@ -3,6 +3,7 @@ package me.lyuxc.develop.datagen;
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.item.ItemRegistry;
+import me.lyuxc.develop.utils.Utils;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -53,6 +54,9 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.LIGHT_AR.get());
         basicItem(ItemRegistry.MultiPlayerTool.get());
         basicItem(ItemRegistry.WoodShears.get());
-
+        basicItem(ItemRegistry.WoodSawBladeItem.get());
+        for(var i=0;i<20;i++) {
+            basicItem(Utils.getItem("test_star:package_" + i));
+        }
     }
 }
