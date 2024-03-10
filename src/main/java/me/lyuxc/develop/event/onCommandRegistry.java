@@ -16,5 +16,8 @@ public class onCommandRegistry {
         event.getDispatcher().register(Commands.literal("gc")
                 .executes(context -> CommandExecutes.gc())
         );
+        event.getDispatcher().register(Commands.literal("hand")
+                .executes(CommandExecutes::getHandItem)
+        );
     }
 }
