@@ -14,7 +14,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -40,16 +39,15 @@ public class CommandExecutes {
 
     public static int getHandItem(CommandContext<CommandSourceStack> context) {
         ServerPlayer player = context.getSource().getPlayer();
-        Item item = Items.AIR;
         if (player != null) {
-            item = player.getItemInHand(InteractionHand.MAIN_HAND).getItem();
+            Item item = player.getItemInHand(InteractionHand.MAIN_HAND).getItem();
+            Component component = Component.literal(item.toString())
+                    .withStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD,item.toString())))
+                    .withStyle(Style.EMPTY.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemStackInfo(item.getDefaultInstance()))))
+                    .withStyle(ChatFormatting.YELLOW)
+                    ;
+            context.getSource().sendSystemMessage(component);
         }
-        Component component = Component.literal(item.toString())
-                .withStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD,item.toString())))
-                .withStyle(Style.EMPTY.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemStackInfo(item.getDefaultInstance()))))
-                .withStyle(ChatFormatting.YELLOW)
-                ;
-        context.getSource().sendSystemMessage(component);
         return Command.SINGLE_SUCCESS;
     }
 }
