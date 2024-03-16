@@ -55,6 +55,15 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.MultiPlayerTool.get());
         basicItem(ItemRegistry.WoodShears.get());
         basicItem(ItemRegistry.WoodSawBladeItem.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_1.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_2.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_3.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_4.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_5.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_6.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_7.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_8.get());
+        basicItem(ItemRegistry.ALL_OURPOSE_TOOL_INF.get());
         for(var i=0;i<20;i++) {
             basicItem(Utils.getItem("test_star:package_" + i));
         }

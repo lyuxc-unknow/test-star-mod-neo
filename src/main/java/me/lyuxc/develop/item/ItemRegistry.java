@@ -1,6 +1,7 @@
 package me.lyuxc.develop.item;
 
 import me.lyuxc.develop.Star;
+import me.lyuxc.develop.Tiers;
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.item.items.*;
 import me.lyuxc.develop.item.tools.*;
@@ -112,6 +113,15 @@ public class ItemRegistry {
     public static final DeferredItem<BowItem> BowItem = ITEMS.register("my_bow",() -> new BowItem(new Item.Properties()
             .stacksTo(1)
     ));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_1 = ITEMS.register("allinone_tool_1",() -> new AllOurposeTool(Tiers.LEVEL1));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_2 = ITEMS.register("allinone_tool_2",() -> new AllOurposeTool(Tiers.LEVEL2));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_3 = ITEMS.register("allinone_tool_3",() -> new AllOurposeTool(Tiers.LEVEL3));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_4 = ITEMS.register("allinone_tool_4",() -> new AllOurposeTool(Tiers.LEVEL4));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_5 = ITEMS.register("allinone_tool_5",() -> new AllOurposeTool(Tiers.LEVEL5));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_6 = ITEMS.register("allinone_tool_6",() -> new AllOurposeTool(Tiers.LEVEL6));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_7 = ITEMS.register("allinone_tool_7",() -> new AllOurposeTool(Tiers.LEVEL7));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_8 = ITEMS.register("allinone_tool_8",() -> new AllOurposeTool(Tiers.LEVEL8));
+    public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_INF = ITEMS.register("allinone_tool_inf",() -> new AllOurposeTool(Tiers.LEVEL_INF));
     public static final DeferredItem<WoodSawBlade> WoodSawBladeItem = ITEMS.register("wood_sawblade", WoodSawBlade::new);
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {

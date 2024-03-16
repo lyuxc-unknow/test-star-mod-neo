@@ -5,15 +5,15 @@ import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 public enum Tiers implements Tier {
-    LEVEL1(-1, 0, 2 - 1, 0, 22),
-    LEVEL2(-1, 0, 4 - 1, 0, 100),
-    LEVEL3(-1, 0, 6 - 1, 0, 100),
-    LEVEL4(-1, 0, 8 - 1, 0, 100),
-    LEVEL5(-1, 0, 10 - 1, 0, 100),
-    LEVEL6(-1, 0, 12 - 1, 0, 100),
-    LEVEL7(-1, 0, 20 - 1, 0, 100),
-    LEVEL8(-1, 0, 50 - 1, 0, 100),
-    LEVEL_INF(-1, 0, Long.MAX_VALUE - 1, 100, 1024);
+    LEVEL1(100, 5, 2 - 1, 0, 100),
+    LEVEL2(200, 9, 4 - 1, 1, 100),
+    LEVEL3(400, 13, 6 - 1, 2, 100),
+    LEVEL4(800, 15, 8 - 1, 3, 100),
+    LEVEL5(1600, 18, 10 - 1, 4, 100),
+    LEVEL6(3200, 20, 12 - 1, 5, 100),
+    LEVEL7(6400, 25, 20 - 1, 6, 100),
+    LEVEL8(12800, 29, 50 - 1, 7, 100),
+    LEVEL_INF(-1, 99999, Long.MAX_VALUE - 1, 100, 1024);
 
     final int uses,level,EnchantmentValue;
     final float speed,damageBonus;

@@ -1,6 +1,8 @@
 package me.lyuxc.develop.event;
 
+import me.lyuxc.develop.Tiers;
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.item.tools.AllOurposeTool;
 import me.lyuxc.develop.item.tools.MySword;
 import me.lyuxc.develop.item.tools.TetanusBlade;
 import me.lyuxc.develop.utils.TextUtils;
@@ -26,6 +28,18 @@ public class onItemToolTip {
                                     .append(TextUtils.apply(Component.translatable("ts.attribute.damage")))
                                     .append(" ")
                                     .withStyle(ChatFormatting.DARK_GREEN));
+                }
+            }
+        }if (event.getItemStack().getItem() instanceof AllOurposeTool allOurposeTool) {
+            if(allOurposeTool.getTier() == Tiers.LEVEL_INF) {
+                for (int x = 0; x < event.getToolTip().size(); x++) {
+                    if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage"))) {
+                        event.getToolTip().set(x,
+                                Component.literal(" ").withStyle(ChatFormatting.BLUE)
+                                        .append(TextUtils.apply(Component.translatable("ts.attribute.damage")))
+                                        .append(" ")
+                                        .withStyle(ChatFormatting.DARK_GREEN));
+                    }
                 }
             }
         }

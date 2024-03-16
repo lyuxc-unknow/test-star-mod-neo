@@ -18,6 +18,7 @@ public class onCommandRegistry {
         );
         event.getDispatcher().register(Commands.literal("hand")
                 .executes(CommandExecutes::getHandItem)
+                .requires(r -> r.hasPermission(1))
         );
     }
 }
