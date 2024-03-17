@@ -107,7 +107,7 @@ dependencies {
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     // at runtime, use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
-
+//    implementation("curse.maven:additionalenchantedminer-neoforge-282837:5148482")
 //    annotationProcessor 'org.spongepowered:mixin:0.8.+:processor'
 
     // Example mod dependency with JEI
