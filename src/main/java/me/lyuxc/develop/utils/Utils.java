@@ -120,7 +120,6 @@ public class Utils {
                 }
             }
             addRecipesFromFile("lightning.recipes", LightningCraftingRecipes::addLightningCraftingRecipes);
-            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1,Items.DIAMOND,1,Items.DIAMOND_BLOCK,access,manager);
             for(int i=0;i<20;i++) {
                 if(i<19) {
                     RandomDropCraftingRecipes.addRandomDropCraftingRecipe(Utils.getItemStack("test_star:package_" + i),Utils.getItemStack("test_star:package_" + (i + 1)));

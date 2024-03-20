@@ -1,7 +1,6 @@
 package me.lyuxc.develop.recipes;
 
 import me.lyuxc.develop.utils.Utils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.Item;
@@ -22,9 +21,7 @@ public record DeputyCraftingRecipes(ItemStack inputItem, int inputCount, ItemSta
         ItemStack inputItem = Utils.getItemStack(v[0]);
         ItemStack offhandItem = Utils.getItemStack(v[2]);
         ItemStack craftingOutputItem = Utils.getItemStack(v[4]);
-        if (Minecraft.getInstance().level != null) {
-            recipes.add(new DeputyCraftingRecipes(inputItem,Integer.parseInt(v[1]),offhandItem,Integer.parseInt(v[3]),craftingOutputItem, Utils.getRecipe(craftingOutputItem, access,recipeManager)));
-        }
+        recipes.add(new DeputyCraftingRecipes(inputItem,Integer.parseInt(v[1]),offhandItem,Integer.parseInt(v[3]),craftingOutputItem, Utils.getRecipe(craftingOutputItem, access,recipeManager)));
     }
     @SuppressWarnings("unused")
     public static void addDeputyCraftingRecipes(@NotNull String inputItem,@NotNull String inputCount,@NotNull String outputItem,@NotNull String outputCount,@NotNull String craftingOutputItem,RegistryAccess access,RecipeManager recipeManager) {

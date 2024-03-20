@@ -45,13 +45,17 @@ public class DeputyCraftingRecipeCategory implements IRecipeCategory<DeputyCraft
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull DeputyCraftingRecipes recipes, @NotNull IFocusGroup iFocusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT,2,2).addItemStack(recipes.inputItem());
         builder.addSlot(RecipeIngredientRole.OUTPUT,80,2).addItemStack(recipes.outputItem());
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,41,2).addItemStack(recipes.craftingOutputItem());
-        recipes.recipe().forEach(ingredients -> ingredients.forEach(ingredient -> {
+        builder.addSlot(RecipeIngredientRole.OUTPUT,41,2).addItemStack(recipes.craftingOutputItem());
+        recipes.recipe().forEach(ingredients -> {
+            int i1=0;
             for(var i=0;i<3;i++) {
                 for(var j=0;j<3;j++) {
-                    builder.addSlot(RecipeIngredientRole.RENDER_ONLY,23 + 18 * i,24 + 18 * j).addIngredients(ingredient);
+                    if((i + j) < ingredients.size()) {
+                        builder.addSlot(RecipeIngredientRole.INPUT,23 + 18 * j,24 + 18 * i).addIngredients(ingredients.get(i1));
+                        i1++;
+                    }
                 }
             }
-        }));
+        });
     }
 }
