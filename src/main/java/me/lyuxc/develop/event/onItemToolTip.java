@@ -30,7 +30,8 @@ public class onItemToolTip {
                                     .withStyle(ChatFormatting.DARK_GREEN));
                 }
             }
-        }if (event.getItemStack().getItem() instanceof AllOurposeTool allOurposeTool) {
+        }
+        if (event.getItemStack().getItem() instanceof AllOurposeTool allOurposeTool) {
             if(allOurposeTool.getTier() == Tiers.LEVEL_INF) {
                 for (int x = 0; x < event.getToolTip().size(); x++) {
                     if (event.getToolTip().get(x).contains(Component.translatable("attribute.name.generic.attack_damage"))) {

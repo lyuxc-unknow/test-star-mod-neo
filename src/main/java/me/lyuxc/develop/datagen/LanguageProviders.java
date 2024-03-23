@@ -151,9 +151,9 @@ public class LanguageProviders extends LanguageProvider {
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");
             add("itemGroup.test_star", "[Mind]物品栏");
             add("star.chat.disable.command", "§4该命令已被管理员禁用");
-            add("chat.creative", "已入侵至管理员权限");
-            add("chat.survival", "已回归正常模式");
-            add("chat.spectator", "已入侵至旁观模式");
+            add("chat.creative", "已切换至创造模式");
+            add("chat.survival", "已切换至生存模式");
+            add("chat.spectator", "已切换至旁观模式");
             add("chat.key", "请提供密钥");
             add("ts.attribute.damage", "世間萬物の最高傷害");
             add("ts.attribute.damage_tetanus_blade", "不可估量");
@@ -165,7 +165,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.server.kick","你点太多次了");
             add("ts.click.much","连续点击过快会被一脚踢出去哦，这只是一句提示，请休息一会~~");
             add("ts.click.enable","你现在可以开始点击了");
-            add("ts.tips.right.disable","你不能使用%s");
+            add("ts.tips.right.disable","你无法使用%s");
             add("ts.tips.modpack","§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！");
             add("ts.tips.dev_title","Mind2-开发");
             add("ts.tips.user_title","Mind2");

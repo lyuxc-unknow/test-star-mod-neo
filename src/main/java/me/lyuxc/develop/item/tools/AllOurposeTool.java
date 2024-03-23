@@ -71,21 +71,23 @@ public class AllOurposeTool extends DiggerItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if (!pLevel.isClientSide) {
-            AABB aabb = pPlayer.getBoundingBox().deflate(48);
-            List<Entity> entityList = pLevel.getEntities(pPlayer, aabb);
-            DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.EXPLOSION);
-            if(entityList.isEmpty()) return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
-            if(!pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
-            for(Entity entity :entityList) {
-                if ((pPlayer.getInventory().getFreeSlot() != -1 && entity instanceof ItemEntity)||entity instanceof ExperienceOrb) {
-                    entity.absMoveTo(pPlayer.getX(),pPlayer.getY(),pPlayer.getZ());
-                }else if(entity instanceof EnderDragon enderDragon) {
-                    enderDragon.hurt(enderDragon.head,damageSource,Integer.MAX_VALUE);
-                } else /*if(entity instanceof LivingEntity)*/ {
-                    Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
-                    light.moveTo(entity.getX(), entity.getY() + 4, entity.getZ());
-                    pLevel.addFreshEntity(light);
-                    entity.hurt(damageSource, Integer.MAX_VALUE);
+            if(TIER == Tiers.LEVEL_INF) {
+                AABB aabb = pPlayer.getBoundingBox().deflate(48);
+                List<Entity> entityList = pLevel.getEntities(pPlayer, aabb);
+                DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.EXPLOSION);
+                if(entityList.isEmpty()) return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
+                if(!pPlayer.isCreative()) pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 100);
+                for(Entity entity :entityList) {
+                    if ((pPlayer.getInventory().getFreeSlot() != -1 && entity instanceof ItemEntity)||entity instanceof ExperienceOrb) {
+                        entity.absMoveTo(pPlayer.getX(),pPlayer.getY(),pPlayer.getZ());
+                    }else if(entity instanceof EnderDragon enderDragon) {
+                        enderDragon.hurt(enderDragon.head,damageSource,Integer.MAX_VALUE);
+                    } else /*if(entity instanceof LivingEntity)*/ {
+                        Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, pLevel);
+                        light.moveTo(entity.getX(), entity.getY() + 4, entity.getZ());
+                        pLevel.addFreshEntity(light);
+                        entity.hurt(damageSource, Integer.MAX_VALUE);
+                    }
                 }
             }
         }

@@ -2,10 +2,10 @@
   "block.test_star.example_block": "测试方块",
   "block.test_star.fan_block": "拟态·风扇",
   "block.test_star.star_block": "行星方块",
-  "chat.creative": "已入侵至管理员权限",
+  "chat.creative": "已切换至创造模式",
   "chat.key": "请提供密钥",
-  "chat.spectator": "已入侵至旁观模式",
-  "chat.survival": "已回归正常模式",
+  "chat.spectator": "已切换至旁观模式",
+  "chat.survival": "已切换至生存模式",
   "item.test_star.allinone_tool_1": "侵蚀像素 全能工具",
   "item.test_star.allinone_tool_2": "坍塌数据 全能工具",
   "item.test_star.allinone_tool_3": "群星光点 全能工具",
@@ -94,6 +94,6 @@
   "ts.tips.modpack": "§4未经许可禁止分发本整合包及其子文件\n本整合包作者：lyuxc_\n如不是从官方渠道下载，请直接拉黑分发者！！！",
   "ts.tips.modpack_name": "整合包:",
   "ts.tips.mods": "模组数:",
-  "ts.tips.right.disable": "你不能使用%s",
+  "ts.tips.right.disable": "你无法使用%s",
   "ts.tips.user_title": "Mind2"
 }
