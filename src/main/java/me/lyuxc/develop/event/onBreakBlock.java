@@ -1,6 +1,5 @@
 package me.lyuxc.develop.event;
 
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,7 +13,7 @@ public class onBreakBlock {
     @SubscribeEvent
     public static void breakGrassDropStack(BlockEvent.BreakEvent event) {
         if(event.getState().getBlock() == Blocks.DIRT && !event.getPlayer().isCreative() && event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND) == ItemStack.EMPTY) {
-            if(RandomSource.create().nextInt(1,100) > 80) {
+            if(Math.random() * 100 > 65) {
                 event.getPlayer().drop(Items.STICK.getDefaultInstance(),false);
             }
         }
