@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class MachineTypeProvider implements IProbeInfoProvider {
+public class MachineTierProvider implements IProbeInfoProvider {
     @Override
     public ResourceLocation getID() {
         return Star.rl("machine_type");
@@ -20,7 +20,8 @@ public class MachineTypeProvider implements IProbeInfoProvider {
     @Override
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
         if (level.getBlockEntity(iProbeHitData.getPos()) instanceof AbstractCraftingMachineBlockEntity block) {
-            iProbeInfo.text(block.tier.name());
+            if (probeMode ==ProbeMode.DEBUG)
+                iProbeInfo.text(block.tier.name());
         }
     }
 }

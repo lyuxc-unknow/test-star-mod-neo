@@ -14,7 +14,7 @@ public class TOPRegister implements Function<ITheOneProbe,Void> {
         iTheOneProbe.registerProvider(new OverclockProvider());
         iTheOneProbe.registerProvider(new MachineProgressProvider());
         iTheOneProbe.registerProvider(new MachineComponentProvider());
-        iTheOneProbe.registerProvider(new MachineTypeProvider());
+        iTheOneProbe.registerProvider(new MachineTierProvider());
         return null;
     }
 }
