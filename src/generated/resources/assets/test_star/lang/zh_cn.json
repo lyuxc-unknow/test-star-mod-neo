@@ -95,5 +95,6 @@
   "ts.tips.modpack_name": "整合包:",
   "ts.tips.mods": "模组数:",
   "ts.tips.right.disable": "你无法使用%s",
+  "ts.tips.top.progress": "合成进度:",
   "ts.tips.user_title": "Mind2"
 }

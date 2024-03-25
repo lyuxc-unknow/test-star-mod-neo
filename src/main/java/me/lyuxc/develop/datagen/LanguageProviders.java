@@ -98,6 +98,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","Output Probability: %s%%");
             add("ts.tips.jei.deputy_category","Deputy Crafting");
             add("ts.tips.jei.lightning_category","Lightning Crafting");
+            add("ts.tips.top.progress","Crafting Progress:");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"No."+(i+1)+"Package");
             }
@@ -179,6 +180,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.explosion_probability","产出概率: %s%%");
             add("ts.tips.jei.deputy_category","二次合成");
             add("ts.tips.jei.lightning_category","雷电合成");
+            add("ts.tips.top.progress","合成进度:");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"第"+(i+1)+"次投掷");
             }
