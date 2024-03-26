@@ -1,10 +1,8 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.utils.Utils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -24,7 +22,7 @@ public class onPlayerLogging {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Utils.executeCommand((ServerLevel) level,player,"reload");
+//                Utils.executeCommand((ServerLevel) level,player,"reload");
             }).start();
         //开发者标签添加
         if(player.getName().getString().equals(Variables.DEVELOPER_NAME) && player.getStringUUID().equals(Variables.DEVELOPER_UUID)) {
