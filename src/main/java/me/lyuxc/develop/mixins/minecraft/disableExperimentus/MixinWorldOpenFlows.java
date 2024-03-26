@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.disableExperimentus;
+package me.lyuxc.develop.mixins.minecraft.disableExperimentus;
 
 import com.mojang.serialization.Lifecycle;
 import net.minecraft.client.Minecraft;

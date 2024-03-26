@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.disableExperimentus;
+package me.lyuxc.develop.mixins.minecraft.disableExperimentus;
 
 import net.minecraft.world.level.storage.PrimaryLevelData;
 import org.spongepowered.asm.mixin.Mixin;

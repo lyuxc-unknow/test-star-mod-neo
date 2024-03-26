@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins;
+package me.lyuxc.develop.mixins.minecraft;
 
 import net.minecraft.world.level.storage.PrimaryLevelData;
 import org.spongepowered.asm.mixin.Mixin;

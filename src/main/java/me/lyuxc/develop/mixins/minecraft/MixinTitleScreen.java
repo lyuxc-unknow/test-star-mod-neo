@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins;
+package me.lyuxc.develop.mixins.minecraft;
 
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.utils.FileUtils;

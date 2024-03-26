@@ -1,7 +1,10 @@
 package me.lyuxc.develop.compat.theoneprobe;
 
 import mcjty.theoneprobe.api.ITheOneProbe;
-import me.lyuxc.develop.compat.theoneprobe.MI.*;
+import me.lyuxc.develop.compat.theoneprobe.MI.MachineComponentProvider;
+import me.lyuxc.develop.compat.theoneprobe.MI.MachineProgressProvider;
+import me.lyuxc.develop.compat.theoneprobe.MI.OverclockProvider;
+import me.lyuxc.develop.compat.theoneprobe.MI.PipeDataProvider;
 import me.lyuxc.develop.compat.theoneprobe.QuarryPlus.QuarryPlus;
 
 import java.util.function.Function;
@@ -14,7 +17,6 @@ public class TOPRegister implements Function<ITheOneProbe,Void> {
         iTheOneProbe.registerProvider(new OverclockProvider());
         iTheOneProbe.registerProvider(new MachineProgressProvider());
         iTheOneProbe.registerProvider(new MachineComponentProvider());
-        iTheOneProbe.registerProvider(new MachineTierProvider());
         return null;
     }
 }

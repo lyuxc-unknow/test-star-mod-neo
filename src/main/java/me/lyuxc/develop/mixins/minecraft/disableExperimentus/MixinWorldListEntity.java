@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.disableExperimentus;
+package me.lyuxc.develop.mixins.minecraft.disableExperimentus;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.worldselection.WorldSelectionList;

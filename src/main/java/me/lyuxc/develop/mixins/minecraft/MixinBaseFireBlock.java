@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins;
+package me.lyuxc.develop.mixins.minecraft;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;

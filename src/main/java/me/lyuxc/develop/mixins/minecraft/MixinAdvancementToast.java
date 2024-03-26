@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins;
+package me.lyuxc.develop.mixins.minecraft;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.AdvancementToast;
