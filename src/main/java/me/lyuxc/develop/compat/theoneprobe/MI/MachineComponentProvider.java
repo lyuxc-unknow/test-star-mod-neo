@@ -43,7 +43,7 @@ public class MachineComponentProvider implements IProbeInfoProvider {
                     capacity += component.getCapacity();
                 }
                 iProbeInfo.progress(stored, capacity, new ProgressStyle()
-                        .suffix("EU/" + components + "EU")
+                        .suffix("EU/" + capacity + "EU")
                         .backgroundColor(Color.WHITE.getRGB())
                         .filledColor(Color.RED.getRGB())
                         .alternateFilledColor(Color.GRAY.getRGB())
