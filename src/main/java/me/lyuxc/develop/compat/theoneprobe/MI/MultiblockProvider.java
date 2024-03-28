@@ -25,8 +25,7 @@ public class MultiblockProvider implements IProbeInfoProvider {
     @Override
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
         BlockEntity blockEntity = level.getBlockEntity(iProbeHitData.getPos());
-        String statusText = MIText.MultiblockShapeInvalid.text().getString(); // 默认为未成型
-
+        String statusText = MIText.MultiblockShapeInvalid.text().getString();
         if (blockEntity instanceof ElectricCraftingMultiblockBlockEntity && ((ElectricCraftingMultiblockBlockEntity) blockEntity).isEnabled()) {
             statusText = MIText.MultiblockShapeValid.text().getString();
         } else if (blockEntity instanceof ElectricBlastFurnaceBlockEntity && ((ElectricBlastFurnaceBlockEntity) blockEntity).isEnabled()) {

@@ -1,6 +1,7 @@
 package me.lyuxc.develop.compat.theoneprobe.MI;
 
 import aztech.modern_industrialization.MIText;
+import aztech.modern_industrialization.api.machine.component.CrafterAccess;
 import aztech.modern_industrialization.api.machine.holder.CrafterComponentHolder;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;
@@ -26,7 +27,7 @@ public class OverclockProvider implements IProbeInfoProvider  {
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
         BlockEntity block = level.getBlockEntity(iProbeHitData.getPos());
         if(block instanceof CrafterComponentHolder holder) {
-            var crafterComponent = holder.getCrafterComponent();
+            CrafterAccess crafterComponent = holder.getCrafterComponent();
             if(crafterComponent.hasActiveRecipe()) {
                 int efficiencyTicks = crafterComponent.getEfficiencyTicks();
                 int maxEfficiencyTicks = crafterComponent.getMaxEfficiencyTicks();

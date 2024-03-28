@@ -1,5 +1,6 @@
 package me.lyuxc.develop.compat.theoneprobe.MI;
 
+import aztech.modern_industrialization.api.machine.component.EnergyAccess;
 import aztech.modern_industrialization.api.machine.holder.EnergyComponentHolder;
 import aztech.modern_industrialization.api.machine.holder.EnergyListComponentHolder;
 import mcjty.theoneprobe.api.IProbeHitData;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.awt.*;
+import java.util.List;
 
 public class MachineComponentProvider implements IProbeInfoProvider {
     @Override
@@ -26,7 +28,7 @@ public class MachineComponentProvider implements IProbeInfoProvider {
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
         BlockEntity block = level.getBlockEntity(iProbeHitData.getPos());
         if (block instanceof EnergyComponentHolder holder) {
-            var component = holder.getEnergyComponent();
+            EnergyAccess component = holder.getEnergyComponent();
             iProbeInfo.progress(component.getEu(),component.getCapacity(),new ProgressStyle()
                     .suffix("EU/" + component.getCapacity() + "EU")
                     .backgroundColor(Color.WHITE.getRGB())
@@ -34,7 +36,7 @@ public class MachineComponentProvider implements IProbeInfoProvider {
                     .alternateFilledColor(Color.GRAY.getRGB())
             );
         } else if (block instanceof EnergyListComponentHolder holder) {
-            var components = holder.getEnergyComponents();
+            List<? extends EnergyAccess> components = holder.getEnergyComponents();
             if (!components.isEmpty()) {
                 long stored = 0;
                 long capacity = 0;

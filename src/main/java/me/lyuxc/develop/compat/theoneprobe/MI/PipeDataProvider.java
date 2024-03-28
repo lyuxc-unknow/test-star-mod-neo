@@ -32,7 +32,7 @@ public class PipeDataProvider implements IProbeInfoProvider {
         if(level.getBlockEntity(iProbeHitData.getPos()) instanceof PipeBlockEntity pipeBlock) {
             pipeBlock.getNodes().forEach(pipeNetworkNode -> {
                 if(pipeNetworkNode instanceof FluidNetworkNode fluidNetworkNode) {
-                    var info = fluidNetworkNode.collectNetworkInfo();
+                    FluidNetworkNode.InGameInfo info = fluidNetworkNode.collectNetworkInfo();
                     Fluid fluid = info.fluid().getFluid();
                     String perfix = MIText.Empty.text().getString() + ":";
                     if(fluid != Fluids.EMPTY) {
@@ -57,7 +57,7 @@ public class PipeDataProvider implements IProbeInfoProvider {
                     ));
                 }
                 if(pipeNetworkNode instanceof ElectricityNetworkNode electricityNetworkNode) {
-                    var info = electricityNetworkNode.collectNetworkInfo();
+                    ElectricityNetworkNode.InGameInfo info = electricityNetworkNode.collectNetworkInfo();
                     iProbeInfo.progress(info.stored(),info.capacity(),new ProgressStyle()
                             .suffix("EU/" + info.capacity() + "EU")
                             .backgroundColor(java.awt.Color.WHITE.getRGB())
@@ -73,7 +73,7 @@ public class PipeDataProvider implements IProbeInfoProvider {
                     );
                 }
                 if(pipeNetworkNode instanceof ItemNetworkNode itemNetworkNode) {
-                    var info = itemNetworkNode.collectNetworkInfo();
+                    ItemNetworkNode.InGameInfo info = itemNetworkNode.collectNetworkInfo();
                     iProbeInfo.text(MIText.NetworkMovedItems.text().getString() + ":" + info.movedItems());
                     iProbeInfo.progress(info.pulse(),3 * 20,new ProgressStyle()
                             .prefix(MIText.NetworkDelay.text().getString() + ":")
