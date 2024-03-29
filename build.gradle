@@ -69,6 +69,9 @@ repositories {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
+    maven {
+        url = "https://maven.k-4u.nl"
+    }
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
@@ -80,7 +83,7 @@ dependencies {
     runtimeOnly "curse.maven:scalable-cats-force-320926:4973960"
     runtimeOnly "curse.maven:cloth-config-348521:4973457"
     implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
-    implementation "curse.maven:theoneprobe-245211:5159289"
+    implementation "mcjty.theoneprobe:theoneprobe:1.20.4_neo-11.0.2-3"
     implementation "curse.maven:modern-industrialization-405388:5193390"
 }
 

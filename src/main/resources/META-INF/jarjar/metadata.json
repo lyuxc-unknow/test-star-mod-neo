@@ -1,0 +1,16 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "mod.lyuxc",
+        "artifact": "MagicClover"
+      },
+      "version": {
+        "range": "[1.0.0,)",
+        "artifactVersion": "1.0.0"
+      },
+      "path": "META-INF/jarjar/magic_clover-1.0.0.jar",
+      "isObfuscated": false
+    }
+  ]
+}
