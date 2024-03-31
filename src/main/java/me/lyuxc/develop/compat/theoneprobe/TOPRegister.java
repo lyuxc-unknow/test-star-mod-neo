@@ -10,12 +10,12 @@ public class TOPRegister implements Function<ITheOneProbe,Void> {
     @Override
     public Void apply(ITheOneProbe iTheOneProbe) {
         iTheOneProbe.registerProvider(new QuarryPlus());
-        iTheOneProbe.registerProvider(new PipeDataProvider());
-        iTheOneProbe.registerProvider(new NetworkTierProvider());
-        iTheOneProbe.registerProvider(new MultiblockProvider());
         iTheOneProbe.registerProvider(new OverclockProvider());
-        iTheOneProbe.registerProvider(new MachineProgressProvider());
+        iTheOneProbe.registerProvider(new NetworkTierProvider());
         iTheOneProbe.registerProvider(new MachineTierProvider());
+        iTheOneProbe.registerProvider(new PipeDataProvider());
+        iTheOneProbe.registerProvider(new MultiblockProvider());
+        iTheOneProbe.registerProvider(new MachineProgressProvider());
         iTheOneProbe.registerProvider(new MachineComponentProvider());
         return null;
     }

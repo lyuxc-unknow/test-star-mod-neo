@@ -68,6 +68,8 @@ public class MachineTierProvider implements IProbeInfoProvider {
             tier = CableTier.HV.longEnglishName().getString();
         } else if (energy == CableTier.EV.getEu()) {
             tier = CableTier.EV.longEnglishName().getString();
+        } else if (energy == CableTier.SUPERCONDUCTOR.getEu()) {
+            tier = CableTier.SUPERCONDUCTOR.longEnglishName().getString();
         }
         return ChatFormatting.GOLD + tier + ChatFormatting.RESET;
     }
