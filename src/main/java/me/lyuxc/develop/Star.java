@@ -5,7 +5,6 @@ import me.lyuxc.develop.compat.theoneprobe.TOPRegister;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
@@ -16,12 +15,14 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import static me.lyuxc.develop.utils.I18N.getComponent;
+
 @Mod(Variables.MOD_ID)
 public class Star {
     //新建 - 创造物品栏
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Variables.MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> STAR_TAB = CREATIVE_MODE_TABS.register("mind_creative_tab",() -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.test_star"))
+            .title(getComponent("itemGroup.test_star"))
             .icon(() -> ItemRegistry.END_ITEM.get().getDefaultInstance())
             .build());
 

@@ -36,12 +36,12 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.LEVEL7ITEM.get(), "Level 7 Item");
             add(ItemRegistry.LEVEL8ITEM.get(), "Level 8 Item");
             add(ItemRegistry.EXAMPLE_ITEM.get(), "Example Item");
-            add(ItemRegistry.MedicalBox.get(), "Alpha Medical Box");
+            add(ItemRegistry.MEDICALBOX.get(), "Alpha Medical Box");
             add(ItemRegistry.MY_SWORD.get(), "My Sword");
             add(ItemRegistry.WATER_GETTER.get(), "Water Getter");
             add(ItemRegistry.END_ITEM.get(), "End Item");
             add(ItemRegistry.GravitationalMagneticField.get(), "Disposable gravity magnetic field");
-            add(ItemRegistry.GazeOfCapital.get(), "Gaze of Capital");
+            add(ItemRegistry.GAZE_OF_CAPITAL.get(), "Gaze of Capital");
             add(ItemRegistry.SPIRITUAL_FOOD.get(), "Spiritual Food");
             add(ItemRegistry.MOD_BLOCK_MEDIUM.get(), "Mod Block:Medium");
             add(ItemRegistry.MOD_BLOCK_DATA.get(), "Mod Block:Data");
@@ -53,7 +53,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MultiPlayerTool.get(), "MultiPlayer Tool");
             add(ItemRegistry.WoodShears.get(), "Wood Shears");
             add(ItemRegistry.BowItem.get(), "Easy Bow");
-            add(ItemRegistry.WoodSawBladeItem.get(),"Wood SawBlade");
+            add(ItemRegistry.WOOD_SAW_BLADE.get(), "Wood SawBlade");
             add(ItemRegistry.ALL_OURPOSE_TOOL_1.get(),"Level1 AIOT");
             add(ItemRegistry.ALL_OURPOSE_TOOL_2.get(),"Level2 AIOT");
             add(ItemRegistry.ALL_OURPOSE_TOOL_3.get(),"Level3 AIOT");
@@ -99,6 +99,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.deputy_category","Deputy Crafting");
             add("ts.tips.jei.lightning_category","Lightning Crafting");
             add("ts.tips.top.progress","Crafting Progress:");
+            add("ts.tips.top.crafting", "Crafting:");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"No."+(i+1)+"Package");
             }
@@ -119,13 +120,13 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.LEVEL6ITEM.get(), "恒星离子");
             add(ItemRegistry.LEVEL7ITEM.get(), "拟·行星构建公式");
             add(ItemRegistry.LEVEL8ITEM.get(), "拟态·世界物质");
-            add(ItemRegistry.MedicalBox.get(), "阿尔法·医疗箱");
+            add(ItemRegistry.MEDICALBOX.get(), "阿尔法·医疗箱");
             add(ItemRegistry.EXAMPLE_ITEM.get(), "测试物品");
             add(ItemRegistry.MY_SWORD.get(), "逆轉世間萬物輪回の劍");
             add(ItemRegistry.WATER_GETTER.get(), "水汽捕获装置");
             add(ItemRegistry.END_ITEM.get(), "相饰位面");
             add(ItemRegistry.GravitationalMagneticField.get(), "一次性重力磁场");
-            add(ItemRegistry.GazeOfCapital.get(), "资本的目光");
+            add(ItemRegistry.GAZE_OF_CAPITAL.get(), "资本的目光");
             add(ItemRegistry.SPIRITUAL_FOOD.get(), "精神粮食");
             add(ItemRegistry.MOD_BLOCK_MEDIUM.get(), "模组数据块：介质");
             add(ItemRegistry.MOD_BLOCK_DATA.get(), "模组数据块：数据");
@@ -137,7 +138,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MultiPlayerTool.get(), "多人模式解锁工具");
             add(ItemRegistry.WoodShears.get(), "纯木剪刀");
             add(ItemRegistry.BowItem.get(), "简易的弓");
-            add(ItemRegistry.WoodSawBladeItem.get(),"木锯条");
+            add(ItemRegistry.WOOD_SAW_BLADE.get(), "木锯条");
             add(ItemRegistry.ALL_OURPOSE_TOOL_1.get(),"侵蚀像素 全能工具");
             add(ItemRegistry.ALL_OURPOSE_TOOL_2.get(),"坍塌数据 全能工具");
             add(ItemRegistry.ALL_OURPOSE_TOOL_3.get(),"群星光点 全能工具");
@@ -181,6 +182,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.deputy_category","二次合成");
             add("ts.tips.jei.lightning_category","雷电合成");
             add("ts.tips.top.progress","合成进度:");
+            add("ts.tips.top.crafting", "正在合成:");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"第"+(i+1)+"次投掷");
             }

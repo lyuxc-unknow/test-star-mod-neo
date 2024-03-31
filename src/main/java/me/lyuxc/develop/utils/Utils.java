@@ -103,11 +103,11 @@ public class Utils {
     public static void loadModResource(RegistryAccess access,RecipeManager manager) {
         try {
             //读取前清空
-            DropCraftingRecipes.recipes.clear();
-            ExplosionCraftingRecipes.recipes.clear();
-            ExplosionMultiItemRecipes.recipes.clear();
-            DeputyCraftingRecipes.recipes.clear();
-            LightningCraftingRecipes.recipes.clear();
+            DropCraftingRecipes.RECIPES.clear();
+            ExplosionCraftingRecipes.RECIPES.clear();
+            ExplosionMultiItemRecipes.RECIPES.clear();
+            DeputyCraftingRecipes.RECIPES.clear();
+            LightningCraftingRecipes.RECIPES.clear();
 
             //读取文件存入合成表列表
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());

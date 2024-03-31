@@ -2,6 +2,8 @@ package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Tiers;
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.item.ItemRegistry;
+import me.lyuxc.develop.utils.I18N;
 import me.lyuxc.develop.utils.TextUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -64,7 +66,7 @@ public class AllOurposeTool extends DiggerItem {
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         if(TIER == Tiers.LEVEL_INF) {
-            pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(Component.translatable("item.test_star.allinone_tool_inf"))));
+            pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(I18N.getItemComponent(ItemRegistry.ALL_OURPOSE_TOOL_INF.asItem()))));
         }
     }
 

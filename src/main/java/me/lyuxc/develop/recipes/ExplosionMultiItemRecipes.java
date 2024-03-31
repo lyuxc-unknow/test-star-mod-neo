@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 public record ExplosionMultiItemRecipes(List<ItemStack> inputs,int inputCount,ItemStack output,double change) {
-    public static Set<ExplosionMultiItemRecipes> recipes = new HashSet<>();
+    public static Set<ExplosionMultiItemRecipes> RECIPES = new HashSet<>();
     public static void addExplosionMultiRecipes(String recipe) {
         String[] v = recipe.split("@");
-        recipes.add(new ExplosionMultiItemRecipes(List.of(Utils.getItemStack(v[0]),Utils.getItemStack(v[1])),Integer.parseInt(v[2]),Utils.getItemStack(v[3]),Double.parseDouble(v[4])));
+        RECIPES.add(new ExplosionMultiItemRecipes(List.of(Utils.getItemStack(v[0]), Utils.getItemStack(v[1])), Integer.parseInt(v[2]), Utils.getItemStack(v[3]), Double.parseDouble(v[4])));
     }
     @SuppressWarnings("unused")
     public static void addExplosionMultiRecipes(@NotNull String[] input, int inputCount, @NotNull String output, double change) {
@@ -21,6 +21,6 @@ public record ExplosionMultiItemRecipes(List<ItemStack> inputs,int inputCount,It
     }
     @SuppressWarnings("unused")
     public static void addExplosionMultiRecipes(List<ItemStack> input, int inputCount, Item output, double change) {
-        recipes.add(new ExplosionMultiItemRecipes(input,inputCount,output.getDefaultInstance(),change));
+        RECIPES.add(new ExplosionMultiItemRecipes(input, inputCount, output.getDefaultInstance(), change));
     }
 }

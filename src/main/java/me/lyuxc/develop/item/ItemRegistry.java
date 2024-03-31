@@ -66,7 +66,7 @@ public class ItemRegistry {
             .stacksTo(32)
     ));
     //阿尔法·医疗箱
-    public static final DeferredItem<Item> MedicalBox = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
+    public static final DeferredItem<Item> MEDICALBOX = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
             .stacksTo(16)
             .food(new FoodProperties.Builder()
                     .fast()
@@ -77,7 +77,7 @@ public class ItemRegistry {
             )
     ));
     //资本家的目光
-    public static final DeferredItem<Item> GazeOfCapital = ITEMS.register("gaze_of_capital", () -> new GazeOfCapital(new Item.Properties()
+    public static final DeferredItem<Item> GAZE_OF_CAPITAL = ITEMS.register("gaze_of_capital", () -> new GazeOfCapital(new Item.Properties()
             .stacksTo(1)
     ));
     //精神粮食
@@ -122,7 +122,7 @@ public class ItemRegistry {
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_7 = ITEMS.register("allinone_tool_7",() -> new AllOurposeTool(Tiers.LEVEL7));
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_8 = ITEMS.register("allinone_tool_8",() -> new AllOurposeTool(Tiers.LEVEL8));
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_INF = ITEMS.register("allinone_tool_inf",() -> new AllOurposeTool(Tiers.LEVEL_INF));
-    public static final DeferredItem<WoodSawBlade> WoodSawBladeItem = ITEMS.register("wood_sawblade", WoodSawBlade::new);
+    public static final DeferredItem<WoodSawBlade> WOOD_SAW_BLADE = ITEMS.register("wood_sawblade", WoodSawBlade::new);
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {

@@ -96,6 +96,7 @@
   "ts.tips.modpack_name": "Modpack:",
   "ts.tips.mods": "Mods:",
   "ts.tips.right.disable": "You cannot use %s",
+  "ts.tips.top.crafting": "Crafting:",
   "ts.tips.top.progress": "Crafting Progress:",
   "ts.tips.user_title": "Mind2",
   "ts.top.block.hardness": "Block Hardness %s"

@@ -8,7 +8,7 @@ import mcjty.theoneprobe.api.IProbeInfoProvider;
 import mcjty.theoneprobe.api.ProbeMode;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import me.lyuxc.develop.Star;
-import net.minecraft.network.chat.Component;
+import me.lyuxc.develop.utils.I18N;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -29,7 +29,7 @@ public class MachineProgressProvider implements IProbeInfoProvider {
             float progress = component.getProgress();
             if (progress > 0.0f) {
                 iProbeInfo.progress((int) (progress*100), 100, new ProgressStyle()
-                        .prefix(Component.translatable("ts.tips.top.progress"))
+                        .prefix(I18N.getComponent("ts.tips.top.progress"))
                         .suffix("%")
                         .backgroundColor(Color.GRAY.getRGB())
                         .filledColor(Color.LIGHT_GRAY.getRGB())

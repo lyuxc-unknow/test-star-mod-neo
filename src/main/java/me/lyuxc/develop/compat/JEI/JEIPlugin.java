@@ -44,7 +44,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        registration.addRecipes(CATEGORY_DROP, DropCraftingRecipes.recipes.stream().map(dropRecipes -> {
+        registration.addRecipes(CATEGORY_DROP, DropCraftingRecipes.RECIPES.stream().map(dropRecipes -> {
             ItemStack input = dropRecipes.input();
             ItemStack offhand = dropRecipes.offhandItems();
             ItemStack output = dropRecipes.output();
@@ -53,14 +53,14 @@ public class JEIPlugin implements IModPlugin {
             output.setCount(dropRecipes.outputCount());
             return new DropCraftingRecipes(input,offhand, dropRecipes.quantityConsumed(), output, dropRecipes.outputCount());
         }).toList());
-        registration.addRecipes(CATEGORY_EXPLOSION, ExplosionCraftingRecipes.recipes.stream().map(explosionRecipes -> {
+        registration.addRecipes(CATEGORY_EXPLOSION, ExplosionCraftingRecipes.RECIPES.stream().map(explosionRecipes -> {
             ItemStack input = explosionRecipes.input();
             ItemStack output = explosionRecipes.output();
             input.setCount(explosionRecipes.inputCount());
             return new ExplosionCraftingRecipes(input,explosionRecipes.inputCount(),output,explosionRecipes.change());
         }).toList());
-        registration.addRecipes(CATEGORY_MULTI_EXPLOSION,ExplosionMultiItemRecipes.recipes.stream().toList());
-        registration.addRecipes(CATEGORY_DEPUTY, DeputyCraftingRecipes.recipes.stream().map(recipes -> {
+        registration.addRecipes(CATEGORY_MULTI_EXPLOSION, ExplosionMultiItemRecipes.RECIPES.stream().toList());
+        registration.addRecipes(CATEGORY_DEPUTY, DeputyCraftingRecipes.RECIPES.stream().map(recipes -> {
             ItemStack inputItem = recipes.inputItem();
             ItemStack outputItem = recipes.outputItem();
             ItemStack craftingItem = recipes.craftingOutputItem();
@@ -69,6 +69,6 @@ public class JEIPlugin implements IModPlugin {
             outputItem.setCount(recipes.outputCount());
             return new DeputyCraftingRecipes(inputItem,recipes.inputCount(),outputItem, recipes.outputCount(), craftingItem,recipes.recipe());
         }).toList());
-        registration.addRecipes(CATEGORY_LIGHTNING,LightningCraftingRecipes.recipes.stream().toList());
+        registration.addRecipes(CATEGORY_LIGHTNING, LightningCraftingRecipes.RECIPES.stream().toList());
     }
 }

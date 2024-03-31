@@ -1,6 +1,8 @@
 package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Tiers;
+import me.lyuxc.develop.item.ItemRegistry;
+import me.lyuxc.develop.utils.I18N;
 import me.lyuxc.develop.utils.TextUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -67,7 +69,7 @@ public class MySword extends SwordItem {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(Component.translatable("item.test_star.my_sword"))));
+        pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(I18N.getItemComponent(ItemRegistry.MY_SWORD.asItem()))));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }

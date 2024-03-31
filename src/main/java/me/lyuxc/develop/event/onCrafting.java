@@ -17,7 +17,7 @@ public class onCrafting {
         Player player = event.getEntity();
         ItemStack offhandItem = player.getItemInHand(InteractionHand.OFF_HAND);
        if(!player.level().isClientSide()) {
-           for(DeputyCraftingRecipes recipes : DeputyCraftingRecipes.recipes) {
+           for (DeputyCraftingRecipes recipes : DeputyCraftingRecipes.RECIPES) {
                if(craftOutputItem.is(recipes.craftingOutputItem().getItem())) {
                    if(offhandItem.is(recipes.inputItem().getItem()) && offhandItem.getCount() >= recipes.inputCount()) {
                        ItemStack itemStack = recipes.outputItem();

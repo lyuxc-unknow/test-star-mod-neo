@@ -58,7 +58,7 @@ public class onPlayerInteract {
     @SubscribeEvent
     public static void onPlayerPickupItem(PlayerEvent.ItemPickupEvent event) {
         Player player = event.getEntity();
-        DropCraftingRecipes.recipes.forEach(s -> {
+        DropCraftingRecipes.RECIPES.forEach(s -> {
             if(event.getStack().is(s.input().getItem()) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(s.offhandItems().getItem())) {
                 for(int i=0;i<player.getInventory().getContainerSize();i++) {
                     if(player.getInventory().getItem(i).is(s.input().getItem())) {

@@ -15,13 +15,13 @@ import java.util.Set;
 
 public record DeputyCraftingRecipes(ItemStack inputItem, int inputCount, ItemStack outputItem, int outputCount, ItemStack craftingOutputItem,
                                     List<NonNullList<Ingredient>> recipe) {
-    public static Set<DeputyCraftingRecipes> recipes = new HashSet<>();
+    public static Set<DeputyCraftingRecipes> RECIPES = new HashSet<>();
     public static void addDeputyCraftingRecipes(String recipe, RegistryAccess access, RecipeManager recipeManager) {
         String[] v = recipe.split("@");
         ItemStack inputItem = Utils.getItemStack(v[0]);
         ItemStack offhandItem = Utils.getItemStack(v[2]);
         ItemStack craftingOutputItem = Utils.getItemStack(v[4]);
-        recipes.add(new DeputyCraftingRecipes(inputItem,Integer.parseInt(v[1]),offhandItem,Integer.parseInt(v[3]),craftingOutputItem, Utils.getRecipe(craftingOutputItem, access,recipeManager)));
+        RECIPES.add(new DeputyCraftingRecipes(inputItem, Integer.parseInt(v[1]), offhandItem, Integer.parseInt(v[3]), craftingOutputItem, Utils.getRecipe(craftingOutputItem, access, recipeManager)));
     }
     @SuppressWarnings("unused")
     public static void addDeputyCraftingRecipes(@NotNull String inputItem,@NotNull String inputCount,@NotNull String outputItem,@NotNull String outputCount,@NotNull String craftingOutputItem,RegistryAccess access,RecipeManager recipeManager) {
@@ -32,6 +32,6 @@ public record DeputyCraftingRecipes(ItemStack inputItem, int inputCount, ItemSta
         ItemStack inputItem = input.getDefaultInstance();
         ItemStack offhandItem = output.getDefaultInstance();
         ItemStack craftingItems = craftingOutputItem.getDefaultInstance();
-        recipes.add(new DeputyCraftingRecipes(inputItem,inputCount,offhandItem,outputCount,craftingItems,Utils.getRecipe(craftingOutputItem.getDefaultInstance(),access,recipeManager)));
+        RECIPES.add(new DeputyCraftingRecipes(inputItem, inputCount, offhandItem, outputCount, craftingItems, Utils.getRecipe(craftingOutputItem.getDefaultInstance(), access, recipeManager)));
     }
 }

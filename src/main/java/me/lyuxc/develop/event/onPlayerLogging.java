@@ -1,8 +1,8 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.utils.I18N;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,6 +29,6 @@ public class onPlayerLogging {
             Variables.DEVELOPER = true;
             Variables.title = I18n.get("ts.tips.dev_title");
         }
-        player.sendSystemMessage(Component.translatable("ts.tips.modpack"));
+        player.sendSystemMessage(I18N.getComponent("ts.tips.modpack"));
     }
 }

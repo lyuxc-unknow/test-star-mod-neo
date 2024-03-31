@@ -1,6 +1,7 @@
 package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.utils.I18N;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
@@ -25,19 +26,19 @@ public class onChat {
             switch (trimmedMessage) {
                 case "{\"gameMode\": \"5Yib6YCg\"}":
                     // 创造模式 - 未提供 key
-                    player.sendSystemMessage(Component.translatable("chat.key"));
+                    player.sendSystemMessage(I18N.getComponent("chat.key"));
                     event.setMessage(Component.empty());
                     break;
                 case "{\"gameMode\": \"55Sf5a2Y\"}":
                     // 生存模式
                     player.setGameMode(GameType.SURVIVAL);
-                    player.sendSystemMessage(Component.translatable("chat.survival"));
+                    player.sendSystemMessage(I18N.getComponent("chat.survival"));
                     event.setMessage(Component.empty());
                     break;
                 case "{\"gameMode\": \"5peB6KeC\"}":
                     // 旁观模式
                     player.setGameMode(GameType.SPECTATOR);
-                    player.sendSystemMessage(Component.translatable("chat.spectator"));
+                    player.sendSystemMessage(I18N.getComponent("chat.spectator"));
                     event.setMessage(Component.empty());
                     break;
                 default:

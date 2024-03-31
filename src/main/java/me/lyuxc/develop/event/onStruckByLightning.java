@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
 public class onStruckByLightning {
     @SubscribeEvent
     public static void lightning(EntityStruckByLightningEvent event) {
-        LightningCraftingRecipes.recipes.forEach(recipes -> {
+        LightningCraftingRecipes.RECIPES.forEach(recipes -> {
             Entity entity = event.getEntity();
             if(entity instanceof ItemEntity item) {
                 event.setCanceled(true);

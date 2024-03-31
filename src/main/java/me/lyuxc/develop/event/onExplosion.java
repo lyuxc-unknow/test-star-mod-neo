@@ -25,7 +25,7 @@ public class onExplosion {
                     items.add(itemEntity.getItem());
                 }
             }
-            ExplosionMultiItemRecipes.recipes.forEach(recipes -> AffectedEntities.forEach(entity -> {
+            ExplosionMultiItemRecipes.RECIPES.forEach(recipes -> AffectedEntities.forEach(entity -> {
                 if(entity instanceof ItemEntity item) {
                     for(ItemStack item1 : items) {
                         if(item.getItem().getItem() == recipes.inputs().get(0).getItem() && item1.getItem() == recipes.inputs().get(1).getItem()) {
@@ -38,7 +38,7 @@ public class onExplosion {
                 }
             })
             );
-            ExplosionCraftingRecipes.recipes.forEach(recipes -> AffectedEntities.forEach(entity -> {
+            ExplosionCraftingRecipes.RECIPES.forEach(recipes -> AffectedEntities.forEach(entity -> {
                 if(entity instanceof ItemEntity itemEntity) {
                     ItemStack spawnItems = itemEntity.getItem();
                     if(recipes.input().is(spawnItems.getItem())) {

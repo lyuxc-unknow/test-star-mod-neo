@@ -8,7 +8,7 @@ import mcjty.theoneprobe.api.ProbeMode;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import mcjty.theoneprobe.apiimpl.styles.TextStyle;
 import me.lyuxc.develop.Star;
-import net.minecraft.network.chat.Component;
+import me.lyuxc.develop.utils.I18N;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -28,12 +28,12 @@ public class QuarryPlus implements IProbeInfoProvider {
         if(level.getBlockEntity(iProbeHitData.getPos()) instanceof TileWorkbench workbench){
             if(workbench.getEnergyStored() > 0) {
                 iProbeInfo.progress(workbench.getEnergyStored(), workbench.getRecipe().getRequiredEnergy()/1000000000,new ProgressStyle()
-                        .prefix(Component.literal("进度:"))
+                        .prefix(I18N.getComponent("ts.tips.top.progress"))
                         .suffix("/"+workbench.getRecipe().getRequiredEnergy()/1000000000)
                         .color(Color.GRAY.getRGB(),Color.GREEN.getRGB(),Color.GREEN.getRGB(),Color.WHITE.getRGB())
                 );
                 iProbeInfo.horizontal()
-                        .text("正在合成:",new TextStyle().topPadding(5))
+                        .text(I18N.getComponent("ts.tips.top.crafting"), new TextStyle().topPadding(5))
                         .item(workbench.getRecipe().output)
                         .text(workbench.getRecipe().output.getHoverName(),new TextStyle().topPadding(5));
             }

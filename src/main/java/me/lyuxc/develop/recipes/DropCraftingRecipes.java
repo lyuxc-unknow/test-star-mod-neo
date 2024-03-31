@@ -11,14 +11,14 @@ import java.util.Set;
 public record DropCraftingRecipes(ItemStack input, ItemStack offhandItems, int quantityConsumed, ItemStack output,
                                   int outputCount) {
     //丢东西合成
-    public static Set<DropCraftingRecipes> recipes = new HashSet<>();
+    public static Set<DropCraftingRecipes> RECIPES = new HashSet<>();
 
     public static void addPlayerPickupRecipes(String recipe) {
         String[] v = recipe.split("@");
         ItemStack inputItem = Utils.getItemStack(v[0]);
         ItemStack offhandItem = Utils.getItemStack(v[1]);
         ItemStack outputItem = Utils.getItemStack(v[3]);
-        recipes.add(new DropCraftingRecipes(inputItem, offhandItem, Integer.parseInt(v[2]), outputItem, Integer.parseInt(v[4])));
+        RECIPES.add(new DropCraftingRecipes(inputItem, offhandItem, Integer.parseInt(v[2]), outputItem, Integer.parseInt(v[4])));
     }
 
     @SuppressWarnings("unused")
@@ -30,6 +30,6 @@ public record DropCraftingRecipes(ItemStack input, ItemStack offhandItems, int q
         ItemStack inputItem = input.getDefaultInstance();
         ItemStack offhandItem = offHandItem.getDefaultInstance();
         ItemStack outputItem = output.getDefaultInstance();
-        recipes.add(new DropCraftingRecipes(inputItem, offhandItem, quantityConsumed, outputItem, outputCount));
+        RECIPES.add(new DropCraftingRecipes(inputItem, offhandItem, quantityConsumed, outputItem, outputCount));
     }
 }

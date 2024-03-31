@@ -9,13 +9,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public record LightningCraftingRecipes(ItemStack input,ItemStack output) {
-    public static Set<LightningCraftingRecipes> recipes = new HashSet<>();
+    public static Set<LightningCraftingRecipes> RECIPES = new HashSet<>();
 
     public static void addLightningCraftingRecipes(String recipe) {
         String[] v = recipe.split("@");
         ItemStack inputItem = Utils.getItemStack(v[0]);
         ItemStack outputItem = Utils.getItemStack(v[1]);
-        recipes.add(new LightningCraftingRecipes(inputItem, outputItem));
+        RECIPES.add(new LightningCraftingRecipes(inputItem, outputItem));
     }
 
     @SuppressWarnings("unused")
@@ -26,6 +26,6 @@ public record LightningCraftingRecipes(ItemStack input,ItemStack output) {
     public static void addLightningCraftingRecipes(@NotNull Item input, @NotNull Item output) {
         ItemStack inputItem = input.getDefaultInstance();
         ItemStack outputItem = output.getDefaultInstance();
-        recipes.add(new LightningCraftingRecipes(inputItem,outputItem));
+        RECIPES.add(new LightningCraftingRecipes(inputItem, outputItem));
     }
 }
