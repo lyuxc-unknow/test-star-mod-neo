@@ -4,10 +4,13 @@ import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.recipes.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
+    protected static IJeiRuntime iJeiRuntime;
     public static final RecipeType<DropCraftingRecipes> CATEGORY_DROP = RecipeType.create(Variables.MOD_ID,"drop_crafting", DropCraftingRecipes.class);
     public static final RecipeType<ExplosionCraftingRecipes> CATEGORY_EXPLOSION = RecipeType.create(Variables.MOD_ID,"explosion_crafting", ExplosionCraftingRecipes.class);
     public static final RecipeType<ExplosionMultiItemRecipes> CATEGORY_MULTI_EXPLOSION = RecipeType.create(Variables.MOD_ID,"multi_explosion_crafting", ExplosionMultiItemRecipes.class);
@@ -70,5 +74,22 @@ public class JEIPlugin implements IModPlugin {
             return new DeputyCraftingRecipes(inputItem,recipes.inputCount(),outputItem, recipes.outputCount(), craftingItem,recipes.recipe());
         }).toList());
         registration.addRecipes(CATEGORY_LIGHTNING, LightningCraftingRecipes.RECIPES.stream().toList());
+    }
+
+    public static void displayRecipes(ItemStack stack) {
+        if (!stack.isEmpty()) {
+            iJeiRuntime.getRecipesGui().show(iJeiRuntime.getJeiHelpers().getFocusFactory().createFocus(RecipeIngredientRole.OUTPUT, VanillaTypes.ITEM_STACK, stack));
+        }
+    }
+
+    public static void displayUses(ItemStack stack) {
+        if (!stack.isEmpty()) {
+            iJeiRuntime.getRecipesGui().show(iJeiRuntime.getJeiHelpers().getFocusFactory().createFocus(RecipeIngredientRole.INPUT, VanillaTypes.ITEM_STACK, stack));
+        }
+    }
+
+    @Override
+    public void onRuntimeAvailable(@NotNull IJeiRuntime jeiRuntime) {
+        iJeiRuntime = jeiRuntime;
     }
 }

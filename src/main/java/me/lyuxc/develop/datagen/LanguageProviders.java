@@ -100,6 +100,9 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.lightning_category","Lightning Crafting");
             add("ts.tips.top.progress","Crafting Progress:");
             add("ts.tips.top.crafting", "Crafting:");
+            add("key.categories.test_star", "[TS Mod]Keyboards");
+            add("key.jei.using", "View the purpose of the currently pointed block");
+            add("key.jei.recipe", "View the recipe currently pointing to the block");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"No."+(i+1)+"Package");
             }
@@ -183,6 +186,9 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.lightning_category","雷电合成");
             add("ts.tips.top.progress","合成进度:");
             add("ts.tips.top.crafting", "正在合成:");
+            add("key.categories.test_star", "[TSM]按键");
+            add("key.jei.using", "查看当前指向方块的用途");
+            add("key.jei.recipe", "查看当前指向方块的配方");
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"第"+(i+1)+"次投掷");
             }

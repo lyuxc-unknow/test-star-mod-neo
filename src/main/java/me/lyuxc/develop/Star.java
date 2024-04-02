@@ -4,6 +4,7 @@ import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.compat.theoneprobe.TOPRegister;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
+import me.lyuxc.develop.keys.Keys;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -41,6 +42,7 @@ public class Star {
         modEventBus.addListener(DataGeneration::generate);
         //事件注册
         modEventBus.addListener(this::CommonSetupEvent);
+        modEventBus.addListener(Keys::init);
     }
 
     private void CommonSetupEvent(FMLCommonSetupEvent event) {
