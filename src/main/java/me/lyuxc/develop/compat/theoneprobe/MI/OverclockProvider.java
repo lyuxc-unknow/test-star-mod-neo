@@ -3,10 +3,7 @@ package me.lyuxc.develop.compat.theoneprobe.MI;
 import aztech.modern_industrialization.MIText;
 import aztech.modern_industrialization.api.machine.component.CrafterAccess;
 import aztech.modern_industrialization.api.machine.holder.CrafterComponentHolder;
-import mcjty.theoneprobe.api.IProbeHitData;
-import mcjty.theoneprobe.api.IProbeInfo;
-import mcjty.theoneprobe.api.IProbeInfoProvider;
-import mcjty.theoneprobe.api.ProbeMode;
+import mcjty.theoneprobe.api.*;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import me.lyuxc.develop.Star;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class OverclockProvider implements IProbeInfoProvider  {
     @Override
@@ -35,6 +32,8 @@ public class OverclockProvider implements IProbeInfoProvider  {
                 long currentEu = crafterComponent.getCurrentRecipeEu();
                 double mult = (double) currentEu / baseRecipeEu;
                 iProbeInfo.progress(efficiencyTicks,maxEfficiencyTicks,new ProgressStyle()
+                        .alignment(ElementAlignment.ALIGN_CENTER)
+                        .width(120)
                         .backgroundColor(Color.WHITE.getRGB())
                         .filledColor(Color.green.getRGB())
                         .alternateFilledColor(Color.green.getRGB())

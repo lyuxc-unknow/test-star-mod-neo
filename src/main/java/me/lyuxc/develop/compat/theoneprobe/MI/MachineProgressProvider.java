@@ -2,10 +2,7 @@ package me.lyuxc.develop.compat.theoneprobe.MI;
 
 import aztech.modern_industrialization.api.machine.component.CrafterAccess;
 import aztech.modern_industrialization.api.machine.holder.CrafterComponentHolder;
-import mcjty.theoneprobe.api.IProbeHitData;
-import mcjty.theoneprobe.api.IProbeInfo;
-import mcjty.theoneprobe.api.IProbeInfoProvider;
-import mcjty.theoneprobe.api.ProbeMode;
+import mcjty.theoneprobe.api.*;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import me.lyuxc.develop.Star;
 import me.lyuxc.develop.utils.I18N;
@@ -14,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class MachineProgressProvider implements IProbeInfoProvider {
     @Override
@@ -29,6 +26,9 @@ public class MachineProgressProvider implements IProbeInfoProvider {
             float progress = component.getProgress();
             if (progress > 0.0f) {
                 iProbeInfo.progress((int) (progress*100), 100, new ProgressStyle()
+                        .alignment(ElementAlignment.ALIGN_CENTER)
+                        .width(120)
+                        .numberFormat(NumberFormat.COMPACT)
                         .prefix(I18N.getComponent("ts.tips.top.progress"))
                         .suffix("%")
                         .backgroundColor(Color.GRAY.getRGB())

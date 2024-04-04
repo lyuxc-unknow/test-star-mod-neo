@@ -15,7 +15,16 @@ import net.neoforged.neoforge.event.TickEvent;
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class ShowRecipes {
     @SubscribeEvent
-    public static void onClientShowRecipe(TickEvent.RenderTickEvent event) {
+    public static void onRenderTickEvent(TickEvent.RenderTickEvent event) {
+        if (Keys.jei_recipe.consumeClick()) {
+            showJeiRecipeGUI(false);
+        }
+        if (Keys.jei_using.consumeClick()) {
+            showJeiRecipeGUI(true);
+        }
+    }
+
+    private static void showJeiRecipeGUI(boolean isUses) {
         Minecraft minecraft = Minecraft.getInstance();
         HitResult hitResult = minecraft.hitResult;
         if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
@@ -24,12 +33,10 @@ public class ShowRecipes {
                     Level level = minecraft.player.level();
                     ItemStack itemStack = level.getBlockState(result.getBlockPos()).getBlock().asItem().getDefaultInstance();
                     if (itemStack != ItemStack.EMPTY || itemStack != Items.AIR.getDefaultInstance()) {
-                        if (Keys.jei_using.consumeClick()) {
+                        if (isUses)
                             JEIPlugin.displayUses(itemStack);
-                        }
-                        if (Keys.jei_recipe.consumeClick()) {
+                        else
                             JEIPlugin.displayRecipes(itemStack);
-                        }
                     }
                 }
             }

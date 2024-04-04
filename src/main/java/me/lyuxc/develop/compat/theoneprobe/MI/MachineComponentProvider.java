@@ -3,19 +3,18 @@ package me.lyuxc.develop.compat.theoneprobe.MI;
 import aztech.modern_industrialization.api.machine.component.EnergyAccess;
 import aztech.modern_industrialization.api.machine.holder.EnergyComponentHolder;
 import aztech.modern_industrialization.api.machine.holder.EnergyListComponentHolder;
-import mcjty.theoneprobe.api.IProbeHitData;
-import mcjty.theoneprobe.api.IProbeInfo;
-import mcjty.theoneprobe.api.IProbeInfoProvider;
-import mcjty.theoneprobe.api.ProbeMode;
+import mcjty.theoneprobe.api.*;
+import mcjty.theoneprobe.apiimpl.elements.ElementProgress;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import me.lyuxc.develop.Star;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 public class MachineComponentProvider implements IProbeInfoProvider {
@@ -30,7 +29,10 @@ public class MachineComponentProvider implements IProbeInfoProvider {
         if (block instanceof EnergyComponentHolder holder) {
             EnergyAccess component = holder.getEnergyComponent();
             iProbeInfo.progress(component.getEu(),component.getCapacity(),new ProgressStyle()
-                    .suffix("EU/" + component.getCapacity() + "EU")
+                    .alignment(ElementAlignment.ALIGN_CENTER)
+                    .numberFormat(NumberFormat.COMPACT)
+                    .width(120)
+                    .suffix("EU/" + ElementProgress.format(component.getCapacity(), NumberFormat.COMPACT, Component.literal("EU")).getString())
                     .backgroundColor(Color.WHITE.getRGB())
                     .filledColor(Color.RED.getRGB())
                     .alternateFilledColor(Color.GRAY.getRGB())
@@ -45,7 +47,9 @@ public class MachineComponentProvider implements IProbeInfoProvider {
                     capacity += component.getCapacity();
                 }
                 iProbeInfo.progress(stored, capacity, new ProgressStyle()
-                        .suffix("EU/" + capacity + "EU")
+                        .alignment(ElementAlignment.ALIGN_CENTER)
+                        .numberFormat(NumberFormat.COMPACT)
+                        .suffix("EU/" + ElementProgress.format(capacity, NumberFormat.COMPACT, Component.literal("EU")).getString())
                         .backgroundColor(Color.WHITE.getRGB())
                         .filledColor(Color.RED.getRGB())
                         .alternateFilledColor(Color.GRAY.getRGB())
