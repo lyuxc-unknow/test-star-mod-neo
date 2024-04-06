@@ -39,6 +39,7 @@ public class TextUtils {
             sb.append(colours[col]);
             sb.append(c);
         }
+        sb.append(RESET);
         return sb.toString();
     }
 }
