@@ -63,6 +63,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_7.get(),"Level7 AIOT");
             add(ItemRegistry.ALL_OURPOSE_TOOL_8.get(),"Level8 AIOT");
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(),"Level Infinite AIOT");
+            add(ItemRegistry.COIN.get(), "Lucky Coin");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "Example Block");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
@@ -151,6 +152,7 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_7.get(),"构建公式 全能工具");
             add(ItemRegistry.ALL_OURPOSE_TOOL_8.get(),"世界物质 全能工具");
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(), "逆轉世間萬物輪回の萬用工具");
+            add(ItemRegistry.COIN.get(), "幸运硬币");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "测试方块");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "行星方块");
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");
