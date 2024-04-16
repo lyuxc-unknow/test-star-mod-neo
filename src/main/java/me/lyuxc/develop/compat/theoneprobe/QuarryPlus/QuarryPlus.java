@@ -25,7 +25,7 @@ public class QuarryPlus implements IProbeInfoProvider {
     @Override
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
         if(level.getBlockEntity(iProbeHitData.getPos()) instanceof TileWorkbench workbench){
-            if(workbench.getEnergyStored() > 0) {
+            if (workbench.getRecipe().hasContent()) {
                 iProbeInfo.progress(workbench.getEnergyStored(), workbench.getRecipe().getRequiredEnergy()/1000000000,new ProgressStyle()
                         .alignment(ElementAlignment.ALIGN_CENTER)
                         .numberFormat(NumberFormat.COMPACT)
