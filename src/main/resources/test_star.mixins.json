@@ -4,9 +4,12 @@
   "package": "me.lyuxc.develop.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AvaritiaRe.CompressorCategoryMixin",
+    "AvaritiaRe.ExtremeCraftingTableCategoryMixin",
     "minecraft.DerivedLevelDataMixin",
     "minecraft.MixinBaseFireBlock",
-    "minecraft.PrimaryLevelDataMixin"
+    "minecraft.PrimaryLevelDataMixin",
+    "QuarryPlus.TileWorkBenchMixin"
   ],
   "client": [
     "minecraft.MixinAdvancementToast",
