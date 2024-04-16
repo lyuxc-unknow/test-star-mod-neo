@@ -65,6 +65,9 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(),"Level Infinite AIOT");
             add(ItemRegistry.COIN.get(), "Lucky Coin");
             add(ItemRegistry.SOLID_STATE_ENERGY.get(), "Solid State Energy");
+            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x Solid State Energy");
+            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x Solid State Energy");
+            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x Solid State Energy");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "Example Block");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
@@ -155,6 +158,9 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(), "逆轉世間萬物輪回の萬用工具");
             add(ItemRegistry.COIN.get(), "幸运硬币");
             add(ItemRegistry.SOLID_STATE_ENERGY.get(), "固态能量");
+            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x 固态能量");
+            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x 固态能量");
+            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x 固态能量");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "测试方块");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "行星方块");
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");

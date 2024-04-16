@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "test_star:item/solid_state_energy_max"
+  }
+}
