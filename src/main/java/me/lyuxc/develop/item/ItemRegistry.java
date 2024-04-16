@@ -62,11 +62,11 @@ public class ItemRegistry {
             .stacksTo(1)
     ));
     //一次性引力磁场
-    public static final DeferredItem<Item> GravitationalMagneticField = ITEMS.register("gravitational_magnetic_field", () -> new GravitationalMagneticField(new Item.Properties()
+    public static final DeferredItem<Item> GRAVITATIONAL_MAGNETIC_FIELD = ITEMS.register("gravitational_magnetic_field", () -> new GravitationalMagneticField(new Item.Properties()
             .stacksTo(32)
     ));
     //阿尔法·医疗箱
-    public static final DeferredItem<Item> MEDICALBOX = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
+    public static final DeferredItem<Item> MEDICAL_BOX = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
             .stacksTo(16)
             .food(new FoodProperties.Builder()
                     .fast()
@@ -104,13 +104,13 @@ public class ItemRegistry {
     //雷电权杖
     public static final DeferredItem<Item> LIGHT_AR = ITEMS.register("light_ar", () -> new Light(new Item.Properties()));
     //多人模式解锁工具
-    public static final DeferredItem<Item> MultiPlayerTool = ITEMS.register("multiplayer_tool", () -> new MultiPlayerTool(new Item.Properties()));
+    public static final DeferredItem<Item> MULTIPLAYER_TOOL = ITEMS.register("multiplayer_tool", () -> new MultiPlayerTool(new Item.Properties()));
     //木剪刀
-    public static final DeferredItem<Item> WoodShears = ITEMS.register("wood_shears", () -> new WoodShears(new Item.Properties()
+    public static final DeferredItem<Item> WOOD_SHEARS = ITEMS.register("wood_shears", () -> new WoodShears(new Item.Properties()
             .durability(1024)
     ));
     //简易的弓
-    public static final DeferredItem<BowItem> BowItem = ITEMS.register("my_bow",() -> new BowItem(new Item.Properties()
+    public static final DeferredItem<BowItem> MY_BOW = ITEMS.register("my_bow", () -> new BowItem(new Item.Properties()
             .stacksTo(1)
     ));
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_1 = ITEMS.register("allinone_tool_1",() -> new AllOurposeTool(Tiers.LEVEL1));
@@ -123,7 +123,7 @@ public class ItemRegistry {
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_8 = ITEMS.register("allinone_tool_8",() -> new AllOurposeTool(Tiers.LEVEL8));
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_INF = ITEMS.register("allinone_tool_inf",() -> new AllOurposeTool(Tiers.LEVEL_INF));
     public static final DeferredItem<WoodSawBlade> WOOD_SAW_BLADE = ITEMS.register("wood_sawblade", WoodSawBlade::new);
-
+    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY = ITEMS.register("solid_state_energy", () -> new SolidStateEnergy(100));
     public static final DeferredItem<Item> COIN = ITEMS.register("mind_coin", () -> new MindCoin(new Item.Properties()));
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {

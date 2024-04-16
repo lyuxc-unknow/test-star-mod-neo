@@ -24,7 +24,7 @@ public class BlockRegistry {
     //物品注册
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Variables.MOD_ID);
     //方块物品注册
-    public static final DeferredRegister<BlockEntityType<?>> ITEM_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Variables.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPE = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Variables.MOD_ID);
     //添加方块
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCK_DEFERRED_REGISTER.register("example_block", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
@@ -57,6 +57,6 @@ public class BlockRegistry {
     public static void init(IEventBus iEventBus) {
         BLOCK_DEFERRED_REGISTER.register(iEventBus);
         ITEMS.register(iEventBus);
-        ITEM_DEFERRED_REGISTER.register(iEventBus);
+        BLOCK_ENTITY_TYPE.register(iEventBus);
     }
 }

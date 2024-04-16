@@ -37,12 +37,12 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.LEVEL6ITEM.get());
         basicItem(ItemRegistry.LEVEL7ITEM.get());
         basicItem(ItemRegistry.LEVEL8ITEM.get());
-        basicItem(ItemRegistry.MEDICALBOX.get());
+        basicItem(ItemRegistry.MEDICAL_BOX.get());
         basicItem(ItemRegistry.EXAMPLE_ITEM.getId());
         basicItem(ItemRegistry.MY_SWORD.getId());
         basicItem(ItemRegistry.WATER_GETTER.getId());
         basicItem(ItemRegistry.END_ITEM.get());
-        basicItem(ItemRegistry.GravitationalMagneticField.get());
+        basicItem(ItemRegistry.GRAVITATIONAL_MAGNETIC_FIELD.get());
         basicItem(ItemRegistry.GAZE_OF_CAPITAL.get());
         basicItem(ItemRegistry.SPIRITUAL_FOOD.get());
         basicItem(ItemRegistry.MOD_BLOCK_MEDIUM.get());
@@ -52,8 +52,8 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.MOD_BLOCK_METAL.get());
         basicItem(ItemRegistry.TETANUS_BLADE.get());
         basicItem(ItemRegistry.LIGHT_AR.get());
-        basicItem(ItemRegistry.MultiPlayerTool.get());
-        basicItem(ItemRegistry.WoodShears.get());
+        basicItem(ItemRegistry.MULTIPLAYER_TOOL.get());
+        basicItem(ItemRegistry.WOOD_SHEARS.get());
         basicItem(ItemRegistry.WOOD_SAW_BLADE.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_1.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_2.get());
@@ -64,6 +64,7 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_7.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_8.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_INF.get());
+        basicItem(ItemRegistry.SOLID_STATE_ENERGY.get());
         for(var i=0;i<20;i++) {
             basicItem(Utils.getItem("test_star:package_" + i));
         }
