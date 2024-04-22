@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.minecraft;
+package me.lyuxc.develop.mixins.Minecraft;
 
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.layouts.GridLayout;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(targets = "net.minecraft.client.gui.screens.worldselection.CreateWorldScreen$GameTab")
-public class MixinGameTab {
+public class GameTabMixin {
     @Inject(method = "<init>",at = @At("TAIL"),locals = LocalCapture.CAPTURE_FAILSOFT)
     private void disableButton(CreateWorldScreen this$0, CallbackInfo ci, GridLayout.RowHelper gridlayout$rowhelper, LayoutSettings layoutsettings, CycleButton<WorldCreationUiState.SelectedGameMode> cyclebutton, CycleButton<Difficulty> cyclebutton1, CycleButton<Boolean> cyclebutton2) {
         this$0.getUiState().setAllowCheats(false);

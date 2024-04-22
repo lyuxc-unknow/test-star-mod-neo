@@ -76,6 +76,11 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(CATEGORY_LIGHTNING, LightningCraftingRecipes.RECIPES.stream().toList());
     }
 
+    @Override
+    public void onRuntimeAvailable(@NotNull IJeiRuntime jeiRuntime) {
+        iJeiRuntime = jeiRuntime;
+    }
+
     public static void displayRecipes(ItemStack stack) {
         if (!stack.isEmpty()) {
             iJeiRuntime.getRecipesGui().show(iJeiRuntime.getJeiHelpers().getFocusFactory().createFocus(RecipeIngredientRole.OUTPUT, VanillaTypes.ITEM_STACK, stack));
@@ -86,10 +91,5 @@ public class JEIPlugin implements IModPlugin {
         if (!stack.isEmpty()) {
             iJeiRuntime.getRecipesGui().show(iJeiRuntime.getJeiHelpers().getFocusFactory().createFocus(RecipeIngredientRole.INPUT, VanillaTypes.ITEM_STACK, stack));
         }
-    }
-
-    @Override
-    public void onRuntimeAvailable(@NotNull IJeiRuntime jeiRuntime) {
-        iJeiRuntime = jeiRuntime;
     }
 }

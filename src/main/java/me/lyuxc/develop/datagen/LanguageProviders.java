@@ -6,8 +6,6 @@ import me.lyuxc.develop.item.ItemRegistry;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-import java.util.Objects;
-
 
 public class LanguageProviders extends LanguageProvider {
     String locale1;
@@ -18,7 +16,7 @@ public class LanguageProviders extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        if(Objects.equals(locale1, "en_us")) {
+        if (locale1.equals("en_us")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "Level 1 Sword");
             add(ItemRegistry.LEVEL2SWORD.get(), "Level 2 Sword");
             add(ItemRegistry.LEVEL3SWORD.get(), "Level 3 Sword");
@@ -104,6 +102,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.deputy_category","Deputy Crafting");
             add("ts.tips.jei.lightning_category","Lightning Crafting");
             add("ts.tips.top.progress","Crafting Progress:");
+            add("ts.tips.top.energy", "Energy:");
             add("ts.tips.top.crafting", "Crafting:");
             add("key.categories.test_star", "[TS Mod]Keyboards");
             add("key.jei.using", "View the purpose of the currently pointed block");
@@ -111,7 +110,7 @@ public class LanguageProviders extends LanguageProvider {
             for(var i=0;i<20;i++) {
                 add("item.test_star.package_" + i,"No."+(i+1)+"Package");
             }
-        } else if(Objects.equals(locale1, "zh_cn")) {
+        } else if (locale1.equals("zh_cn")) {
             add(ItemRegistry.LEVEL1SWORD.get(), "侵蚀像素剑");
             add(ItemRegistry.LEVEL2SWORD.get(), "坍塌剑");
             add(ItemRegistry.LEVEL3SWORD.get(), "群星光点合金剑");
@@ -195,6 +194,7 @@ public class LanguageProviders extends LanguageProvider {
             add("ts.tips.jei.deputy_category","二次合成");
             add("ts.tips.jei.lightning_category","雷电合成");
             add("ts.tips.top.progress","合成进度:");
+            add("ts.tips.top.energy", "能量:");
             add("ts.tips.top.crafting", "正在合成:");
             add("key.categories.test_star", "[TSM]按键");
             add("key.jei.using", "查看当前指向方块的用途");

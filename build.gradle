@@ -88,7 +88,6 @@ dependencies {
     implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
     implementation "mcjty.theoneprobe:theoneprobe:1.20.4_neo-11.0.2-3"
     implementation "curse.maven:modern-industrialization-405388:5263199"
-    implementation "curse.maven:re-avaritia-623969:5198497"
 }
 
 tasks.withType(ProcessResources).configureEach {

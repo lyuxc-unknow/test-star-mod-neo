@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.minecraft;
+package me.lyuxc.develop.mixins.Minecraft;
 
 import me.lyuxc.develop.Variables;
 import net.minecraft.client.Minecraft;
@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(Minecraft.class)
-public abstract class MixinMinecraft {
+public abstract class MinecraftMixin {
 
     /**
      * @author lyuxc_

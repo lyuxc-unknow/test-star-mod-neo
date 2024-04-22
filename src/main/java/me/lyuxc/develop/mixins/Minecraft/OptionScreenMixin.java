@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.minecraft;
+package me.lyuxc.develop.mixins.Minecraft;
 
 import me.lyuxc.develop.Variables;
 import net.minecraft.client.Minecraft;
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
 
 @Mixin(OptionsScreen.class)
-public class MixinOptionScreen {
+public class OptionScreenMixin {
     @Shadow
     private CycleButton<Difficulty> difficultyButton;
     @Shadow

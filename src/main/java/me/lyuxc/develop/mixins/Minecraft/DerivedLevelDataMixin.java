@@ -1,4 +1,4 @@
-package me.lyuxc.develop.mixins.minecraft;
+package me.lyuxc.develop.mixins.Minecraft;
 
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.storage.DerivedLevelData;
