@@ -5,10 +5,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class onBreakBlock {
     @SubscribeEvent
     public static void breakGrassDropStack(BlockEvent.BreakEvent event) {

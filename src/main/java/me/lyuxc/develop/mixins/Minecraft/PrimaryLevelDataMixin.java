@@ -7,9 +7,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PrimaryLevelData.class)
-public class PrimaryLevelDataMixin {
-    @Inject(method = "getAllowCommands",at = @At("RETURN"), cancellable = true)
+public abstract class PrimaryLevelDataMixin {
+
+    @Inject(method = "isAllowCommands", at = @At("RETURN"), cancellable = true, remap = false)
     public void getAllowCommands$mixin(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(false);
+        cir.setReturnValue(Boolean.FALSE);
     }
 }

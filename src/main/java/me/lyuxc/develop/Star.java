@@ -1,15 +1,12 @@
 package me.lyuxc.develop;
 
 import me.lyuxc.develop.block.BlockRegistry;
-import me.lyuxc.develop.compat.theoneprobe.TOPRegister;
-import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import me.lyuxc.develop.keys.Keys;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.InterModComms;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -39,22 +36,24 @@ public class Star {
         //物品 - 添加到创造物品栏
         modEventBus.addListener(ItemRegistry::addCreativeTab);
         //数据生成器监听
-        modEventBus.addListener(DataGeneration::generate);
+//        modEventBus.addListener(DataGeneration::generate);
         //事件注册
         modEventBus.addListener(this::CommonSetupEvent);
         modEventBus.addListener(Keys::init);
     }
 
+    @SuppressWarnings("unused")
+    public static ResourceLocation rl(String id) {
+        return new ResourceLocation(Variables.MOD_ID, id);
+    }
+
     private void CommonSetupEvent(FMLCommonSetupEvent event) {
 //        TOPRegister.register();
-        InterModComms.sendTo("theoneprobe", "getTheOneProbe",TOPRegister::new);
+//        InterModComms.sendTo("theoneprobe", "getTheOneProbe",TOPRegister::new);
         //模组加载数量将检测
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             System.exit(0);
         }
-    }
-    public static ResourceLocation rl(String id) {
-        return new ResourceLocation(Variables.MOD_ID,id);
     }
 }

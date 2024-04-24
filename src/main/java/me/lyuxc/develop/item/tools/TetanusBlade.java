@@ -10,15 +10,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class TetanusBlade extends SwordItem {
     public TetanusBlade(Properties pProperties) {
-        super(Tiers.IRON, 0, 65535, pProperties);
+        super(Tiers.IRON, pProperties);
     }
 
     @Override
@@ -29,10 +27,9 @@ public class TetanusBlade extends SwordItem {
         pAttacker.setHealth(pAttacker.getHealth() + Variables.random.nextInt((int) (pTarget.getMaxHealth() * 0.5)));
         return true;
     }
-
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+    public void appendHoverText(@NotNull ItemStack pStack, @NotNull TooltipContext tooltipContext, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("ts.sword.tip.two"));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(pStack, tooltipContext, pTooltipComponents, pIsAdvanced);
     }
 }

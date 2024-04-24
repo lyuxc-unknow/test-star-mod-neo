@@ -16,7 +16,7 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 //minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 //minecraft.accessTransformers.entry public net.minecraft.client.Minecraft textureManager # textureManager
@@ -32,23 +32,23 @@ runs {
         // "SCAN": For mods scan.
         // "REGISTRIES": For firing of registry events.
         // "REGISTRYDUMP": For getting the contents of all registries.
-        systemProperty 'forge.logging.markers', 'REGISTRIES'
-        systemProperty 'forge.logging.console.level', 'debug'
+        systemProperty 'neoforge.logging.markers', 'REGISTRIES'
+        systemProperty 'neoforge.logging.console.level', 'debug'
         modSource project.sourceSets.main
     }
 
     client {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         programArguments('--username', 'lyuxc_')
         programArguments('--uuid', "ce691642-c635-44a0-9d25-8856ccfc9ab1")
     }
 
     server {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'
     }
     gameTestServer {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
     }
 
     data {
@@ -75,19 +75,19 @@ repositories {
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-
-    compileOnly "curse.maven:mcwifipnp-450250:5056245"
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-    runtimeOnly "curse.maven:grandpower-980156:5140183"
-    runtimeOnly "curse.maven:scalable-cats-force-320926:4973960"
-    runtimeOnly "curse.maven:cloth-config-348521:4973457"
-
-    implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
-    implementation "mcjty.theoneprobe:theoneprobe:1.20.4_neo-11.0.2-3"
-    implementation "curse.maven:modern-industrialization-405388:5263199"
+//
+//    compileOnly "curse.maven:mcwifipnp-450250:5056245"
+//    compileOnly "mezz.jei:jei-${before_minecraft_version}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${before_minecraft_version}-neoforge-api:${jei_version}"
+//
+//    runtimeOnly "mezz.jei:jei-${before_minecraft_version}-neoforge:${jei_version}"
+//    runtimeOnly "curse.maven:grandpower-980156:5140183"
+//    runtimeOnly "curse.maven:scalable-cats-force-320926:4973960"
+//    runtimeOnly "curse.maven:cloth-config-348521:4973457"
+//
+//    implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
+//    implementation "mcjty.theoneprobe:theoneprobe:1.20.4_neo-11.0.2-3"
+//    implementation "curse.maven:modern-industrialization-405388:5263199"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -100,7 +100,7 @@ tasks.withType(ProcessResources).configureEach {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/neoforge.mods.toml'/*, 'pack.mcmeta'*/]) {
         expand replaceProperties + [project: project]
     }
 }

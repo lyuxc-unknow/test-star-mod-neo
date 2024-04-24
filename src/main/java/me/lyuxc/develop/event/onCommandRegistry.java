@@ -3,10 +3,10 @@ package me.lyuxc.develop.event;
 import me.lyuxc.develop.utils.CommandExecutes;
 import net.minecraft.commands.Commands;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class onCommandRegistry {
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {

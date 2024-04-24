@@ -1,0 +1,19 @@
+modLoader="javafml" #mandatory
+loaderVersion = "[2,)" #mandatory
+license = "MIT"
+[[mods]] #mandatory
+modId = "test_star" #mandatory
+version = "1.0.2" #mandatory
+displayName = "Test Star Mod" #mandatory
+authors = "lyuxc" #optional
+
+description = '''a mod for modpack'''
+[[dependencies.test_star]] #optional
+    modId="neoforge" #mandatory
+    type="required"
+versionRange = "[20.5.0-beta,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[mixins]]
+    config="test_star.mixins.json"
+

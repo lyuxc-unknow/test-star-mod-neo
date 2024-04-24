@@ -5,10 +5,11 @@ import me.lyuxc.develop.utils.I18N;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
-@Mod.EventBusSubscriber(modid = Variables.MOD_ID)
+
+@EventBusSubscriber(modid = Variables.MOD_ID)
 public class onPlayerLogging {
     @SubscribeEvent
     public static void onLogging(PlayerEvent.PlayerLoggedInEvent event) {

@@ -42,7 +42,6 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.MY_SWORD.getId());
         basicItem(ItemRegistry.WATER_GETTER.getId());
         basicItem(ItemRegistry.END_ITEM.get());
-        basicItem(ItemRegistry.GRAVITATIONAL_MAGNETIC_FIELD.get());
         basicItem(ItemRegistry.GAZE_OF_CAPITAL.get());
         basicItem(ItemRegistry.SPIRITUAL_FOOD.get());
         basicItem(ItemRegistry.MOD_BLOCK_MEDIUM.get());
@@ -64,10 +63,10 @@ public class ItemModelProviders extends ItemModelProvider {
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_7.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_8.get());
         basicItem(ItemRegistry.ALL_OURPOSE_TOOL_INF.get());
-        basicItem(ItemRegistry.SOLID_STATE_ENERGY.get());
-        basicItem(ItemRegistry.SOLID_STATE_ENERGY_02X.get());
-        basicItem(ItemRegistry.SOLID_STATE_ENERGY_100X.get());
-        basicItem(ItemRegistry.SOLID_STATE_ENERGY_MAX.get());
+//        basicItem(ItemRegistry.SOLID_STATE_ENERGY.get());
+//        basicItem(ItemRegistry.SOLID_STATE_ENERGY_02X.get());
+//        basicItem(ItemRegistry.SOLID_STATE_ENERGY_100X.get());
+//        basicItem(ItemRegistry.SOLID_STATE_ENERGY_MAX.get());
         for(var i=0;i<20;i++) {
             basicItem(Utils.getItem("test_star:package_" + i));
         }

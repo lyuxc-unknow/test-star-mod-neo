@@ -6,10 +6,10 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.CommandEvent;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class onCommand {
     @SubscribeEvent
     public static void onCommandEvent(CommandEvent event) {

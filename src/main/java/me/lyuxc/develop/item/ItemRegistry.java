@@ -62,17 +62,17 @@ public class ItemRegistry {
             .stacksTo(1)
     ));
     //一次性引力磁场
-    public static final DeferredItem<Item> GRAVITATIONAL_MAGNETIC_FIELD = ITEMS.register("gravitational_magnetic_field", () -> new GravitationalMagneticField(new Item.Properties()
-            .stacksTo(32)
-    ));
+//    public static final DeferredItem<Item> GRAVITATIONAL_MAGNETIC_FIELD = ITEMS.register("gravitational_magnetic_field", () -> new GravitationalMagneticField(new Item.Properties()
+//            .stacksTo(32)
+//    ));
     //阿尔法·医疗箱
     public static final DeferredItem<Item> MEDICAL_BOX = ITEMS.register("alpha_medical_box", () -> new AlphaMedicalBox(new Item.Properties()
             .stacksTo(16)
             .food(new FoodProperties.Builder()
                     .fast()
-                    .alwaysEat()
+                    .alwaysEdible()
                     .nutrition(10)
-                    .saturationMod(10)
+                    .saturationModifier(10)
                     .build()
             )
     ));
@@ -84,7 +84,7 @@ public class ItemRegistry {
     public static final DeferredItem<Item> SPIRITUAL_FOOD = ITEMS.register("spiritual_food", () -> new SpiritualFood(new Item.Properties()
             .stacksTo(16)
             .food(new FoodProperties.Builder()
-                    .alwaysEat()
+                    .alwaysEdible()
                     .nutrition(21)
                     .build()
             )
@@ -123,10 +123,10 @@ public class ItemRegistry {
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_8 = ITEMS.register("allinone_tool_8",() -> new AllOurposeTool(Tiers.LEVEL8));
     public static final DeferredItem<AllOurposeTool> ALL_OURPOSE_TOOL_INF = ITEMS.register("allinone_tool_inf",() -> new AllOurposeTool(Tiers.LEVEL_INF));
     public static final DeferredItem<WoodSawBlade> WOOD_SAW_BLADE = ITEMS.register("wood_sawblade", WoodSawBlade::new);
-    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY = ITEMS.register("solid_state_energy", () -> new SolidStateEnergy(100));
-    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_02X = ITEMS.register("solid_state_energy_02x", () -> new SolidStateEnergy(20));
-    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_100X = ITEMS.register("solid_state_energy_100x", () -> new SolidStateEnergy(10000));
-    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_MAX = ITEMS.register("solid_state_energy_max", () -> new SolidStateEnergy(81920000));
+    //    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY = ITEMS.register("solid_state_energy", () -> new SolidStateEnergy(100));
+//    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_02X = ITEMS.register("solid_state_energy_02x", () -> new SolidStateEnergy(20));
+//    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_100X = ITEMS.register("solid_state_energy_100x", () -> new SolidStateEnergy(10000));
+//    public static final DeferredItem<SolidStateEnergy> SOLID_STATE_ENERGY_MAX = ITEMS.register("solid_state_energy_max", () -> new SolidStateEnergy(81920000));
     public static final DeferredItem<Item> COIN = ITEMS.register("mind_coin", () -> new MindCoin(new Item.Properties()));
     //添加到模组的创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {

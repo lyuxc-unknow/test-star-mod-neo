@@ -6,10 +6,10 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class onCrafting {
     @SubscribeEvent
     public static void onCraftEvent(PlayerEvent.ItemCraftedEvent event) {

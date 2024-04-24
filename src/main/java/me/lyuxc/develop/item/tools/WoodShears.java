@@ -18,12 +18,9 @@ public class WoodShears extends ShearsItem {
     @Override
     public boolean mineBlock(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull LivingEntity pEntityLiving) {
         if (!pLevel.isClientSide && pState.is(BlockTags.LEAVES)) {
-            pStack.hurtAndBreak(-2, pEntityLiving,
-                    (pEntity) -> pEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND)
-            );
+            pStack.hurtAndBreak(-2, pEntityLiving, EquipmentSlot.MAINHAND);
         } else {
-            pStack.hurtAndBreak(4, pEntityLiving,
-                    (pEntity) -> pEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            pStack.hurtAndBreak(4, pEntityLiving, EquipmentSlot.MAINHAND);
         }
         return !pState.is(BlockTags.LEAVES) || super.mineBlock(pStack, pLevel, pState, pPos, pEntityLiving);
     }

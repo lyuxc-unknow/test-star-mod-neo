@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public class GameTabMixin {
     @Inject(method = "<init>",at = @At("TAIL"),locals = LocalCapture.CAPTURE_FAILSOFT)
     private void disableButton(CreateWorldScreen this$0, CallbackInfo ci, GridLayout.RowHelper gridlayout$rowhelper, LayoutSettings layoutsettings, CycleButton<WorldCreationUiState.SelectedGameMode> cyclebutton, CycleButton<Difficulty> cyclebutton1, CycleButton<Boolean> cyclebutton2) {
-        this$0.getUiState().setAllowCheats(false);
+        this$0.getUiState().setAllowCommands(false);
         this$0.getUiState().setDifficulty(Difficulty.HARD);
         this$0.getUiState().setGameMode(WorldCreationUiState.SelectedGameMode.SURVIVAL);
         this$0.getUiState().addListener(worldCreationUiState -> {

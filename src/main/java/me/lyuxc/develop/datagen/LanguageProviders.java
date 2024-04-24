@@ -38,7 +38,6 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MY_SWORD.get(), "My Sword");
             add(ItemRegistry.WATER_GETTER.get(), "Water Getter");
             add(ItemRegistry.END_ITEM.get(), "End Item");
-            add(ItemRegistry.GRAVITATIONAL_MAGNETIC_FIELD.get(), "Disposable gravity magnetic field");
             add(ItemRegistry.GAZE_OF_CAPITAL.get(), "Gaze of Capital");
             add(ItemRegistry.SPIRITUAL_FOOD.get(), "Spiritual Food");
             add(ItemRegistry.MOD_BLOCK_MEDIUM.get(), "Mod Block:Medium");
@@ -62,10 +61,10 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_8.get(),"Level8 AIOT");
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(),"Level Infinite AIOT");
             add(ItemRegistry.COIN.get(), "Lucky Coin");
-            add(ItemRegistry.SOLID_STATE_ENERGY.get(), "Solid State Energy");
-            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x Solid State Energy");
-            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x Solid State Energy");
-            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x Solid State Energy");
+//            add(ItemRegistry.SOLID_STATE_ENERGY.get(), "Solid State Energy");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x Solid State Energy");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x Solid State Energy");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x Solid State Energy");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "Example Block");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
@@ -132,7 +131,6 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.MY_SWORD.get(), "逆轉世間萬物輪回の劍");
             add(ItemRegistry.WATER_GETTER.get(), "水汽捕获装置");
             add(ItemRegistry.END_ITEM.get(), "相饰位面");
-            add(ItemRegistry.GRAVITATIONAL_MAGNETIC_FIELD.get(), "一次性重力磁场");
             add(ItemRegistry.GAZE_OF_CAPITAL.get(), "资本的目光");
             add(ItemRegistry.SPIRITUAL_FOOD.get(), "精神粮食");
             add(ItemRegistry.MOD_BLOCK_MEDIUM.get(), "模组数据块：介质");
@@ -156,10 +154,10 @@ public class LanguageProviders extends LanguageProvider {
             add(ItemRegistry.ALL_OURPOSE_TOOL_8.get(),"世界物质 全能工具");
             add(ItemRegistry.ALL_OURPOSE_TOOL_INF.get(), "逆轉世間萬物輪回の萬用工具");
             add(ItemRegistry.COIN.get(), "幸运硬币");
-            add(ItemRegistry.SOLID_STATE_ENERGY.get(), "固态能量");
-            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x 固态能量");
-            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x 固态能量");
-            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x 固态能量");
+//            add(ItemRegistry.SOLID_STATE_ENERGY.get(), "固态能量");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_02X.get(), "0.2x 固态能量");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_100X.get(), "100x 固态能量");
+//            add(ItemRegistry.SOLID_STATE_ENERGY_MAX.get(), "819200x 固态能量");
             add(BlockRegistry.EXAMPLE_BLOCK_ITEM.get(), "测试方块");
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "行星方块");
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");

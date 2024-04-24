@@ -2,11 +2,7 @@ package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Tiers;
 import me.lyuxc.develop.Variables;
-import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.utils.I18N;
-import me.lyuxc.develop.utils.TextUtils;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -20,21 +16,23 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.ToolAction;
 import net.neoforged.neoforge.common.ToolActions;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class AllOurposeTool extends DiggerItem {
     private final Tier TIER;
     public AllOurposeTool(Tier pTier) {
-        super(4,-2,pTier,
+        super(pTier,
                 TagKey.create(Registries.BLOCK,new ResourceLocation(Variables.MOD_ID,"mineable/aotools")),
                 new Properties().durability( pTier.getUses() * 5));
         this.TIER = pTier;
@@ -47,27 +45,9 @@ public class AllOurposeTool extends DiggerItem {
         return super.canPerformAction(stack, toolAction);
     }
 
-//    @Override
-//    public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
-//        if (pContext.getPlayer() == null) {
-//            return InteractionResult.FAIL;
-//        }
-//        if (!pContext.getPlayer().isCrouching()) {
-//            return Items.NETHERITE_HOE.useOn(pContext);
-//        }
-//        return Items.NETHERITE_SHOVEL.useOn(pContext);
-//    }
-
     @Override
     public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack, @NotNull Enchantment enchantment) {
-        return super.canApplyAtEnchantingTable(stack, enchantment) || enchantment.category.canEnchant(Items.DIAMOND_SWORD);
-    }
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        if(TIER == Tiers.LEVEL_INF) {
-            pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(I18N.getItemComponent(ItemRegistry.ALL_OURPOSE_TOOL_INF.asItem()))));
-        }
+        return super.canApplyAtEnchantingTable(stack, enchantment) || enchantment.canEnchant(Items.DIAMOND_SWORD.getDefaultInstance());
     }
 
     @Override

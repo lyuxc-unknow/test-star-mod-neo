@@ -2,15 +2,14 @@
   "required": true,
   "minVersion": "0.8",
   "package": "me.lyuxc.develop.mixins",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1
   },
   "refmap": "test_star.refmap.json",
   "mixins": [
     "Minecraft.DerivedLevelDataMixin",
-    "Minecraft.PrimaryLevelDataMixin",
-    "QuarryPlus.TileWorkBenchMixin"
+    "Minecraft.PrimaryLevelDataMixin"
   ],
   "client": [
     "Minecraft.AdvancementToastMixin",

@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class Level8Sword extends SwordItem {
     public Level8Sword(Properties properties) {
-        super(Tiers.LEVEL8, 0, 65535 - 4, properties);
+        super(Tiers.LEVEL8, properties);
     }
 
     @Override

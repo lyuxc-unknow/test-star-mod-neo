@@ -16,8 +16,8 @@ public abstract class DerivedLevelDataMixin {
 
     @Shadow @Final private WorldData worldData;
 
-    @Inject(method = "getAllowCommands",at = @At("RETURN"), cancellable = true)
-    public void getAllowCommands(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(this.getGameType().isCreative() && this.worldData.getAllowCommands());
+    @Inject(method = "isAllowCommands", at = @At("RETURN"), cancellable = true, remap = false)
+    public void isAllowCommands(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(this.getGameType().isCreative() && this.worldData.isAllowCommands());
     }
 }

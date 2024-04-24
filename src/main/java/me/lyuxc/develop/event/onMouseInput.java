@@ -6,12 +6,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-@Mod.EventBusSubscriber(modid = Variables.MOD_ID)
+
+@EventBusSubscriber(modid = Variables.MOD_ID)
 public class onMouseInput {
     /*
     * FTB方案，自研看Github 历史记录，由于用到客户端专有的东西而导致服务器无法使用而替换

@@ -6,10 +6,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ServerChatEvent;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class onChat {
     @SubscribeEvent
     public static void onServerChatEvent(ServerChatEvent event) {

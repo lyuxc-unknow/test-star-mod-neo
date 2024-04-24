@@ -1,11 +1,7 @@
 package me.lyuxc.develop.item.tools;
 
 import me.lyuxc.develop.Tiers;
-import me.lyuxc.develop.item.ItemRegistry;
-import me.lyuxc.develop.utils.I18N;
-import me.lyuxc.develop.utils.TextUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,19 +13,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class MySword extends SwordItem {
     //品质,伤害,攻速,属性
     public MySword() {
-        super(Tiers.LEVEL_INF, 0, 65535 - 4, new Item.Properties());
+        super(Tiers.LEVEL_INF, new Item.Properties());
     }
 
     //是否可以攻击（破坏）方块
@@ -66,10 +60,5 @@ public class MySword extends SwordItem {
             }
         }
         return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
-    }
-    @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pStack.setHoverName(Component.empty().append(TextUtils.applyAllColor(I18N.getItemComponent(ItemRegistry.MY_SWORD.asItem()))));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }
