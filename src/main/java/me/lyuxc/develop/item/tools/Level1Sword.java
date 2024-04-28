@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class Level1Sword extends SwordItem {
     public Level1Sword(Properties properties) {
-        //品质,伤害,攻速,属性
         super(Tiers.LEVEL1, properties);
     }
     //是否可以攻击（破坏）方块

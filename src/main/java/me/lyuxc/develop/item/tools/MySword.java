@@ -23,7 +23,7 @@ import java.util.List;
 public class MySword extends SwordItem {
     //品质,伤害,攻速,属性
     public MySword() {
-        super(Tiers.LEVEL_INF, new Item.Properties());
+        super(Tiers.LEVEL_INF, new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL_INF, (int) Tiers.LEVEL_INF.getAttackDamageBonus(), Tiers.LEVEL_INF.getSpeed())));
     }
 
     //是否可以攻击（破坏）方块

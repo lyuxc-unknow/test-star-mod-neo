@@ -72,9 +72,15 @@ repositories {
     maven {
         url = "https://maven.k-4u.nl"
     }
+    maven {
+        url = "http://localhost:8080/repository/maven-releases/"
+        allowInsecureProtocol = true
+    }
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    implementation jarJar("mod.lyuxc:Jrrp-1.20.5-neoforge:1.0.0-NeoForge")
+    implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.20.5:1.0.0")
 //
 //    compileOnly "curse.maven:mcwifipnp-450250:5056245"
 //    compileOnly "mezz.jei:jei-${before_minecraft_version}-common-api:${jei_version}"
@@ -126,7 +132,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            url "http://localhost:8080/repository/maven-releases/"
+            allowInsecureProtocol = true
+            credentials {
+                username = 'admin'
+                password = '@lyuxc@'
+            }
         }
     }
 }

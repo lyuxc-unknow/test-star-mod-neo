@@ -1,14 +1,17 @@
 package me.lyuxc.develop;
 
 import me.lyuxc.develop.block.BlockRegistry;
+import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import me.lyuxc.develop.keys.Keys;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -36,9 +39,10 @@ public class Star {
         //物品 - 添加到创造物品栏
         modEventBus.addListener(ItemRegistry::addCreativeTab);
         //数据生成器监听
-//        modEventBus.addListener(DataGeneration::generate);
+        modEventBus.addListener(DataGeneration::generate);
         //事件注册
         modEventBus.addListener(this::CommonSetupEvent);
+        modEventBus.addListener(this::ClientSetupEvent);
         modEventBus.addListener(Keys::init);
     }
 
@@ -55,5 +59,9 @@ public class Star {
             Variables.LOGGER.error("Your Minecraft instance was exited due to too many mods being loaded.");
             System.exit(0);
         }
+    }
+
+    private void ClientSetupEvent(FMLClientSetupEvent event) {
+        Minecraft.getInstance().options.gamma().set(1D);
     }
 }

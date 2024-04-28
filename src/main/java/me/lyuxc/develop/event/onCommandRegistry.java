@@ -10,9 +10,6 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 public class onCommandRegistry {
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jrrp")
-                .executes(CommandExecutes::jrrp)
-        );
         event.getDispatcher().register(Commands.literal("gc")
                 .executes(context -> CommandExecutes.gc())
         );

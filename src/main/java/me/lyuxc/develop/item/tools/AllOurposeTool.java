@@ -16,10 +16,7 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -34,7 +31,7 @@ public class AllOurposeTool extends DiggerItem {
     public AllOurposeTool(Tier pTier) {
         super(pTier,
                 TagKey.create(Registries.BLOCK,new ResourceLocation(Variables.MOD_ID,"mineable/aotools")),
-                new Properties().durability( pTier.getUses() * 5));
+                new Properties().durability(pTier.getUses() * 5).attributes(SwordItem.createAttributes(pTier, (int) pTier.getAttackDamageBonus(), pTier.getSpeed())));
         this.TIER = pTier;
     }
 

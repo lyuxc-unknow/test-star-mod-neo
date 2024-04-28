@@ -8,6 +8,7 @@ import me.lyuxc.develop.item.tools.*;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwordItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -18,21 +19,21 @@ public class ItemRegistry {
     //物品
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Variables.MOD_ID);
     //一级剑
-    public static final DeferredItem<Item> LEVEL1SWORD = ITEMS.register("level_one_sword", () -> new Level1Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL1SWORD = ITEMS.register("level_one_sword", () -> new Level1Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL1, (int) Tiers.LEVEL1.getAttackDamageBonus(), Tiers.LEVEL1.getSpeed()))));
     //二级剑
-    public static final DeferredItem<Item> LEVEL2SWORD = ITEMS.register("level_two_sword", () -> new Level2Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL2SWORD = ITEMS.register("level_two_sword", () -> new Level2Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL2, (int) Tiers.LEVEL2.getAttackDamageBonus(), Tiers.LEVEL2.getSpeed()))));
     //三级剑
-    public static final DeferredItem<Item> LEVEL3SWORD = ITEMS.register("level_three_sword", () -> new Level3Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL3SWORD = ITEMS.register("level_three_sword", () -> new Level3Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL3, (int) Tiers.LEVEL3.getAttackDamageBonus(), Tiers.LEVEL3.getSpeed()))));
     //四级剑
-    public static final DeferredItem<Item> LEVEL4SWORD = ITEMS.register("level_four_sword", () -> new Level4Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL4SWORD = ITEMS.register("level_four_sword", () -> new Level4Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL4, (int) Tiers.LEVEL4.getAttackDamageBonus(), Tiers.LEVEL4.getSpeed()))));
     //五级剑
-    public static final DeferredItem<Item> LEVEL5SWORD = ITEMS.register("level_five_sword", () -> new Level5Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL5SWORD = ITEMS.register("level_five_sword", () -> new Level5Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL5, (int) Tiers.LEVEL5.getAttackDamageBonus(), Tiers.LEVEL5.getSpeed()))));
     //六级剑
-    public static final DeferredItem<Item> LEVEL6SWORD = ITEMS.register("level_six_sword", () -> new Level6Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL6SWORD = ITEMS.register("level_six_sword", () -> new Level6Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL6, (int) Tiers.LEVEL6.getAttackDamageBonus(), Tiers.LEVEL6.getSpeed()))));
     //七级剑
-    public static final DeferredItem<Item> LEVEL7SWORD = ITEMS.register("level_seven_sword", () -> new Level7Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL7SWORD = ITEMS.register("level_seven_sword", () -> new Level7Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL7, (int) Tiers.LEVEL7.getAttackDamageBonus(), Tiers.LEVEL7.getSpeed()))));
     //八级剑
-    public static final DeferredItem<Item> LEVEL8SWORD = ITEMS.register("level_eight_sword", () -> new Level8Sword(new Item.Properties()));
+    public static final DeferredItem<Item> LEVEL8SWORD = ITEMS.register("level_eight_sword", () -> new Level8Sword(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL8, (int) Tiers.LEVEL8.getAttackDamageBonus(), Tiers.LEVEL8.getSpeed()))));
     //测试物品
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties()));
     //无铭者の剑
@@ -100,7 +101,7 @@ public class ItemRegistry {
     //数据模组块 -- 梦境
     public static final DeferredItem<Item> MOD_BLOCK_DREAM = ITEMS.register("mod_block_dream", () -> new Item(new Item.Properties()));
     //破伤风之刃
-    public static final DeferredItem<Item> TETANUS_BLADE = ITEMS.register("tetanus_blade", () -> new TetanusBlade(new Item.Properties()));
+    public static final DeferredItem<Item> TETANUS_BLADE = ITEMS.register("tetanus_blade", () -> new TetanusBlade(new Item.Properties().attributes(SwordItem.createAttributes(Tiers.LEVEL4, (int) Tiers.LEVEL1.getAttackDamageBonus(), Tiers.LEVEL_INF.getSpeed()))));
     //雷电权杖
     public static final DeferredItem<Item> LIGHT_AR = ITEMS.register("light_ar", () -> new Light(new Item.Properties()));
     //多人模式解锁工具
