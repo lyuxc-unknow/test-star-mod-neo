@@ -11,7 +11,7 @@ description = '''a mod for modpack'''
 [[dependencies.test_star]] #optional
     modId="neoforge" #mandatory
     type="required"
-versionRange = "[20.5.0-beta,)" #mandatory
+versionRange = "[20.6.7-beta,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[mixins]]

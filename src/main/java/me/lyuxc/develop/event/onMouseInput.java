@@ -7,9 +7,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 
 @EventBusSubscriber(modid = Variables.MOD_ID)
@@ -49,8 +49,8 @@ public class onMouseInput {
         }
     }
     @SubscribeEvent
-    public static void onTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
+    public static void onTick(PlayerTickEvent.Pre event) {
+        Player player = event.getEntity();
         CompoundTag compoundTag = player.getPersistentData();
         if(player.tickCount % 4 == 0 && compoundTag.getInt("digging") > 0) {
             compoundTag.putInt("digging",compoundTag.getInt("digging")-1);
@@ -59,7 +59,7 @@ public class onMouseInput {
             compoundTag.putInt("throttledTimer", compoundTag.getInt("throttledTimer") + 1);
         }
         if(compoundTag.getInt("throttledTimer") > 40) {
-            event.player.displayClientMessage(Component.translatable("ts.click.enable"),true);
+            event.getEntity().displayClientMessage(Component.translatable("ts.click.enable"), true);
             compoundTag.putString("digging","0");
             compoundTag.putBoolean("throttled",false);
             compoundTag.putInt("throttledTimer", 0);
