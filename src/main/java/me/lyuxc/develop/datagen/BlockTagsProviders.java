@@ -1,6 +1,5 @@
 package me.lyuxc.develop.datagen;
 
-import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.block.BlockRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -21,14 +20,16 @@ public class BlockTagsProviders extends BlockTagsProvider {
     }
 
     @Override
+    @SuppressWarnings("all")
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockRegistry.EXAMPLE_BLOCK.get())
                 .add(BlockRegistry.STAR_BLOCK.get())
+                .add(BlockRegistry.SUPER_GENERATOR.get())
                 .add(BlockRegistry.FAN_BLOCK.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(BlockRegistry.STAR_BLOCK.get());
-        tag(TagKey.create(Registries.BLOCK,new ResourceLocation(Variables.MOD_ID,"mineable/aotools"))).addTags(
+        tag(TagKey.create(Registries.BLOCK, new ResourceLocation("c", "mineable/aotools"))).addTags(
                 BlockTags.MINEABLE_WITH_PICKAXE,
                 BlockTags.MINEABLE_WITH_AXE,
                 BlockTags.MINEABLE_WITH_HOE,

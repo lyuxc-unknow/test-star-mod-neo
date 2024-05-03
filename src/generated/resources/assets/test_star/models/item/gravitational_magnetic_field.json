@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "test_star:item/gravitational_magnetic_field"
-  }
-}

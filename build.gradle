@@ -76,24 +76,32 @@ repositories {
         url = "http://localhost:8080/repository/maven-releases/"
         allowInsecureProtocol = true
     }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroup("software.bernie.geckolib")
+        }
+    }
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
     implementation jarJar("mod.lyuxc:Jrrp-1.20.5-neoforge:1.0.0-NeoForge")
     implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.20.5:1.0.0")
 //
-//    compileOnly "curse.maven:mcwifipnp-450250:5056245"
+    compileOnly "curse.maven:mcwifipnp-450250:5056245"
 //    compileOnly "mezz.jei:jei-${before_minecraft_version}-common-api:${jei_version}"
 //    compileOnly "mezz.jei:jei-${before_minecraft_version}-neoforge-api:${jei_version}"
 //
 //    runtimeOnly "mezz.jei:jei-${before_minecraft_version}-neoforge:${jei_version}"
-//    runtimeOnly "curse.maven:grandpower-980156:5140183"
+    runtimeOnly "curse.maven:grandpower-980156:5302028"
 //    runtimeOnly "curse.maven:scalable-cats-force-320926:4973960"
-//    runtimeOnly "curse.maven:cloth-config-348521:4973457"
+    runtimeOnly "curse.maven:cloth-config-348521:5287791"
 //
 //    implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
-//    implementation "mcjty.theoneprobe:theoneprobe:1.20.4_neo-11.0.2-3"
-//    implementation "curse.maven:modern-industrialization-405388:5263199"
+    implementation "mcjty.theoneprobe:theoneprobe:1.20.5_neo-11.1.1-2"
+    implementation "curse.maven:modern-industrialization-405388:5308029"
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.5.1"
 }
 
 tasks.withType(ProcessResources).configureEach {

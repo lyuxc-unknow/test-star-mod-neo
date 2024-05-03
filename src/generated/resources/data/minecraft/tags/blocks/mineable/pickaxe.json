@@ -2,6 +2,7 @@
   "values": [
     "test_star:example_block",
     "test_star:star_block",
+    "test_star:super_generator",
     "test_star:fan_block"
   ]
 }
