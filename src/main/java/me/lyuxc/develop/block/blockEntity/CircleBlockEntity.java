@@ -41,7 +41,7 @@ public class CircleBlockEntity extends BlockEntity implements GeoBlockEntity {
     }
 
     public void tickServer(Level level, BlockPos pos) {
-        if (level.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) != BlockRegistry.SUPER_GENERATOR.get().defaultBlockState()) {
+        if (!(level.getBlockEntity(pos.atY(pos.getY() - 1)) instanceof SuperGeneratorEntity)) {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
         }
     }

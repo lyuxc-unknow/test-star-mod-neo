@@ -3,7 +3,12 @@ package me.lyuxc.develop.datagen;
 import me.lyuxc.develop.Variables;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+
+import java.util.List;
+import java.util.Set;
 
 
 public class DataGeneration {
@@ -21,5 +26,8 @@ public class DataGeneration {
         generator.addProvider(event.includeClient(), new LanguageProviders(packOutput, "zh_cn"));
         //标签生成器
         generator.addProvider(event.includeClient(), new BlockTagsProviders(packOutput, event.getLookupProvider(), Variables.MOD_ID, event.getExistingFileHelper()));
+        //战利品表
+        generator.addProvider(true, new LootTableProvider(packOutput, Set.of(),
+                List.of(new LootTableProvider.SubProviderEntry(BlockLootTablesProviders::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
     }
 }

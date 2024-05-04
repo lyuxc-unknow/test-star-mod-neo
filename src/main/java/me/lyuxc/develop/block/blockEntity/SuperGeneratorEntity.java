@@ -67,13 +67,15 @@ public class SuperGeneratorEntity extends BlockEntity {
     public void tickServer(Level level, BlockPos pos) {
         generateEnergy();
         distributeEnergy();
-        i++;
-        if (i % 20 == 0 && !items.getStackInSlot(SLOT).isEmpty()) {
-            LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-            lightningBolt.moveTo(pos.getX(), pos.getY() + 1, pos.getZ());
-            level.addFreshEntity(lightningBolt);
+        if (burnTime != 0) {
+            i++;
+            if (i % 20 == 0) {
+                LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
+                lightningBolt.moveTo(pos.getX(), pos.getY() + 1, pos.getZ());
+                level.addFreshEntity(lightningBolt);
+            }
         }
-        if (level.getBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) != BlockRegistry.CIRCLE_BLOCK.get().defaultBlockState()) {
+        if (!(level.getBlockEntity(pos.atY(pos.getY() + 1)) instanceof CircleBlockEntity)) {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
         }
     }
@@ -133,22 +135,22 @@ public class SuperGeneratorEntity extends BlockEntity {
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider provider) {
         super.saveAdditional(tag, provider);
-        tag.put(ITEMS_TAG, items.serializeNBT(provider));
-        tag.putInt(ENERGY_TAG, energy.getEnergyStored());
-        tag.putInt(TIME_TAG, burnTime);
+        getPersistentData().put(ITEMS_TAG, items.serializeNBT(provider));
+        getPersistentData().putInt(ENERGY_TAG, energy.getEnergyStored());
+        getPersistentData().putInt(TIME_TAG, burnTime);
     }
 
     @Override
     protected void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider provider) {
         super.loadAdditional(tag, provider);
-        if (tag.contains(ITEMS_TAG)) {
-            items.deserializeNBT(provider, tag.getCompound(ITEMS_TAG));
+        if (getPersistentData().contains(ITEMS_TAG)) {
+            items.deserializeNBT(provider, getPersistentData().getCompound(ITEMS_TAG));
         }
-        if (tag.contains(ENERGY_TAG)) {
-            energy.receiveEnergy(tag.getInt(ENERGY_TAG), false);
+        if (getPersistentData().contains(ENERGY_TAG)) {
+            energy.receiveEnergy(getPersistentData().getInt(ENERGY_TAG), false);
         }
-        if (tag.contains(TIME_TAG)) {
-            burnTime = tag.getInt(TIME_TAG);
+        if (getPersistentData().contains(TIME_TAG)) {
+            burnTime = getPersistentData().getInt(TIME_TAG);
         }
     }
 
