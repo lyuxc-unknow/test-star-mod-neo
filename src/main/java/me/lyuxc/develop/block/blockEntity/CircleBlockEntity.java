@@ -35,11 +35,17 @@ public class CircleBlockEntity extends BlockEntity implements GeoBlockEntity {
         return this.cache;
     }
 
+    /**
+     * 动画相关Tick
+    * */
     @Override
     public double getTick(Object blockEntity) {
         return RenderUtil.getCurrentTick();
     }
 
+    /**
+     * 伪多方快检测
+    * */
     public void tickServer(Level level, BlockPos pos) {
         if (!(level.getBlockEntity(pos.atY(pos.getY() - 1)) instanceof SuperGeneratorEntity)) {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());

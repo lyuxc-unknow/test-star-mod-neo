@@ -69,6 +69,7 @@ public class LanguageProviders extends LanguageProvider {
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "Star Block");
             add(BlockRegistry.FAN_BLOCK.get(), "Fan Block");
             add(BlockRegistry.SUPER_GENERATOR.get(), "Matter Cube");
+            add(BlockRegistry.CREATIVE_GENERATOR_BLOCK.get(), "Creative Generator");
             add("itemGroup.test_star", "[Mind] Creative Tab");
             add("star.chat.disable.command", "§4Command disable");
             add("chat.creative", "Creative");
@@ -163,6 +164,7 @@ public class LanguageProviders extends LanguageProvider {
             add(BlockRegistry.STAR_BLOCK_ITEM.get(), "行星方块");
             add(BlockRegistry.FAN_BLOCK.get(), "拟态·风扇");
             add(BlockRegistry.SUPER_GENERATOR.get(), "物质立方");
+            add(BlockRegistry.CREATIVE_GENERATOR_BLOCK.get(), "创造模式发电机");
             add("itemGroup.test_star", "[Mind]物品栏");
             add("star.chat.disable.command", "§4该命令已被管理员禁用");
             add("chat.creative", "已切换至创造模式");

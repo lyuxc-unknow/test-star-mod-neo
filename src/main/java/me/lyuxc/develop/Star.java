@@ -2,6 +2,7 @@ package me.lyuxc.develop;
 
 import me.lyuxc.develop.block.BlockRegistry;
 import me.lyuxc.develop.block.renderer.CircleBlockRenderer;
+import me.lyuxc.develop.block.renderer.CreativeGeneratorBlockRenderer;
 import me.lyuxc.develop.client.SuperGeneratorScreen;
 import me.lyuxc.develop.compat.theoneprobe.TOPRegister;
 import me.lyuxc.develop.datagen.DataGeneration;
@@ -15,6 +16,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.InterModComms;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -48,8 +50,9 @@ public class Star {
         modEventBus.addListener(DataGeneration::generate);
         //事件注册
         modEventBus.addListener(this::registerCapabilities);
-        modEventBus.addListener(this::CommonSetupEvent);
-        modEventBus.addListener(this::ClientSetupEvent);
+        modEventBus.addListener(this::commonSetupEvent);
+        modEventBus.addListener(this::clientSetupEvent);
+        modEventBus.addListener(this::registerMenuScreen);
         modEventBus.addListener(Keys::init);
     }
 
@@ -58,7 +61,7 @@ public class Star {
         return new ResourceLocation(Variables.MOD_ID, id);
     }
 
-    private void CommonSetupEvent(FMLCommonSetupEvent event) {
+    private void commonSetupEvent(FMLCommonSetupEvent event) {
 //        TOPRegister.register();
         InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPRegister::new);
         //模组加载数量将检测
@@ -71,10 +74,14 @@ public class Star {
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BlockRegistry.SUPER_GENERATOR_ENTITY.get(), (o, direction) -> o.getItemHandler());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, BlockRegistry.SUPER_GENERATOR_ENTITY.get(), (o, direction) -> o.getEnergyHandler());
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,BlockRegistry.CREATIVE_GENERATOR_ENTITY.get(),(o,direction) -> o.getEnergyHandler());
     }
 
-    public void ClientSetupEvent(RegisterMenuScreensEvent event) {
+    public void registerMenuScreen(RegisterMenuScreensEvent event) {
         event.register(BlockRegistry.SUPER_GENERATOR_CONTAINER.get(), SuperGeneratorScreen::new);
+    }
+    public void clientSetupEvent(FMLClientSetupEvent event) {
         BlockEntityRenderers.register(BlockRegistry.CIRCLE_BLOCK_ENTITY.get(), CircleBlockRenderer::new);
+        BlockEntityRenderers.register(BlockRegistry.CREATIVE_GENERATOR_ENTITY.get(), CreativeGeneratorBlockRenderer::new);
     }
 }

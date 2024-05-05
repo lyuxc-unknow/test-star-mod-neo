@@ -5,9 +5,12 @@ import me.lyuxc.develop.Star;
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.block.blockContainer.SuperGeneratorContainer;
 import me.lyuxc.develop.block.blockEntity.CircleBlockEntity;
+import me.lyuxc.develop.block.blockEntity.CreativeGeneratorBlockEntity;
 import me.lyuxc.develop.block.blockEntity.SuperGeneratorEntity;
 import me.lyuxc.develop.block.blockItem.CircleBlockItem;
+import me.lyuxc.develop.block.blockItem.CreativeGeneratorBlockItem;
 import me.lyuxc.develop.block.blocks.CircleBlock;
+import me.lyuxc.develop.block.blocks.CreativeGeneratorBlock;
 import me.lyuxc.develop.block.blocks.FanBlock;
 import me.lyuxc.develop.block.blocks.SuperGenerator;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -51,6 +54,13 @@ public class BlockRegistry {
             () -> BlockEntityType.Builder.of(CircleBlockEntity::new, CIRCLE_BLOCK.get()).build(DSL.emptyPartType()));
 
     public static final DeferredItem<Item> CIRCLE_BLOCK_ITEM = ITEMS.register("circle", () -> new CircleBlockItem(CIRCLE_BLOCK.get(), new Item.Properties()));
+    //创造发电机
+    public static final DeferredBlock<CreativeGeneratorBlock> CREATIVE_GENERATOR_BLOCK = BLOCK_DEFERRED_REGISTER.register("creative_generator", CreativeGeneratorBlock::new);
+
+    public static final Supplier<BlockEntityType<CreativeGeneratorBlockEntity>> CREATIVE_GENERATOR_ENTITY = BLOCK_ENTITY_TYPE.register("creative_generator",
+            () -> BlockEntityType.Builder.of(CreativeGeneratorBlockEntity::new, CREATIVE_GENERATOR_BLOCK.get()).build(DSL.emptyPartType()));
+
+    public static final DeferredItem<Item> CREATIVE_GENERATOR_ITEM = ITEMS.register("creative_generator", () -> new CreativeGeneratorBlockItem(CREATIVE_GENERATOR_BLOCK.get(), new Item.Properties()));
     //添加方块
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCK_DEFERRED_REGISTER.register("example_block", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)

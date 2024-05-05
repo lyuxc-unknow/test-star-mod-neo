@@ -69,10 +69,11 @@ public class SuperGeneratorEntity extends BlockEntity {
         distributeEnergy();
         if (burnTime != 0) {
             i++;
-            if (i % 20 == 0) {
+            if (i % 60 == 0) {
                 LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
                 lightningBolt.moveTo(pos.getX(), pos.getY() + 1, pos.getZ());
                 level.addFreshEntity(lightningBolt);
+                i=0;
             }
         }
         if (!(level.getBlockEntity(pos.atY(pos.getY() + 1)) instanceof CircleBlockEntity)) {

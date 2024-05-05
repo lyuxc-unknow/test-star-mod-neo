@@ -44,15 +44,14 @@ public class SuperGenerator extends Block implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
-        if (level.isClientSide) {
-            return null;
-        } else {
+        if (!level.isClientSide){
             return (level1, pos, state1, be) -> {
                 if (be instanceof SuperGeneratorEntity block) {
                     block.tickServer(level1, pos);
                 }
             };
         }
+        return null;
     }
 
     @Override
