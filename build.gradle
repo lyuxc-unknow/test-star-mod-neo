@@ -83,6 +83,14 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+    maven {
+        name "Modmaven"
+        url "https://modmaven.dev/"
+        // For Gradle 5.1 and above, limit it to just AE2
+        content {
+            includeGroup 'appeng'
+        }
+    }
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
@@ -102,6 +110,7 @@ dependencies {
     implementation "mcjty.theoneprobe:theoneprobe:1.20.5_neo-11.1.1-2"
     implementation "curse.maven:modern-industrialization-405388:5308029"
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.5.1"
+    implementation "appeng:appliedenergistics2-neoforge:18.1.1-alpha"
 }
 
 tasks.withType(ProcessResources).configureEach {

@@ -3,6 +3,7 @@ package me.lyuxc.develop.compat.theoneprobe;
 import mcjty.theoneprobe.api.ITheOneProbe;
 import me.lyuxc.develop.compat.theoneprobe.MI.*;
 import me.lyuxc.develop.compat.theoneprobe.TestStar.SuperGeneratorProvider;
+import me.lyuxc.develop.compat.theoneprobe.applied.Applied;
 
 import java.util.function.Function;
 
@@ -18,6 +19,7 @@ public class TOPRegister implements Function<ITheOneProbe, Void> {
         iTheOneProbe.registerProvider(new MachineProgressProvider());
         iTheOneProbe.registerProvider(new MachineComponentProvider());
         iTheOneProbe.registerProvider(new SuperGeneratorProvider());
+        iTheOneProbe.registerProvider(new Applied());
         return null;
     }
 }
