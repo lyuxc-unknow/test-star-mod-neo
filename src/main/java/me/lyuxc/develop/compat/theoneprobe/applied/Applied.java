@@ -25,10 +25,8 @@ public class Applied implements IProbeInfoProvider {
             for(int i=0;i<j;i = i + 2) {
                 CellState state1 = entity.getCellStatus(i);
                 CellState state2 = entity.getCellStatus(i + 1);
-                if(j % 2 == 0) {
-                    iProbeInfo.horizontal().progress(getProgress(state1).getPercentage(),100,getProgressStyle(state1))
-                            .progress(getProgress(state2).getPercentage(),100,getProgressStyle(state2));
-                }
+                iProbeInfo.horizontal().progress(getProgress(state1).getPercentage(),100,getProgressStyle(state1))
+                        .progress(getProgress(state2).getPercentage(),100,getProgressStyle(state2));
             }
         }
     }
