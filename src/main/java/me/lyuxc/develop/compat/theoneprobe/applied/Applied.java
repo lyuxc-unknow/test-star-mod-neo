@@ -2,6 +2,7 @@ package me.lyuxc.develop.compat.theoneprobe.applied;
 
 import appeng.api.storage.cells.CellState;
 import appeng.blockentity.storage.DriveBlockEntity;
+import appeng.items.storage.BasicStorageCell;
 import mcjty.theoneprobe.api.*;
 import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import me.lyuxc.develop.Star;
@@ -25,44 +26,57 @@ public class Applied implements IProbeInfoProvider {
             for(int i=0;i<j;i = i + 2) {
                 CellState state1 = entity.getCellStatus(i);
                 CellState state2 = entity.getCellStatus(i + 1);
-                iProbeInfo.horizontal().progress(getProgress(state1).getPercentage(),100,getProgressStyle(state1))
-                        .progress(getProgress(state2).getPercentage(),100,getProgressStyle(state2));
+                try {
+                    int type1 = 0;
+                    int type2 = 0;
+                    int maxType1 = 0;
+                    int maxType2 = 0;
+                    if(entity.getCellItem(i) instanceof BasicStorageCell cell1) {
+                        type1 = entity.getCellInventory(i).getAvailableStacks().size();
+                        maxType1 = cell1.getTotalTypes(cell1.getDefaultInstance());
+                    }
+                    if(entity.getCellItem(i + 1) instanceof BasicStorageCell cell2) {
+                        type2 = entity.getCellInventory(i + 1).getAvailableStacks().size();
+                        maxType2 = cell2.getTotalTypes(cell2.getDefaultInstance());
+                    }
+                    iProbeInfo.horizontal().progress(Math.max(type1, 0),maxType1,getProgressStyle(state1,maxType1))
+                            .progress(Math.max(type2, 0),maxType2,getProgressStyle(state2,maxType2));
+                } catch (Exception e) {
+                    e.fillInStackTrace();
+                }
             }
+            //最大类型 cell.getTotalTypes(entity.getCellItem(0).getDefaultInstance())
+            //已用类型 entity.getCellInventory(0).getAvailableStacks().size()
         }
     }
     enum CellStateProgress {
-        ABSENT(0,Color.WHITE.getRGB()),
+        ABSENT(Color.GRAY.getRGB()),
 
-        EMPTY(100,Color.GREEN.getRGB()),
+        EMPTY(Color.GREEN.getRGB()),
 
-        NOT_EMPTY(100,Color.CYAN.getRGB()),
+        NOT_EMPTY(Color.CYAN.getRGB()),
 
-        TYPES_FULL(100,Color.ORANGE.getRGB()),
+        TYPES_FULL(Color.ORANGE.getRGB()),
 
-        FULL(100,Color.RED.getRGB());
+        FULL(Color.RED.getRGB());
         final int color;
-        final int percentage;
-        CellStateProgress(int percentage,int color) {
-            this.percentage = percentage;
+        CellStateProgress(int color) {
             this.color = color;
         }
         public int getColor() {
             return this.color;
         }
-        public int getPercentage() {
-            return this.percentage;
-        }
     }
-    private ProgressStyle getProgressStyle(CellState state) {
+    private ProgressStyle getProgressStyle(CellState state,int maxType) {
         return new ProgressStyle()
+                .suffix("/" + maxType)
                 .filledColor(getProgress(state).getColor())
                 .alternateFilledColor(getProgress(state).getColor())
                 .alignment(ElementAlignment.ALIGN_CENTER)
                 .width(50)
-                .showText(false)
                 .backgroundColor(0xFFFFFF)
-                .borderColor(Color.GRAY.getRGB()
-                );
+                .borderColor(Color.GRAY.getRGB())
+                ;
     }
     private CellStateProgress getProgress(CellState slotState) {
         switch (slotState) {
