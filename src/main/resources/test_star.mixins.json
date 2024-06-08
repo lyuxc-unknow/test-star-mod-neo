@@ -10,7 +10,8 @@
   "mixins": [
     "MI.UpgradeComponentMixin",
     "Minecraft.DerivedLevelDataMixin",
-    "Minecraft.PrimaryLevelDataMixin"
+    "Minecraft.PrimaryLevelDataMixin",
+    "TOP.ElementProgressRenderMixin"
   ],
   "client": [
     "Minecraft.AdvancementToastMixin",

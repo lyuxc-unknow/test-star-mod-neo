@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.+'
+    id 'net.neoforged.gradle.userdev' version '7.0.136'
 }
 
 version = mod_version
@@ -26,6 +26,10 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 //        file('src/main/resources/META-INF/accesstransformer.cfg')
 //    }
 //}
+
+minecraft {
+    accessTransformers {}
+}
 
 runs {
     configureEach {
@@ -73,7 +77,7 @@ repositories {
         url = "https://maven.k-4u.nl"
     }
     maven {
-        url = "http://localhost:8080/repository/maven-releases/"
+        url = "http://localhost:8080/repository/maven-public/"
         allowInsecureProtocol = true
     }
     maven {
@@ -86,31 +90,30 @@ repositories {
     maven {
         name "Modmaven"
         url "https://modmaven.dev/"
-        // For Gradle 5.1 and above, limit it to just AE2
         content {
             includeGroup 'appeng'
+            includeGroup 'aztech'
+            includeGroup 'dev.technici4n'
         }
+    }
+    maven {
+        name "shedaniel Maven"
+        url "https://maven.shedaniel.me/"
     }
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    implementation jarJar("mod.lyuxc:Jrrp-1.20.5-neoforge:1.0.0-NeoForge")
-    implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.20.5:1.0.0")
-//
-    compileOnly "curse.maven:mcwifipnp-450250:5056245"
-//    compileOnly "mezz.jei:jei-${before_minecraft_version}-common-api:${jei_version}"
-//    compileOnly "mezz.jei:jei-${before_minecraft_version}-neoforge-api:${jei_version}"
-//
-//    runtimeOnly "mezz.jei:jei-${before_minecraft_version}-neoforge:${jei_version}"
-    runtimeOnly "curse.maven:grandpower-980156:5302028"
-//    runtimeOnly "curse.maven:scalable-cats-force-320926:4973960"
-    runtimeOnly "curse.maven:cloth-config-348521:5287791"
-//
-//    implementation "curse.maven:additionalenchantedminer-neoforge-282837:5148482"
-    implementation "mcjty.theoneprobe:theoneprobe:1.20.5_neo-11.1.1-2"
-    implementation "curse.maven:modern-industrialization-405388:5308029"
+    implementation jarJar("mod.lyuxc.Jrrp:Jrrp-1.20.6:1.0.1-neoforge")
+    implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.20.6:1.0.0-neoforge")
+
+    compileOnly "curse.maven:mcwifipnp-450250:5317647"
+    runtimeOnly "dev.technici4n:GrandPower:2.0.0"
+    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:14.0.126"
+
+    implementation jarJar("mcjty.theoneprobe:theoneprobe:1.20.5_neo-11.1.1-2")
+    implementation "aztech:Modern-Industrialization:2.1.1-alpha"
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.5.1"
-    implementation "appeng:appliedenergistics2-neoforge:18.1.1-alpha"
+    implementation "appeng:appliedenergistics2-neoforge:18.1.3-alpha"
 }
 
 tasks.withType(ProcessResources).configureEach {

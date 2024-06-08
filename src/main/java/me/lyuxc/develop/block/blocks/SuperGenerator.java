@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -44,7 +45,7 @@ public class SuperGenerator extends Block implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
-        if (!level.isClientSide){
+        if (!level.isClientSide()){
             return (level1, pos, state1, be) -> {
                 if (be instanceof SuperGeneratorEntity block) {
                     block.tickServer(level1, pos);
@@ -95,5 +96,18 @@ public class SuperGenerator extends Block implements EntityBlock {
         BlockPos newBlockPos = new BlockPos(pPos.getX(), pPos.getY() + 1, pPos.getZ());
         pLevel.setBlockAndUpdate(newBlockPos, BlockRegistry.CIRCLE_BLOCK.get().defaultBlockState());
         super.onPlace(pState, pLevel, pPos, pOldState, pMovedByPiston);
+    }
+
+    @Override
+    protected void onRemove(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+        if (!pState.is(pNewState.getBlock())) {
+            SuperGeneratorEntity superGeneratorEntity = (SuperGeneratorEntity) pLevel.getBlockEntity(pPos);
+            if (superGeneratorEntity != null) {
+                ItemEntity item = new ItemEntity(pLevel,pPos.getX(),pPos.getY() + 1,pPos.getZ(),superGeneratorEntity.getItems().getStackInSlot(0));
+                pLevel.addFreshEntity(item);
+            }
+            pLevel.updateNeighbourForOutputSignal(pPos, this);
+            super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+        }
     }
 }

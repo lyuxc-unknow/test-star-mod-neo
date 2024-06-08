@@ -18,7 +18,7 @@ public class onBreakBlock {
             }
         }
         if(event.getState().getBlock() == Blocks.STONE && !event.getPlayer().isCreative() && event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND) == ItemStack.EMPTY) {
-            event.getPlayer().drop(Items.FLINT.getDefaultInstance(),false);
+            event.getPlayer().drop(Items.FLINT.getDefaultInstance(), false);
         }
     }
 }

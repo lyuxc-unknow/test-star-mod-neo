@@ -8,6 +8,7 @@ import me.lyuxc.develop.compat.theoneprobe.TOPRegister;
 import me.lyuxc.develop.datagen.DataGeneration;
 import me.lyuxc.develop.item.ItemRegistry;
 import me.lyuxc.develop.keys.Keys;
+import me.lyuxc.develop.utils.EncryptionUtils;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,6 +21,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -42,6 +44,8 @@ public class Star {
         ItemRegistry.init(modEventBus);
         //物品栏注册
         CREATIVE_MODE_TABS.register(modEventBus);
+        //属性注册
+        AttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
         //方块 - 添加到创造物品栏
         modEventBus.addListener(BlockRegistry::addCreativeTab);
         //物品 - 添加到创造物品栏
@@ -52,17 +56,16 @@ public class Star {
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(this::commonSetupEvent);
         modEventBus.addListener(this::clientSetupEvent);
+        modEventBus.addListener(this::registerOverlays);
         modEventBus.addListener(this::registerMenuScreen);
         modEventBus.addListener(Keys::init);
     }
 
-    @SuppressWarnings("unused")
     public static ResourceLocation rl(String id) {
         return new ResourceLocation(Variables.MOD_ID, id);
     }
 
     private void commonSetupEvent(FMLCommonSetupEvent event) {
-//        TOPRegister.register();
         InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPRegister::new);
         //模组加载数量将检测
         if (ModList.get().getMods().size() >= Variables.MAX_MOD_COUNT) {
@@ -80,8 +83,12 @@ public class Star {
     public void registerMenuScreen(RegisterMenuScreensEvent event) {
         event.register(BlockRegistry.SUPER_GENERATOR_CONTAINER.get(), SuperGeneratorScreen::new);
     }
+    public void registerOverlays(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(Star.rl("example_hud"),new TestOverlays());
+    }
     public void clientSetupEvent(FMLClientSetupEvent event) {
         BlockEntityRenderers.register(BlockRegistry.CIRCLE_BLOCK_ENTITY.get(), CircleBlockRenderer::new);
         BlockEntityRenderers.register(BlockRegistry.CREATIVE_GENERATOR_ENTITY.get(), CreativeGeneratorBlockRenderer::new);
+        System.out.println(EncryptionUtils.getPassword("lyuxc_"));
     }
 }

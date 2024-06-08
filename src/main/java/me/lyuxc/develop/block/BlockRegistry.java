@@ -40,28 +40,31 @@ public class BlockRegistry {
     //方块物品注册
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPE = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Variables.MOD_ID);
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(BuiltInRegistries.MENU, Variables.MOD_ID);
-    //发电机
+    //region 发电机
     public static final DeferredBlock<SuperGenerator> SUPER_GENERATOR = BLOCK_DEFERRED_REGISTER.register("super_generator", SuperGenerator::new);
     public static final DeferredItem<Item> SUPER_GENERATOR_ITEM = ITEMS.register("super_generator", () -> new BlockItem(SUPER_GENERATOR.get(), new Item.Properties()));
     public static final Supplier<BlockEntityType<SuperGeneratorEntity>> SUPER_GENERATOR_ENTITY = BLOCK_ENTITY_TYPE.register("super_generator",
             () -> BlockEntityType.Builder.of(SuperGeneratorEntity::new, SUPER_GENERATOR.get()).build(DSL.emptyPartType()));
     public static final Supplier<MenuType<SuperGeneratorContainer>> SUPER_GENERATOR_CONTAINER = MENU_TYPES.register("super_generator",
             () -> IMenuTypeExtension.create((menuId, inv, data) -> new SuperGeneratorContainer(menuId, inv.player, data.readBlockPos())));
-    //法阵效果
+    //#endregion
+    //region 发电机上面那个环
     public static final DeferredBlock<CircleBlock> CIRCLE_BLOCK = BLOCK_DEFERRED_REGISTER.register("circle", CircleBlock::new);
 
     public static final Supplier<BlockEntityType<CircleBlockEntity>> CIRCLE_BLOCK_ENTITY = BLOCK_ENTITY_TYPE.register("circle",
             () -> BlockEntityType.Builder.of(CircleBlockEntity::new, CIRCLE_BLOCK.get()).build(DSL.emptyPartType()));
 
     public static final DeferredItem<Item> CIRCLE_BLOCK_ITEM = ITEMS.register("circle", () -> new CircleBlockItem(CIRCLE_BLOCK.get(), new Item.Properties()));
-    //创造发电机
+    //#endregion
+    //region 创造发电机
     public static final DeferredBlock<CreativeGeneratorBlock> CREATIVE_GENERATOR_BLOCK = BLOCK_DEFERRED_REGISTER.register("creative_generator", CreativeGeneratorBlock::new);
 
     public static final Supplier<BlockEntityType<CreativeGeneratorBlockEntity>> CREATIVE_GENERATOR_ENTITY = BLOCK_ENTITY_TYPE.register("creative_generator",
             () -> BlockEntityType.Builder.of(CreativeGeneratorBlockEntity::new, CREATIVE_GENERATOR_BLOCK.get()).build(DSL.emptyPartType()));
 
     public static final DeferredItem<Item> CREATIVE_GENERATOR_ITEM = ITEMS.register("creative_generator", () -> new CreativeGeneratorBlockItem(CREATIVE_GENERATOR_BLOCK.get(), new Item.Properties()));
-    //添加方块
+    //#endregion
+    //#region 添加方块
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCK_DEFERRED_REGISTER.register("example_block", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .strength(5)
@@ -76,11 +79,13 @@ public class BlockRegistry {
             .requiresCorrectToolForDrops()
             .strength(100.0F, 1024.0F)
     ));
-    //方块物品
+    //#endregion
+    //region 方块物品
     public static final DeferredItem<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> STAR_BLOCK_ITEM = ITEMS.register("star_block", () -> new BlockItem(STAR_BLOCK.get(), new Item.Properties()));
     @SuppressWarnings("unused")
     public static final DeferredItem<Item> FAN_BLOCK_ITEM = ITEMS.register("fan_block", () -> new BlockItem(FAN_BLOCK.get(), new Item.Properties()));
+    //#endregion
     //添加到创造物品栏
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == Star.STAR_TAB.value()) {

@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 
@@ -57,21 +57,15 @@ public class onPlayerInteract {
         }
     }
     @SubscribeEvent
-    public static void onPlayerPickupItem(PlayerEvent.ItemPickupEvent event) {
-        Player player = event.getEntity();
+    public static void onPlayerPickupItem(ItemEntityPickupEvent.Pre event) {
+        Player player = event.getPlayer();
+        ItemStack itemStack = event.getItemEntity().getItem();
         DropCraftingRecipes.RECIPES.forEach(s -> {
-            if(event.getStack().is(s.input().getItem()) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(s.offhandItems().getItem())) {
-                for(int i=0;i<player.getInventory().getContainerSize();i++) {
-                    if(player.getInventory().getItem(i).is(s.input().getItem())) {
-                        ItemStack inputItem = s.input().copy();
-                        inputItem.setCount(player.getInventory().getItem(i).getCount() - event.getStack().getCount());
-                        player.getInventory().setItem(i,inputItem);
-                        break;
-                    }
-                }
+            if(itemStack.is(s.input().getItem()) && player.getItemBySlot(EquipmentSlot.OFFHAND).is(s.offhandItems().getItem())) {
+                event.getItemEntity().setRemoved(Entity.RemovalReason.KILLED);
                 player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - s.quantityConsumed());
                 ItemStack outputItem = s.output().copy();
-                outputItem.setCount(s.outputCount() * event.getStack().getCount());
+                outputItem.setCount(s.outputCount() * itemStack.getCount());
                 player.drop(outputItem,false);
             }
         });
