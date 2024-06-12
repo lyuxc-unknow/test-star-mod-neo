@@ -2,6 +2,7 @@ package me.lyuxc.develop.utils;
 
 import me.lyuxc.develop.Variables;
 import me.lyuxc.develop.recipes.*;
+import net.minecraft.SharedConstants;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.NonNullList;
@@ -72,7 +73,6 @@ public class Utils {
             ExplosionMultiItemRecipes.RECIPES.clear();
             DeputyCraftingRecipes.RECIPES.clear();
             LightningCraftingRecipes.RECIPES.clear();
-
             //读取文件存入合成表列表
             Variables.IDs = FileUtils.readFromFile("banBlock.recipes", false).split(System.lineSeparator());
             addRecipesFromFile("dropCrafting.recipes", DropCraftingRecipes::addPlayerPickupRecipes);
@@ -92,6 +92,7 @@ public class Utils {
                     RandomDropCraftingRecipes.addRandomDropCraftingRecipe(Utils.getItemStack("test_star:package_" + i), Items.DIAMOND_BLOCK.getDefaultInstance());
                 }
             }
+            RunningInIDE(access,manager);
         } catch (FileNotFoundException e) {
             // 如果没找到就创建
             createRecipeFiles();
@@ -128,5 +129,14 @@ public class Utils {
             }
         }
         return recipes;
+    }
+    public static void RunningInIDE(RegistryAccess access, RecipeManager recipeManager) {
+        if(SharedConstants.IS_RUNNING_IN_IDE) {
+            DeputyCraftingRecipes.addDeputyCraftingRecipes(Items.DIRT,1,Items.DIAMOND,1,Items.END_CRYSTAL,access,recipeManager);
+            DropCraftingRecipes.addPlayerPickupRecipes(Items.DIRT,Items.DIAMOND,1,Items.DIAMOND_BLOCK,1);
+            ExplosionCraftingRecipes.addExplosionRecipes(Items.DIRT,1,Items.DIAMOND,1);
+            ExplosionMultiItemRecipes.addExplosionMultiRecipes(List.of(Items.OBSIDIAN.getDefaultInstance(),Items.DIAMOND.getDefaultInstance()),1,Items.DIRT,1);
+            LightningCraftingRecipes.addLightningCraftingRecipes(Items.DIRT,Items.DIAMOND);
+        }
     }
 }

@@ -84,7 +84,7 @@ public class Star {
         event.register(BlockRegistry.SUPER_GENERATOR_CONTAINER.get(), SuperGeneratorScreen::new);
     }
     public void registerOverlays(RegisterGuiLayersEvent event) {
-        event.registerAboveAll(Star.rl("example_hud"),new TestOverlays());
+//        event.registerAboveAll(Star.rl("example_hud"),new TestOverlays());
     }
     public void clientSetupEvent(FMLClientSetupEvent event) {
         BlockEntityRenderers.register(BlockRegistry.CIRCLE_BLOCK_ENTITY.get(), CircleBlockRenderer::new);

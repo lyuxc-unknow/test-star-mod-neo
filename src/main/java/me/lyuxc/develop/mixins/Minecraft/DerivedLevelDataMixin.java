@@ -1,6 +1,6 @@
 package me.lyuxc.develop.mixins.Minecraft;
 
-import net.minecraft.world.level.GameType;
+import net.minecraft.SharedConstants;
 import net.minecraft.world.level.storage.DerivedLevelData;
 import net.minecraft.world.level.storage.WorldData;
 import org.spongepowered.asm.mixin.Final;
@@ -12,12 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DerivedLevelData.class)
 public abstract class DerivedLevelDataMixin {
-    @Shadow public abstract GameType getGameType();
 
     @Shadow @Final private WorldData worldData;
 
     @Inject(method = "isAllowCommands", at = @At("RETURN"), cancellable = true, remap = false)
     public void isAllowCommands(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(this.getGameType().isCreative() && this.worldData.isAllowCommands());
+        cir.setReturnValue((this.worldData.isAllowCommands())|| SharedConstants.IS_RUNNING_IN_IDE);
     }
 }

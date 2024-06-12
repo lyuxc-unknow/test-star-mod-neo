@@ -2,7 +2,6 @@ package me.lyuxc.develop.event;
 
 import me.lyuxc.develop.AttachmentTypes;
 import me.lyuxc.develop.Variables;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -29,7 +28,6 @@ public class onTick {
             if (event.getEntity() instanceof Player player) {
                 if(player.getData(AttachmentTypes.INF_ATTACHMENT.get()) > 0) {
                     player.setData(AttachmentTypes.INF_ATTACHMENT.get(), player.getData(AttachmentTypes.INF_ATTACHMENT.get()) - 1);
-                    player.sendSystemMessage(Component.literal(event.getEntity().getData(AttachmentTypes.INF_ATTACHMENT.get()).toString()));
                     event.setCanceled(true);
                 }
             }

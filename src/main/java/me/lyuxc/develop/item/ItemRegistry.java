@@ -86,6 +86,7 @@ public class ItemRegistry {
             .stacksTo(16)
             .food(new FoodProperties.Builder()
                     .alwaysEdible()
+                    .fast()
                     .nutrition(21)
                     .build()
             )
