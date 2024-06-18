@@ -62,7 +62,7 @@ public class Star {
     }
 
     public static ResourceLocation rl(String id) {
-        return new ResourceLocation(Variables.MOD_ID, id);
+        return ResourceLocation.fromNamespaceAndPath(Variables.MOD_ID, id);
     }
 
     private void commonSetupEvent(FMLCommonSetupEvent event) {

@@ -1,6 +1,6 @@
 package me.lyuxc.develop.compat.JEI;
 
-import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.Star;
 import me.lyuxc.develop.recipes.ExplosionMultiItemRecipes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -12,7 +12,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +36,7 @@ public class MultiExplosionRecipeCategory implements IRecipeCategory<ExplosionMu
 
     @Override
     public @NotNull IDrawable getBackground() {
-        return helper.createDrawable(new ResourceLocation(Variables.MOD_ID,"textures/gui/jei/jei_crafting.png"),0,40,98,20);
+        return helper.createDrawable(Star.rl("textures/gui/jei/jei_crafting.png"),0,40,98,20);
     }
 
     @Override

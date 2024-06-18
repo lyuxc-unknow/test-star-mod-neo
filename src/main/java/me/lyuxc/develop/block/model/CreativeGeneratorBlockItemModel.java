@@ -1,6 +1,6 @@
 package me.lyuxc.develop.block.model;
 
-import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.Star;
 import me.lyuxc.develop.block.blockItem.CreativeGeneratorBlockItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class CreativeGeneratorBlockItemModel extends GeoModel<CreativeGeneratorBlockItem> {
     @Override
     public ResourceLocation getModelResource(CreativeGeneratorBlockItem creativeGeneratorBlockItem) {
-        return new ResourceLocation(Variables.MOD_ID, "geo/creative_generator.geo.json");
+        return Star.rl( "geo/creative_generator.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(CreativeGeneratorBlockItem creativeGeneratorBlockItem) {
-        return new ResourceLocation(Variables.MOD_ID, "textures/block/creative_generator.png");
+        return Star.rl("textures/block/creative_generator.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(CreativeGeneratorBlockItem creativeGeneratorBlockItem) {
-        return new ResourceLocation(Variables.MOD_ID, "animations/creative_generator.animation.json");
+        return Star.rl("animations/creative_generator.animation.json");
     }
 }

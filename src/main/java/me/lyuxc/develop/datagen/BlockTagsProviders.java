@@ -31,7 +31,7 @@ public class BlockTagsProviders extends BlockTagsProvider {
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(BlockRegistry.CIRCLE_BLOCK.get())
                 .add(BlockRegistry.STAR_BLOCK.get());
-        tag(TagKey.create(Registries.BLOCK, new ResourceLocation("c", "mineable/aotools"))).addTags(
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "mineable/aotools"))).addTags(
                 BlockTags.MINEABLE_WITH_PICKAXE,
                 BlockTags.MINEABLE_WITH_AXE,
                 BlockTags.MINEABLE_WITH_HOE,

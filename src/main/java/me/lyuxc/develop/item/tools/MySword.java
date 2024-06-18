@@ -40,7 +40,7 @@ public class MySword extends SwordItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
-        if (!pLevel.isClientSide) {
+        if (!pLevel.isClientSide()) {
             AABB aabb = pPlayer.getBoundingBox().deflate(48);
             List<Entity> entityList = pLevel.getEntities(pPlayer, aabb);
             DamageSource damageSource = pPlayer.damageSources().source(DamageTypes.EXPLOSION);

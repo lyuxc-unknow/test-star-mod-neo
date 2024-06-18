@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(ElementProgressRender.class)
 public class ElementProgressRenderMixin {
     @Unique
-    private static final ResourceLocation testStarMod_1_20_6_neoforge$ICONS = new ResourceLocation(TheOneProbe.MODID,"textures/gui/vanliia_icon.png");
+    private static final ResourceLocation testStarMod_1_20_6_neoforge$ICONS = ResourceLocation.fromNamespaceAndPath(TheOneProbe.MODID,"textures/gui/vanliia_icon.png");
 
     /**
      * @author lyuxc_

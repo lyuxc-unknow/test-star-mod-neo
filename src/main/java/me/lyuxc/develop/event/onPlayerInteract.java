@@ -6,7 +6,6 @@ import me.lyuxc.develop.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -43,7 +42,7 @@ public class onPlayerInteract {
         if(blockState.getBlock() == Blocks.END_PORTAL_FRAME) {
             if(!blockState.getValue(BlockStateProperties.EYE) && player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.ENDER_EYE)) {
                 if(level instanceof ServerLevel level_) {
-                    if(player.getItemBySlot(EquipmentSlot.OFFHAND).is(BuiltInRegistries.ITEM.get(new ResourceLocation("test_star:mod_block_dream")))) {
+                    if(player.getItemBySlot(EquipmentSlot.OFFHAND).is(Utils.getItem("test_star:mod_block_dream"))) {
                         player.getItemBySlot(EquipmentSlot.OFFHAND).setCount(player.getItemBySlot(EquipmentSlot.OFFHAND).getCount() - 1);
                         Entity light = new LightningBolt(EntityType.LIGHTNING_BOLT, level_);
                         light.moveTo(player.position());

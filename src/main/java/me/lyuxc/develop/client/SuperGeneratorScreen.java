@@ -1,6 +1,6 @@
 package me.lyuxc.develop.client;
 
-import me.lyuxc.develop.Variables;
+import me.lyuxc.develop.Star;
 import me.lyuxc.develop.block.blockContainer.SuperGeneratorContainer;
 import me.lyuxc.develop.block.blockEntity.SuperGeneratorEntity;
 import net.minecraft.client.gui.GuiGraphics;
@@ -15,7 +15,7 @@ public class SuperGeneratorScreen extends AbstractContainerScreen<SuperGenerator
     private static final int ENERGY_WIDTH = 72;
     private static final int ENERGY_TOP = 8;
     private static final int ENERGY_HEIGHT = 8;
-    private final ResourceLocation GUI = new ResourceLocation(Variables.MOD_ID, "textures/gui/super_generator.png");
+    private final ResourceLocation GUI = Star.rl( "textures/gui/super_generator.png");
 
     public SuperGeneratorScreen(SuperGeneratorContainer pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);

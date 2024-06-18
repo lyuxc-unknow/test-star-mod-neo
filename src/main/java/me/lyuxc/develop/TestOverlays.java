@@ -1,6 +1,7 @@
 package me.lyuxc.develop;
 
 import com.mojang.blaze3d.platform.GlUtil;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
@@ -10,11 +11,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class TestOverlays implements LayeredDraw.Layer {
     private final Minecraft minecraft;
+
     public TestOverlays() {
         this.minecraft = Minecraft.getInstance();
     }
+
+
     @Override
-    public void render(@NotNull GuiGraphics guiGraphics, float v) {
+    public void render(@NotNull GuiGraphics guiGraphics, @NotNull DeltaTracker deltaTracker) {
         if(minecraft.hitResult instanceof BlockHitResult result) {
             if (minecraft.level != null) {
                 ItemStack itemStack = minecraft.level.getBlockState(result.getBlockPos()).getBlock().asItem().getDefaultInstance();

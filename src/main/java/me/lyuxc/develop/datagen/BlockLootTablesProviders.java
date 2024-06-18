@@ -1,6 +1,7 @@
 package me.lyuxc.develop.datagen;
 
 import me.lyuxc.develop.block.BlockRegistry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -17,8 +18,8 @@ public class BlockLootTablesProviders extends BlockLootSubProvider {
             BlockRegistry.CIRCLE_BLOCK.get()
     );
 
-    protected BlockLootTablesProviders() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    protected BlockLootTablesProviders(HolderLookup.Provider pLookup) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(),pLookup);
     }
 
     @Override

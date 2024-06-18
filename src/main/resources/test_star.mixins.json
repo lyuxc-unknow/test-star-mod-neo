@@ -8,7 +8,6 @@
   },
   "refmap": "test_star.refmap.json",
   "mixins": [
-    "MI.UpgradeComponentMixin",
     "Minecraft.DerivedLevelDataMixin",
     "Minecraft.PrimaryLevelDataMixin",
     "TOP.ElementProgressRenderMixin"

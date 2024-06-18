@@ -92,20 +92,20 @@ repositories {
 }
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    implementation jarJar("mod.lyuxc.Jrrp:Jrrp-1.20.6:1.0.1-neoforge")
-    implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.20.6:1.0.0-neoforge")
+    implementation jarJar("mod.lyuxc.Jrrp:Jrrp-1.21:1.0.0-neoforge")
+    implementation jarJar("mod.lyuxc.MagicClover:Magic-Clover-1.21:1.0.0-neoforge")
 
-    compileOnly "curse.maven:mcwifipnp-450250:5317647"
+//    compileOnly "curse.maven:mcwifipnp-450250:5317647"
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
-    runtimeOnly "dev.technici4n:GrandPower:2.0.0"
-    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:14.0.126"
+    runtimeOnly "dev.technici4n:GrandPower:3.0.0"
+    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:15.0.127"
 
-    implementation jarJar("mcjty.theoneprobe:TheOneProbe:1.20.6_neo-11.2.0")
-    implementation "aztech:Modern-Industrialization:2.1.2-alpha"
-    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.5.1"
-    implementation "appeng:appliedenergistics2-neoforge:18.1.3-alpha"
+    implementation jarJar("mcjty.theoneprobe:theoneprobe:1.21_neo-12.0.0-1")
+    implementation "aztech:Modern-Industrialization:2.2.2-alpha"
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:4.5.5"
+    implementation "appeng:appliedenergistics2-neoforge:19.0.3-alpha"
 }
 
 tasks.withType(ProcessResources).configureEach {
