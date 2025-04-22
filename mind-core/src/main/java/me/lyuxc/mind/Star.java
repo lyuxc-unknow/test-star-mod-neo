@@ -58,6 +58,7 @@ public class Star {
         modEventBus.addListener(this::registerMenuScreen);
         //按键初始化注册
         modEventBus.addListener(Keys::init);
+        System.out.println();
     }
 
     public static ResourceLocation rl(String id) {

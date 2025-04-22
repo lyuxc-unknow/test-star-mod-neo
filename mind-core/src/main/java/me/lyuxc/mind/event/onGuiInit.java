@@ -1,6 +1,5 @@
 package me.lyuxc.mind.event;
 
-import io.github.satxm.mcwifipnp.ShareToLanScreenNew;
 import me.lyuxc.mind.Variables;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.screens.ShareToLanScreen;
@@ -18,13 +17,13 @@ public class onGuiInit {
             AbstractButton modeButton = (AbstractButton) screen.renderables.get(0);
             cheatsButton.active = false;
             modeButton.active = false;
-        } else if(event.getScreen() instanceof ShareToLanScreenNew screenNew && !Variables.DEVELOPER) {
-            AbstractButton gamemodeButton = (AbstractButton) screenNew.renderables.get(2);
-            AbstractButton allowCheatsButton = (AbstractButton) screenNew.renderables.get(3);
-            AbstractButton otherPlayersCheatButton = (AbstractButton) screenNew.renderables.get(7);
-            gamemodeButton.active = false;
-            allowCheatsButton.active = false;
-            otherPlayersCheatButton.active = false;
+//        } else if(event.getScreen() instanceof ShareToLanScreenNew screenNew && !Variables.DEVELOPER) {
+//            AbstractButton gamemodeButton = (AbstractButton) screenNew.renderables.get(2);
+//            AbstractButton allowCheatsButton = (AbstractButton) screenNew.renderables.get(3);
+//            AbstractButton otherPlayersCheatButton = (AbstractButton) screenNew.renderables.get(7);
+//            gamemodeButton.active = false;
+//            allowCheatsButton.active = false;
+//            otherPlayersCheatButton.active = false;
         }
     }
 }

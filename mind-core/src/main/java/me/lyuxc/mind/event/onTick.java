@@ -2,14 +2,11 @@ package me.lyuxc.mind.event;
 
 import me.lyuxc.mind.AttachmentTypes;
 import me.lyuxc.mind.Variables;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.Objects;
 
@@ -36,26 +33,5 @@ public class onTick {
                 }
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void serverTickEvent(ServerTickEvent.Pre event) {
-        event.getServer().getAllLevels().forEach(level ->
-            level.getEntities().getAll().forEach(entity -> {
-                if(entity instanceof ItemEntity item) {
-                    int restlife = (6000-item.getAge())/(20);
-                    String itemDisplayName = item.getItem().getHoverName().getString();
-                    int amont = item.getItem().getCount();
-                    item.setCustomNameVisible(true);
-                    item.setCustomName(Component.empty()
-                            .append(amont+"x ")
-                            .append(itemDisplayName)
-                            .append(" ")
-                            .append(restlife + "s")
-                        );
-                    }
-                }
-            )
-        );
     }
 }

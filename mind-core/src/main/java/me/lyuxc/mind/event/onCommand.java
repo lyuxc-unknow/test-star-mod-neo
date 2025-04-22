@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.CommandEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 @EventBusSubscriber
 public class onCommand {
@@ -33,5 +34,11 @@ public class onCommand {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void craft(PlayerEvent.ItemCraftedEvent event) {
+        event.getInventory().getItem(0).setCount(event.getInventory().getItem(0).getCount() - 5);
+        event.getInventory().setChanged();
     }
 }

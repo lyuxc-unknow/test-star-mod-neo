@@ -17,7 +17,7 @@ public class TextUtils {
      * @return 转换后的component
      */
     public static Component apply(Component component) {
-        return Component.literal(RainbowMarquee(component.getString(), value, 100));
+        return Component.literal(rainbowMarquee(component.getString(), value, 100));
     }
 
     /**
@@ -25,7 +25,7 @@ public class TextUtils {
      * @return 转换后的component
      */
     public static Component applyAllColor(Component component) {
-        return Component.literal(RainbowMarquee(component.getString(), value2, 40));
+        return Component.literal(rainbowMarquee(component.getString(), value2, 40));
     }
 
     /**
@@ -52,7 +52,7 @@ public class TextUtils {
      * @param delay 延迟
      * @return 转换后的文字
      */
-    private static String RainbowMarquee(String input, ChatFormatting[] colours, double delay) {
+    private static String rainbowMarquee(String input, ChatFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
         if (delay <= 0) {
             delay = 0.001;

@@ -46,14 +46,12 @@ public class FileUtils {
      */
     @SuppressWarnings("unused")
     public static void writeToNewFile(File file, String[] text, boolean newLine) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for(String text1: text) {
                 if (newLine) {
                     writer.newLine();
                 }
                 writer.write(text1);
-                writer.close();
             }
         } catch (Exception e) {
             e.fillInStackTrace();
@@ -67,13 +65,11 @@ public class FileUtils {
      * @param newLine 是否新的一行
      */
     public static void writeToNewFile(File file,String text,boolean newLine) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             if (newLine) {
                 writer.newLine();
             }
             writer.write(text);
-            writer.close();
         } catch (Exception e) {
             e.fillInStackTrace();
         }
